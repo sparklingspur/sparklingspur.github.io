@@ -33,11 +33,14 @@ hr {
 	color: #b8b7b7;
 }
 
+#faqaccordion .ui-icon { display: none; }
+#faqaccordion .ui-accordion-header a { padding-left: 0; }
+
 #mypage {
  	width: 100%;
  	margin: 0;
  	padding: 0;
-
+ 	padding-bottom: 5vh;
 
  }
 
@@ -111,13 +114,28 @@ hr {
 }
 
 #submitting { 
-		color: white;
-		border-radius: 4% !important;
-		margin: 2%;
-		padding: 1%;
-		background: #00aa89;
-		font-family: "Segoe UI";
-	}
+	color: white;
+	margin: 2%;
+	padding: 1%;
+	background: #00aa89;
+	font-family: "Segoe UI";
+}
+
+#faqaccordion > h3 {
+	border: 0;
+	border-bottom: 1px solid #868585;
+	padding: 3%;
+	background: white;
+}
+
+#faqaccordion > div {
+	padding: 1%;
+	background: #cccccc;
+}
+
+#faqaccordion > h3 > span {
+	float:right;
+}
 
 
 @media (orientation: portrait) {
@@ -605,6 +623,11 @@ hr {
 
 		#submitting {
 			font-size: 1.5vw;
+		}
+
+		#faqaccordion > h3 > span {
+			font-size: 2.5vw;
+			line-height: 1.5vw;
 		}
 
  	}

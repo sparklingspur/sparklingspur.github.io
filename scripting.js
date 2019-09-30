@@ -17,8 +17,8 @@
 	    $("#mymenumobClose").css("display","none");
 	  });
 
-	  // $( "#faqaccordion" ).accordion({
-   //    	collapsible: true
-   //    });
+	  $( "#faqaccordion" ).accordion({
+      	collapsible: true
+      });
 
 });

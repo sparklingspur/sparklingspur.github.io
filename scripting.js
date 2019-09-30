@@ -21,49 +21,62 @@
       	collapsible: true
     });
 
-	var l = document.getElementById("saver");
-    l.onclick = saveMe;
+	$("#submitting").click(function(){
 
-    function saveMe() {
+		var fname = $("#fname").val();
+        var lname = $("#lname").val();
+        var email = $("#email").val();
+        var dob = $("#dob").val();
+        var mob = $("#mob").val();
+        var city = $("#city").val();
+        var state = $("#state").val();
+        var accept = $("#accept").val();
 
-        var name = $("#editName").val();
-        var salary = $("#editSal").val();
-        var age = $("#editAge").val();
-        var image = $("#editImage").val();
 
         var re = /^[A-Za-z]+$/;
 
-        if(name=="") {
-                        alert("Name cannot be empty. Try again");
-                    } else if(/\d/.test(name)) {
-                        alert("Invalid Name. Try again");
-                    } else if(!re.test(name)) {
-                        alert("Invalid Name. Try again");
-                    } else if(salary=="") {
-                        alert("Invalid salary. Try again");
-                    } else if(age=="") {
-                        alert("Invalid age. Try again");
-                    } else if(age%1!=0) {
-                        alert("Invalid age. Try again");
-                    } else if(image=="") {
-                        alert("Invalid image. Try again");
-                    } else {
-                        // alert(index);
-                        myObj[index].employee_name = name;
-                        myObj[index].employee_salary = salary;
-                        myObj[index].employee_age = age;
-                        myObj[index].profile_image = image;
 
-                        $( "#editForm" ).dialog("close");
-                        $("#editForm").css("display","none");
+		if(fname=="") {
+                        alert("First Name cannot be empty. Try again");
+                    } else if(lname=="") {
+                        alert("Last Name cannot be empty. Try again");
+                    } else if(email=="") {
+                        alert("Email cannot be empty. Try again");
+                    } else if(dob=="") {
+                        alert("Date of Birth cannot be empty. Try again");
+                    } else if(mob=="") {
+                        alert("Mobile Number cannot be empty. Try again");
+                    } else if(city=="") {
+                        alert("City cannot be empty. Try again");
+                    } else if(state=="") {
+                        alert("State cannot be empty. Try again");
+                    } else if(/\d/.test(fname)) {
+                        alert("Invalid First Name. Try again");
+                    } else if(/\d/.test(lname)) {
+                        alert("Invalid Last Name. Try again");
+                    } else if(/\d/.test(city)) {
+                        alert("Invalid City. Try again");
+                    } else if(/\d/.test(state)) {
+                        alert("Invalid State. Try again");
+                    } else if(!re.test(fname)) {
+                        alert("Invalid First Name. Try again");
+                    } else if(!re.test(lname)) {
+                        alert("Invalid Last Name. Try again");
+                    } else if(!re.test(city)) {
+                        alert("Invalid City. Try again");
+                    } else if(!re.test(state)) {
+                        alert("Invalid State. Try again");
+                    } else if(mob%1!=0) {
+                        alert("Invalid Mobile Number. Try again");
+                    } else if($("#accept").prop("checked") == false) {
+						alert("Accept terms & conditions to continue.");
+					} else {
+						
+                        alert("Details saved: " + fname + " " + lname + " " + email + " " + dob + " " + mob + " " + city + " " + state );
 
-                        alert("Row " + (index + 1) + " saved");
-
-                        $("#showData").html("Loading...");
-                        showingTable();
                     }
-                }
 
+	});
 
 
 });

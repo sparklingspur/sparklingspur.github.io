@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Machine Test - Krishnan K R</title>
+    <style>
+        button {
+            cursor: pointer;
+        }
+        #showData {
+            display: none;
+        }
+
+        #showSearch {
+            display: none;
+        }
+        #addForm {
+            display: none;
+        }
+        #addNewRow {
+            display: none;
+        }
+        #editForm {
+            display: none;
+        }
+    </style>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <br />
+    <input style="width:50%; height: 5vh;" type="text" id="showSearch" placeholder="Search Table..." onkeyup="searchMe()" title="Type in search term">
+    <button style="height:5vh;width: 30%" class="btn btn-success" id="addNewRow"><b>ADD NEW ROW</b></button>
+    <br/>
+    <table class="table table-responsive table-bordered" id="showData"></table>
+
+    <div id="addForm">
+        <form onsubmit="return false;" method="post" class="form-container" id="addforming">
+            <h1>Add Row</h1>
+            <br />
+            <label id="addIdLabel"><b>Id</b></label>
+            <input type="number" placeholder="Enter Id" id="addId" required>
+            <br />
+            <label><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" id="addName" required>
+            <br />
+            <label><b>Salary</b></label>
+            <input type="number" placeholder="Enter Salary" id="addSal" required>
+            <br />
+            <label><b>Age</b></label>
+            <input type="number" placeholder="Enter Age" id="addAge" required>
+            <br />
+            <label><b>Image</b></label>
+            <input placeholder="Enter Image" id="addImage">
+            <br />
+            <button type="button" id="adder">Add</button>
+            <button id="closeAdd" type="button">Close</button>
+        </form>
+    </div>
+
+    <div id="editForm">
+        <form onsubmit="return false;" method="post" class="form-container" id="editforming">
+            <h1>Edit Row</h1>
+            <br />
+            <label><b>Id</b></label>
+            <input type="number" placeholder="" id="editId">
+            <br />
+            <label><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" id="editName" required>
+            <br />
+            <label><b>Salary</b></label>
+            <input type="number" placeholder="Enter Salary" id="editSal" required>
+            <br />
+            <label><b>Age</b></label>
+            <input type="number" placeholder="Enter Age" id="editAge" required>
+            <br />
+            <label><b>Image</b></label>
+            <input placeholder="Enter Image" id="editImage">
+            <br />
+            <button type="button" id="saver">Save</button>
+            <button id="closeEdit" type="button">Close</button>
+        </form>
+    </div>
+
+    <script src="myscript.js"></script>
+
+</body>
+</html>

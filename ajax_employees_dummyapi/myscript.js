@@ -271,10 +271,12 @@ $(function () {
           txtValue =
             myObj.data[x].employee_name.toUpperCase() +
             " " +
-            myObj.data[x].employee_salary.toUpperCase();
-          //alert(txtValue);
+            myObj.data[x].employee_salary +
+            " " +
+            myObj.data[x].employee_age;
+          // alert(txtValue);
           if (txtValue.includes(filtervalue) == true) {
-            //alert(tr[x+1].innerHTML);
+            // alert(tr[x + 1].innerHTML);
             tr[x + 1].style.display = "";
           } else {
             tr[x + 1].style.display = "none";

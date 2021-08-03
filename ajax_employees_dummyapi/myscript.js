@@ -156,10 +156,10 @@ $(function () {
             alert("Invalid Id. Try again");
           } else if (name == "") {
             alert("Name cannot be empty. Try again");
-          } else if (/\d/.test(name)) {
-            alert("Invalid Name. Try again");
-          } else if (!re.test(name)) {
-            alert("Invalid Name. Try again");
+            //   } else if (/\d/.test(name)) {
+            //     alert("Invalid Name. Try again");
+            //   } else if (!re.test(name)) {
+            //     alert("Invalid Name. Try again");
           } else if (salary == "") {
             alert("Invalid salary. Try again");
           } else if (age == "") {
@@ -214,10 +214,10 @@ $(function () {
 
           if (name == "") {
             alert("Name cannot be empty. Try again");
-          } else if (/\d/.test(name)) {
-            alert("Invalid Name. Try again");
-          } else if (!re.test(name)) {
-            alert("Invalid Name. Try again");
+            //   } else if (/\d/.test(name)) {
+            //     alert("Invalid Name. Try again");
+            //   } else if (!re.test(name)) {
+            //     alert("Invalid Name. Try again");
           } else if (salary == "") {
             alert("Invalid salary. Try again");
           } else if (age == "") {

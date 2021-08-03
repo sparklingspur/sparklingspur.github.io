@@ -268,7 +268,7 @@ $(function() {
             }
         }
     };
-    xmlhttp.open('GET', 'http://dummy.restapiexample.com/api/v1/employees', true);
+    xmlhttp.open('GET', 'https://dummy.restapiexample.com/api/v1/employees', true);
     xmlhttp.send();
     document.getElementById("showData").style.display = "block";
 });

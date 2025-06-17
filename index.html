@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOTEL CAPS - Web App Pitch</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6fc;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(120deg, #6b73ff, #000dff);
+      color: white;
+      padding: 3rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      animation: fadeInDown 1s ease-out;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      animation: fadeInUp 1.5s ease-out;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #30336b;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      width: 40px;
+      height: 3px;
+      background: #6c5ce7;
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin: 0.8rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    ul li::before {
+      content: '\f058';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: #6c5ce7;
+      position: absolute;
+      left: 0;
+    }
+    .section-block {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+      padding: 2rem;
+      animation: fadeIn 1s ease-out;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-hotel"></i> HOTEL CAPS - Web App</h1>
+    <p>A modern digital pitch for your complete hospitality experience</p>
+  </header>
+
+  <section class="section-block">
+    <h2><i class="fas fa-globe"></i> Landing Page Highlights</h2>
+    <ul>
+      <li>Hero Section</li>
+      <li>What do you feel like today (Hotel, Restaurant, Bakery, Events)</li>
+      <li>About Us</li>
+      <li>Luxury Hotel</li>
+      <li>Multi-Cuisine Restaurant</li>
+      <li>Auditorium / Events Hall</li>
+      <li>Gallery Slider</li>
+      <li>Blog</li>
+      <li>Testimonials</li>
+      <li>Contact Us</li>
+      <li>WhatsApp Button (Floating)</li>
+    </ul>
+  </section>
+
+  <section class="section-block">
+    <h2><i class="fas fa-bed"></i> Luxury Hotel Microsite</h2>
+    <ul>
+      <li>Hotel Microsite Landing Page with Carousel</li>
+      <li>Suites/Rooms Listing Grid</li>
+      <li>Each Room Detail Page:
+        <ul>
+          <li>Room Description & Amenities</li>
+          <li>Gallery Slider</li>
+          <li>Pricing / Offers</li>
+          <li>Booking CTA + Contact</li>
+        </ul>
+      </li>
+      <li>Nearby Attractions / Services Page</li>
+      <li>Live Booking Calendar (Client-updatable)</li>
+      <li>Location + Directions</li>
+    </ul>
+  </section>
+
+  <section class="section-block">
+    <h2><i class="fas fa-utensils"></i> Multi-Cuisine Restaurant Microsite</h2>
+    <ul>
+      <li>Restaurant Landing Carousel</li>
+      <li>About the Restaurant & Kitchen Ethos</li>
+      <li>Chef’s Recommendations / Combo Specials</li>
+      <li>Cuisine Categories Listing (Bakery & Snacks included)</li>
+      <li>QR E-MENU Page (Categorized, mobile optimized)</li>
+      <li>Optional: Add-to-Cart with Auto PDF/IMG Order Summary</li>
+      <li>Client-End Menu Editor</li>
+      <li>Photo / Video Gallery</li>
+      <li>Daily Specials Display (Big screen mode, live-updatable)</li>
+    </ul>
+  </section>
+
+  <section class="section-block">
+    <h2><i class="fas fa-microphone"></i> Auditorium / Events Hall Microsite</h2>
+    <ul>
+      <li>Microsite Landing Page</li>
+      <li>Facilities Showcase</li>
+      <li>Gallery / Event Highlights</li>
+      <li>Optional: Live Booking Calendar (Client-updatable)</li>
+      <li>Event Inquiry / Quote Request Form</li>
+    </ul>
+  </section>
+
+  <footer>
+    © 2025 HOTEL CAPS Pitch. Designed with ❤️ for presentation impact.
+  </footer>
+</body>
+</html>

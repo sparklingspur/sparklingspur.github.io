@@ -1,168 +1,1829 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HOTEL CAPS - Web App Pitch</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6fc;
-      color: #333;
-    }
-    header {
-      background: linear-gradient(120deg, #6b73ff, #000dff);
-      color: white;
-      padding: 3rem 1rem;
-      text-align: center;
-      position: relative;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      margin: 0;
-      animation: fadeInDown 1s ease-out;
-    }
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.85;
-      animation: fadeInUp 1.5s ease-out;
-    }
-    section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    h2 {
-      color: #30336b;
-      margin-bottom: 1rem;
-      position: relative;
-    }
-    h2::after {
-      content: '';
-      width: 40px;
-      height: 3px;
-      background: #6c5ce7;
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li {
-      margin: 0.8rem 0;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-    ul li::before {
-      content: '\f058';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      color: #6c5ce7;
-      position: absolute;
-      left: 0;
-    }
-    .section-block {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-      margin-bottom: 2rem;
-      padding: 2rem;
-      animation: fadeIn 1s ease-out;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #888;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    @keyframes fadeInDown {
-      from {opacity: 0; transform: translateY(-30px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(30px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOTEL CAPS - The Flavors of Home</title>
+    <!-- Google Fonts: Lora (Serif Headings), Roboto (Sans-serif Body), Dancing Script (Cursive Accents), Satisfy (Cursive Decorative) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:wght@300;400;500;700&family=Dancing+Script:wght@400..700&family=Satisfy&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Roboto', sans-serif; /* Primary body font */
+            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Colors for Theming (Managed by JS, but defined here for reference) */
+        :root {
+            --primary-color: #5d3fd3; /* Dark Purple for general use */
+            --secondary-color: #f7a400; /* Amber */
+            --accent-color: #6a1b9a; /* Deep Purple */
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --dark-bg: #1a1a2e;
+            --page-bg-dark: #1a1a2e;
+            --page-text: #fff;
+            --page-secondary: #daa748;
+            --tw-gradient-stops : #df2c2c, #59ad20, #3477db;
+        }
+
+        /* Home Page Theme */
+        .theme-home {
+            --page-primary: #1A2E40; /* Dark Blue-Grey */
+            --page-secondary: #E0BBE4; /* Light Purple */
+            --page-accent: #957DAD; /* Medium Purple */
+            --page-text: #F8F8F8;
+            --page-bg-light: #F0F2F5; /* Light Grey Blue */
+            --page-bg-dark: #121217; /* Very Dark Grey */
+            --card-bg: #2A3F50; /* Solid dark blue for cards */
+            --card-text: #F8F8F8;
+        }
+
+        /* Suites Page Theme */
+        .theme-suites {
+            --page-primary: #4A2E4A; /* Deep Plum */
+            --page-secondary: #D4AF37; /* Gold */
+            --page-accent: #C0C0C0; /* Silver */
+            --page-text: #FDFBF0;
+            --page-bg-light: #ECEFF1; /* Light Blue Grey */
+            --page-bg-dark: #2C072C; /* Very Dark Plum */
+            --card-bg: #5C3A5C; /* Solid plum for cards */
+            --card-text: #FDFBF0;
+        }
+
+        /* Restaurant Page Theme */
+        .theme-restaurant {
+            --page-primary: #8B0000; /* Dark Red */
+            --page-secondary: #FFD700; /* Gold */
+            --page-accent: #FFA07A; /* Light Salmon */
+            --page-text: #FFF8DC; /* Cornsilk */
+            --page-bg-light: #FFF0F5; /* Lavender Blush */
+            --page-bg-dark: #360000; /* Very Dark Red */
+            --card-bg: #A03030; /* Solid red for cards */
+            --card-text: #FFF8DC;
+        }
+
+        /* Events Hall Page Theme */
+        .theme-events {
+            --page-primary: #004D40; /* Dark Cyan */
+            --page-secondary: #FFC107; /* Amber */
+            --page-accent: #8BC34A; /* Light Green */
+            --page-text: #E0F2F1; /* Teal White */
+            --page-bg-light: #E8F5E9; /* Light Greenish Grey */
+            --page-bg-dark: #00251A; /* Very Dark Cyan */
+            --card-bg: #006D60; /* Solid teal for cards */
+            --card-text: #E0F2F1;
+        }
+
+        /* Applying theme variables to elements */
+        body.apply-theme {
+            background-color: var(--page-bg-light);
+            color: var(--page-text);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--page-primary), var(--page-accent));
+            color: var(--page-text);
+        }
+
+        .bg-page-secondary, .image-viewer-thumbs-item {
+              background-image: linear-gradient(to bottom right, #888, #aaa);
+        }
+
+        .bg-page-primary, .image-viewer-main {
+              background-image: linear-gradient(to bottom right, #df6c7f, #5f8dd3);
+        }
+
+        .section-title {
+            color: var(--page-primary);
+            font-family: 'Lora', serif; /* Heading font */
+        }
+        .section-subtitle {
+            color: var(--page-secondary);
+            font-family: 'Dancing Script', cursive; /* Cursive accent font */
+        }
+
+        .cta-button {
+            background-color: var(--page-primary);
+            color: var(--page-text);
+        }
+        .cta-button:hover {
+            background-color: var(--page-accent);
+        }
+
+        .card-bg {
+            background-color: var(--card-bg); /* Solid color for cards */
+            border: 1px solid var(--page-accent);
+            color: var(--card-text); /* Use card-specific text color for readability */
+        }
+        /* Ensure card text colors are readable on new solid backgrounds */
+        .card-bg h3, .card-bg h4, .card-bg p, .card-bg span, .card-bg i {
+            color: var(--card-text);
+        }
+        .card-bg .text-page-secondary { /* For icons specifically */
+             color: var(--page-secondary); /* Keep original secondary color for icons/accents */
+        }
+
+        .text-media-section.odd .content-block {
+            background: linear-gradient(90deg, var(--page-primary), var(--page-accent));
+        }
+        .text-media-section.even .content-block {
+            background: linear-gradient(-90deg, var(--page-primary), var(--page-accent));
+        }
+
+        .footer {
+            background-color: var(--page-bg-dark);
+            color: var(--page-text);
+        }
+
+        .header {
+            background-color: var(--page-bg-dark);
+            color: var(--page-text);
+            /* Transition for background color change */
+            transition: background-color 0.5s ease-in-out;
+        }
+
+        .overlay-menu {
+            background-color: var(--page-bg-dark); /* Ensure it always picks current page's dark bg */
+            transition: transform 0.3s ease-in-out, background-color 0.5s ease-in-out; /* Add transition for BG */
+            transform: translateX(100%); /* Start off-screen */
+        }
+        .overlay-menu.open {
+            transform: translateX(0); /* Slide in */
+        }
+
+        .overlay-menu a, .overlay-menu .menu-toggle-btn {
+            color: var(--page-text);
+            font-family: 'Roboto', sans-serif; /* Body font for menu items */
+        }
+
+        .overlay-menu .sub-menu {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+        .overlay-menu .sub-menu.open {
+            max-height: 500px; /* Arbitrary large value */
+            opacity: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .overlay-menu .sub-menu a {
+            color: var(--page-secondary);
+        }
+
+        .overlay-menu .menu-toggle-btn i {
+            transition: transform 0.3s ease;
+        }
+        .overlay-menu .menu-toggle-btn.rotated i {
+            transform: rotate(180deg);
+        }
+
+        /* Custom Scrollbar for aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--page-bg-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--page-accent);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--page-secondary);
+        }
+
+        /* Geometric Shapes (Blobs removed) */
+        .geometric-shape {
+            @apply absolute rounded-full opacity-30;
+            background: radial-gradient(circle, var(--page-accent), var(--page-primary));
+        }
+
+        @keyframes pulse-blob { /* Kept for other animations that might use it or similar concept */
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 20s linear infinite;
+        }
+        .animate-spin-slow-reverse {
+            animation: spin-slow 20s linear infinite reverse;
+        }
+
+
+        /* Custom Swiper Styles (Override defaults) */
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--page-secondary) !important;
+            --swiper-navigation-size: 30px;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--page-secondary) !important;
+        }
+
+        /* Custom pattern (example) - Removed for contact section */
+        .pattern-bg-dots {
+            background-image: radial-gradient(var(--page-secondary) 1px, transparent 1px);
+            background-size: 10px 10px;
+        }
+
+
+        /* Fixed WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366; /* WhatsApp Green */
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Scroll to Top Button (Optional but good UX) */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 90px; /* Adjust if conflicts with whatsapp */
+            right: 20px;
+            background-color: var(--page-primary);
+            color: var(--page-text);
+            padding: 12px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            cursor: pointer;
+            display: none; /* Hidden by default */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .scroll-to-top:hover {
+            background-color: var(--page-accent);
+            transform: translateY(-5px);
+        }
+
+        /* Custom Styles for suite-detail viewer */
+        .image-viewer-main {
+            width: 100%;
+            height: 400px;
+            background-color: var(--page-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            color: var(--page-text);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        .image-viewer-thumbs div {
+            width: 100%;
+            height: 100px;
+            background-color: var(--page-secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: var(--page-bg-dark);
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .image-viewer-thumbs div.active {
+            background-color: var(--page-accent);
+            transform: scale(1.05);
+            box-shadow: 0 0 0 3px var(--page-text);
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1><i class="fas fa-hotel"></i> HOTEL CAPS - Web App</h1>
-    <p>A modern digital pitch for your complete hospitality experience</p>
-  </header>
+<body class="apply-theme theme-home">
+    <!-- Header -->
+    <header id="main-header" class="header sticky top-0 z-50 shadow-lg py-4 px-6 md:px-12 flex justify-between items-center rounded-b-xl">
+        <div class="text-2xl md:text-3xl font-bold font-lora text-white">
+            <a href="#home" class="nav-link">HOTEL CAPS</a>
+        </div>
+        <!-- Hamburger Menu is now the ONLY navigation toggle -->
+        <button id="hamburger-menu" class="text-white text-3xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
 
-  <section class="section-block">
-    <h2><i class="fas fa-globe"></i> Landing Page Highlights</h2>
-    <ul>
-      <li>Hero Section</li>
-      <li>What do you feel like today (Hotel, Restaurant, Bakery, Events)</li>
-      <li>About Us</li>
-      <li>Luxury Hotel</li>
-      <li>Multi-Cuisine Restaurant</li>
-      <li>Auditorium / Events Hall</li>
-      <li>Gallery Slider</li>
-      <li>Blog</li>
-      <li>Testimonials</li>
-      <li>Contact Us</li>
-      <li>WhatsApp Button (Floating)</li>
-    </ul>
-  </section>
+    <!-- Overlay Menu for Mobile & Desktop -->
+    <div id="overlay-menu" class="overlay-menu fixed top-0 right-0 w-full h-full z-[999] flex flex-col items-center justify-center space-y-8 text-2xl font-semibold">
+        <button id="close-menu" class="absolute top-6 right-6 text-white text-4xl focus:outline-none">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#home" class="nav-link text-white hover:text-page-secondary transition-colors duration-300" data-page="home">Home</a>
+        <a href="#about-us" class="nav-link text-white hover:text-page-secondary transition-colors duration-300" data-page="about-us">About Us</a>
 
-  <section class="section-block">
-    <h2><i class="fas fa-bed"></i> Luxury Hotel Microsite</h2>
-    <ul>
-      <li>Hotel Microsite Landing Page with Carousel</li>
-      <li>Suites/Rooms Listing Grid</li>
-      <li>Each Room Detail Page:
-        <ul>
-          <li>Room Description & Amenities</li>
-          <li>Gallery Slider</li>
-          <li>Pricing / Offers</li>
-          <li>Booking CTA + Contact</li>
-        </ul>
-      </li>
-      <li>Nearby Attractions / Services Page</li>
-      <li>Live Booking Calendar (Client-updatable)</li>
-      <li>Location + Directions</li>
-    </ul>
-  </section>
+        <!-- Suites is now a direct link, no dropdown -->
+        <a href="#suites" class="nav-link text-white hover:text-page-secondary transition-colors duration-300" data-page="suites">Suites</a>
 
-  <section class="section-block">
-    <h2><i class="fas fa-utensils"></i> Multi-Cuisine Restaurant Microsite</h2>
-    <ul>
-      <li>Restaurant Landing Carousel</li>
-      <li>About the Restaurant & Kitchen Ethos</li>
-      <li>Chef’s Recommendations / Combo Specials</li>
-      <li>Cuisine Categories Listing (Bakery & Snacks included)</li>
-      <li>QR E-MENU Page (Categorized, mobile optimized)</li>
-      <li>Optional: Add-to-Cart with Auto PDF/IMG Order Summary</li>
-      <li>Client-End Menu Editor</li>
-      <li>Photo / Video Gallery</li>
-      <li>Daily Specials Display (Big screen mode, live-updatable)</li>
-    </ul>
-  </section>
+        <div class="menu-item-with-sub">
+            <a href="#restaurant" class="nav-link menu-toggle-btn text-white hover:text-page-secondary transition-colors duration-300" data-page="restaurant">Restaurant <i class="fas fa-chevron-down ml-2 transition-transform"></i></a>
+            <div class="sub-menu hidden">
+                <a href="#restaurant" class="nav-link sub-link text-page-secondary hover:text-page-accent transition-colors duration-300" data-page="restaurant">View Restaurant</a>
+                <a href="#restaurant-menu" class="nav-link sub-link text-page-secondary hover:text-page-accent transition-colors duration-300" data-page="restaurant-menu">Our Menu</a>
+                <a href="#restaurant-kitchen" class="nav-link sub-link text-page-secondary hover:text-page-accent transition-colors duration-300" data-page="restaurant-kitchen">Meet the Kitchen</a>
+            </div>
+        </div>
 
-  <section class="section-block">
-    <h2><i class="fas fa-microphone"></i> Auditorium / Events Hall Microsite</h2>
-    <ul>
-      <li>Microsite Landing Page</li>
-      <li>Facilities Showcase</li>
-      <li>Gallery / Event Highlights</li>
-      <li>Optional: Live Booking Calendar (Client-updatable)</li>
-      <li>Event Inquiry / Quote Request Form</li>
-    </ul>
-  </section>
+        <!-- Events is now a direct link, no dropdown -->
+        <a href="#events" class="nav-link text-white hover:text-page-secondary transition-colors duration-300" data-page="events">Events</a>
 
-  <footer>
-    © 2025 HOTEL CAPS Pitch. Designed with ❤️ for presentation impact.
-  </footer>
+        <a href="#contact" class="nav-link text-white hover:text-page-secondary transition-colors duration-300" data-page="contact">Contact</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <main id="app-content" class="relative min-h-screen">
+        <!-- Content will be injected here by JavaScript -->
+    </main>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-button flex items-center justify-center">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="scroll-to-top flex items-center justify-center">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <!-- Footer - Dynamically loaded but defined here for base structure -->
+    <footer id="main-footer" class="footer py-8 text-center text-sm rounded-t-xl mt-12">
+        <p>&copy; 2025 HOTEL CAPS. All rights reserved. | <span class="font-satisfy text-page-secondary">Redesign Concept by [Your Name/Company]</span></p>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- GSAP JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+    <script>
+        // --- Data Definitions (js/data.js concept) ---
+        // All static content is defined here as JavaScript objects.
+        const appData = {
+            heroSlides: {
+                home: [
+                    { title: "Unwind in Luxury", caption: "Experience unparalleled comfort and elegance.", icon: "fas fa-bed" },
+                    { title: "Culinary Delights Await", caption: "Savor exquisite flavors in our multi-cuisine restaurant.", icon: "fas fa-utensils" },
+                    { title: "Your Perfect Event Venue", caption: "Host unforgettable moments in our grand banquet hall.", icon: "fas fa-glass-cheers" }
+                ],
+                suites: [
+                    { title: "Your Private Sanctuary", caption: "Indulge in spacious comfort and bespoke services.", icon: "fas fa-couch" },
+                    { title: "Panoramic City Views", caption: "Wake up to breathtaking vistas from your window.", icon: "fas fa-city" },
+                    { title: "Personalized Luxury", caption: "Every detail crafted for your ultimate relaxation.", icon: "fas fa-bath" }
+                ],
+                restaurant: [
+                    { title: "A Symphony of Flavors", caption: "Journey through global cuisines, crafted to perfection.", icon: "fas fa-chef-hat" },
+                    { title: "Farm-to-Table Freshness", caption: "Ingredients sourced locally for an authentic taste.", icon: "fas fa-leaf" },
+                    { title: "Ambiance for Every Occasion", caption: "From intimate dinners to lively gatherings.", icon: "fas fa-wine-glass-alt" }
+                ],
+                events: [
+                    { title: "Dream Events Come True", caption: "Seamlessly planned, flawlessly executed.", icon: "fas fa-gift" },
+                    { title: "State-of-the-Art Facilities", caption: "Equipped for conferences, weddings, and more.", icon: "fas fa-microphone" },
+                    { title: "Dedicated Event Specialists", caption: "Your vision, our expertise, a perfect partnership.", icon: "fas fa-users" }
+                ]
+            },
+            whatYouFeelLike: [
+                {
+                    title: "Book a Stay",
+                    icon: "fas fa-bed",
+                    content: "Your perfect getaway starts here. Explore our luxurious suites and book your next trip.",
+                    ctaText: "Find Your Room",
+                    ctaLink: "#contact" // Changed to contact
+                },
+                {
+                    title: "Family Dinner",
+                    icon: "fas fa-utensils",
+                    content: "Gather your loved ones for an unforgettable culinary journey at our restaurant.",
+                    ctaText: "View Our Menu",
+                    ctaLink: "#contact" // Changed to contact
+                },
+                {
+                    title: "Book an Event",
+                    icon: "fas fa-glass-cheers",
+                    content: "From intimate parties to grand weddings, our event hall is your ideal venue.",
+                    ctaText: "Plan Your Event",
+                    ctaLink: "#contact" // Changed to contact
+                }
+            ],
+            suites: [
+                {
+                    id: 'executive',
+                    name: "Executive Suite",
+                    tagline: "Sophistication meets comfort.",
+                    description: "Our Executive Suites offer a refined living space with modern amenities, perfect for business travelers or couples seeking a tranquil retreat.",
+                    price: "$450/night",
+                    features: ["Spacious Living Area", "King Size Bed", "High-Speed Wi-Fi", "Work Desk", "Nespresso Machine", "City View"],
+                    amenities: [
+                        { icon: "fas fa-wifi", text: "Free Wi-Fi" },
+                        { icon: "fas fa-tv", text: "Smart TV" },
+                        { icon: "fas fa-bath", text: "Luxury Bath" },
+                        { icon: "fas fa-mug-hot", text: "Coffee Maker" },
+                        { icon: "fas fa-snowflake", text: "A/C" },
+                        { icon: "fas fa-dumbbell", text: "Gym Access" },
+                    ],
+                    gallery: [
+                        "Executive Suite - Living", "Executive Suite - Bedroom", "Executive Suite - Bathroom", "Executive Suite - View", "Executive Suite - Entry"
+                    ]
+                },
+                {
+                    id: 'deluxe',
+                    name: "Deluxe Suite",
+                    tagline: "Unparalleled luxury and space.",
+                    description: "The Deluxe Suite provides an expansive layout with separate living and sleeping areas, designed for ultimate relaxation and privacy.",
+                    price: "$600/night",
+                    features: ["Separate Living Room", "King Bed", "Premium Linens", "Minibar", "Soundproofed", "Executive Lounge Access"],
+                    amenities: [
+                        { icon: "fas fa-wifi", text: "Free Wi-Fi" },
+                        { icon: "fas fa-tv", text: "Smart TV" },
+                        { icon: "fas fa-bath", text: "Luxury Bath" },
+                        { icon: "fas fa-mug-hot", text: "Coffee Maker" },
+                        { icon: "fas fa-snowflake", text: "A/C" },
+                        { icon: "fas fa-dumbbell", text: "Gym Access" },
+                    ],
+                    gallery: [
+                        "Deluxe Suite - Living", "Deluxe Suite - Bedroom", "Deluxe Suite - Bathroom", "Deluxe Suite - Balcony", "Deluxe Suite - Lounge"
+                    ]
+                },
+                {
+                    id: 'presidential',
+                    name: "Presidential Suite",
+                    tagline: "The pinnacle of opulence and exclusivity.",
+                    description: "Our Presidential Suite offers breathtaking panoramic views, a private dining area, and personalized butler service for an unrivaled experience.",
+                    price: "$1200/night",
+                    features: ["Panoramic Views", "Private Dining", "Butler Service", "Jacuzzi", "Personal Gym", "Grand Piano"],
+                    amenities: [
+                        { icon: "fas fa-wifi", text: "Free Wi-Fi" },
+                        { icon: "fas fa-tv", text: "Smart TV" },
+                        { icon: "fas fa-bath", text: "Luxury Bath" },
+                        { icon: "fas fa-mug-hot", text: "Coffee Maker" },
+                        { icon: "fas fa-snowflake", text: "A/C" },
+                        { icon: "fas fa-dumbbell", text: "Gym Access" },
+                    ],
+                    gallery: [
+                        "Presidential Suite - Lounge", "Presidential Suite - Master", "Presidential Suite - Dining", "Presidential Suite - Jacuzzi", "Presidential Suite - View"
+                    ]
+                },
+                {
+                    id: 'family',
+                    name: "Family Suite",
+                    tagline: "Comfortable and spacious for the whole family.",
+                    description: "Designed with families in mind, this suite provides ample space, multiple sleeping areas, and kid-friendly amenities.",
+                    price: "$550/night",
+                    features: ["Two Bedrooms", "Interconnecting", "Kids Play Area", "Larger Bathroom", "Snack Bar", "Board Games"],
+                    amenities: [
+                        { icon: "fas fa-wifi", text: "Free Wi-Fi" },
+                        { icon: "fas fa-tv", text: "Smart TV" },
+                        { icon: "fas fa-bath", text: "Luxury Bath" },
+                        { icon: "fas fa-mug-hot", text: "Coffee Maker" },
+                        { icon: "fas fa-snowflake", text: "A/C" },
+                        { icon: "fas fa-dumbbell", text: "Gym Access" },
+                    ],
+                    gallery: [
+                        "Family Suite - Main Bed", "Family Suite - Kids Room", "Family Suite - Living", "Family Suite - Bathroom", "Family Suite - Play"
+                    ]
+                },
+                {
+                    id: 'honeymoon',
+                    name: "Honeymoon Suite",
+                    tagline: "Romantic escape for newly-weds.",
+                    description: "Perfect for couples, our Honeymoon Suite offers an intimate setting with romantic touches, a private balcony, and luxurious amenities.",
+                    price: "$700/night",
+                    features: ["Romantic Decor", "Private Balcony", "Jacuzzi", "Complimentary Champagne", "Candlelit Ambiance", "Spa Access"],
+                    amenities: [
+                        { icon: "fas fa-wifi", text: "Free Wi-Fi" },
+                        { icon: "fas fa-tv", text: "Smart TV" },
+                        { icon: "fas fa-bath", text: "Luxury Bath" },
+                        { icon: "fas fa-mug-hot", text: "Coffee Maker" },
+                        { icon: "fas fa-snowflake", text: "A/C" },
+                        { icon: "fas fa-dumbbell", text: "Gym Access" },
+                    ],
+                    gallery: [
+                        "Honeymoon Suite - Bedroom", "Honeymoon Suite - Balcony", "Honeymoon Suite - Jacuzzi", "Honeymoon Suite - Living", "Honeymoon Suite - Flowers"
+                    ]
+                },
+                {
+                    id: 'accessible',
+                    name: "Accessible Suite",
+                    tagline: "Designed for comfort and accessibility.",
+                    description: "Our Accessible Suite provides a comfortable and spacious environment with features designed to accommodate guests with special needs.",
+                    price: "$400/night",
+                    features: ["Wheelchair Accessible", "Roll-in Shower", "Grab Bars", "Lowered Fixtures", "Spacious Layout", "Emergency Call System"],
+                    amenities: [
+                        { icon: "fas fa-wifi", text: "Free Wi-Fi" },
+                        { icon: "fas fa-tv", text: "Smart TV" },
+                        { icon: "fas fa-bath", text: "Luxury Bath" },
+                        { icon: "fas fa-mug-hot", text: "Coffee Maker" },
+                        { icon: "fas fa-snowflake", text: "A/C" },
+                        { icon: "fas fa-dumbbell", text: "Gym Access" },
+                    ],
+                    gallery: [
+                        "Accessible Suite - Layout", "Accessible Suite - Bathroom", "Accessible Suite - Bed", "Accessible Suite - Entry", "Accessible Suite - Comfort"
+                    ]
+                }
+            ],
+            localAttractions: [
+                { title: "City Landmark", icon: "fas fa-archway", caption: "Historical monument, great for photos." },
+                { title: "Botanical Gardens", icon: "fas fa-leaf", caption: "Lush greenery and serene pathways." },
+                { title: "Shopping District", icon: "fas fa-shopping-bag", caption: "High-end boutiques and local crafts." },
+                { title: "Art Museum", icon: "fas fa-palette", caption: "Collection of contemporary and classic art." },
+                { title: "Lakefront Park", icon: "fas fa-water", caption: "Scenic views and recreational activities." },
+                { title: "Local Market", icon: "fas fa-store", caption: "Experience local culture and cuisine." }
+            ],
+            restaurantMenu: {
+                categories: [
+                    { name: "Appetizers", id: "appetizers" },
+                    { name: "Main Courses", id: "main-courses" },
+                    { name: "Desserts", id: "desserts" },
+                    { name: "Beverages", id: "beverages" }
+                ],
+                items: [
+                    { category: "appetizers", name: "Truffle Arancini", description: "Crispy risotto balls with truffle aioli.", price: "$18", icon: "fas fa-bowl-food" },
+                    { category: "appetizers", name: "Caprese Skewers", description: "Cherry tomatoes, mozzarella, basil, balsamic glaze.", price: "$15", icon: "fas fa-cheese" },
+                    { category: "appetizers", name: "Spicy Edamame", description: "Steamed edamame with chili garlic sauce.", price: "$12", icon: "fas fa-seedling" },
+
+                    { category: "main-courses", name: "Pan-Seared Salmon", description: "With lemon-dill sauce and roasted asparagus.", price: "$32", icon: "fas fa-fish" },
+                    { category: "main-courses", name: "Mushroom Risotto", description: "Creamy arborio rice with wild mushrooms.", price: "$28", icon: "fas fa-plate-wheat" },
+                    { category: "main-courses", name: "Grilled Lamb Chops", description: "Served with mint sauce and seasonal vegetables.", price: "$40", icon: "fas fa-drumstick-bite" },
+                    { category: "main-courses", name: "Vegan Buddha Bowl", description: "Quinoa, roasted veggies, avocado, tahini dressing.", price: "$25", icon: "fas fa-leaf" },
+
+                    { category: "desserts", name: "Chocolate Lava Cake", description: "Warm chocolate cake with a molten center, vanilla ice cream.", price: "$14", icon: "fas fa-cookie-bite" },
+                    { category: "desserts", name: "Berry Panna Cotta", description: "Silky smooth panna cotta with mixed berry compote.", price: "$13", icon: "fas fa-ice-cream" },
+
+                    { category: "beverages", name: "Sparkling Water", description: "Refreshing carbonated water.", price: "$7", icon: "fas fa-glass-water" },
+                    { category: "beverages", name: "Fresh Orange Juice", description: "Freshly squeezed from ripe oranges.", price: "$9", icon: "fas fa-orange" },
+                    { category: "beverages", name: "Espresso", description: "Strong, concentrated coffee shot.", price: "$6", icon: "fas fa-coffee" },
+                ]
+            },
+            eventFacilities: [
+                { icon: "fas fa-expand-arrows-alt", text: "Spacious Layouts" },
+                { icon: "fas fa-microphone", text: "Advanced A/V Systems" },
+                { icon: "fas fa-chair", text: "Flexible Seating" },
+                { icon: "fas fa-wifi", text: "High-Speed Wi-Fi" },
+                { icon: "fas fa-parking", text: "Ample Parking" },
+                { icon: "fas fa-hotel", text: "On-site Accommodation" },
+                { icon: "fas fa-cutlery", text: "Custom Catering" },
+                { icon: "fas fa-palette", text: "Theme Decor Options" }
+            ],
+            eventTypes: [
+                { id: "weddings", name: "Weddings", description: "Your dream wedding, flawlessly executed from ceremony to reception.", icon: "fas fa-ring" },
+                { id: "conferences", name: "Conferences", description: "Professional settings with cutting-edge technology for impactful corporate events.", icon: "fas fa-handshake" },
+                { id: "parties", name: "Parties", description: "Celebrations of all sizes, tailored to your unique style and guests.", icon: "fas fa-champagne-glasses" },
+                { id: "social", name: "Social Gatherings", description: "Reunions, anniversaries, and special moments with exquisite ambiance.", icon: "fas fa-users" }
+            ],
+            galleryImages: [
+                "Elegant Lobby", "Rooftop Pool", "Fitness Center", "Spa Relaxation", "Executive Lounge", "Garden Terrace"
+            ],
+            testimonials: [
+                { quote: "HOTEL CAPS exceeded all our expectations. The service was impeccable, and the suite was beyond luxurious. Highly recommend!", author: "Sarah L." },
+                { quote: "The restaurant's multi-cuisine offerings are simply divine! Every dish was a masterpiece. We'll be back for sure.", author: "Chef Marco P." },
+                { quote: "Our wedding at HOTEL CAPS was perfect. The event team handled every detail with such professionalism. Truly unforgettable.", author: "Jessica & Tom R." },
+                { quote: "A serene and elegant stay. The staff anticipate your every need. A true gem!", author: "Dr. Evelyn H." }
+            ]
+        };
+
+
+        // --- Theme Management ---
+        const themes = {
+            'home': 'theme-home',
+            'about-us': 'theme-home', // About Us uses home theme
+            'suites': 'theme-suites',
+            'suite-detail': 'theme-suites',
+            'restaurant': 'theme-restaurant',
+            'restaurant-kitchen': 'theme-restaurant',
+            'restaurant-menu': 'theme-restaurant',
+            'events': 'theme-events',
+            'contact': 'theme-home' // Contact form is part of home page styling
+        };
+
+        function applyTheme(pageName) {
+            const body = document.body;
+            const header = document.getElementById('main-header');
+            const overlay = document.getElementById('overlay-menu');
+
+            // Remove existing theme classes from body
+            Object.values(themes).forEach(themeClass => {
+                body.classList.remove(themeClass);
+            });
+
+            // Add new theme class to body
+            const basePageName = pageName.split('-')[0];
+            const themeClass = themes[basePageName];
+            if (themeClass) {
+                body.classList.add('apply-theme', themeClass);
+            } else {
+                body.classList.remove('apply-theme');
+            }
+
+            // Manually set header and overlay background/text color based on new theme
+            // This ensures they react immediately to theme changes for a smoother transition
+            const rootStyle = document.documentElement.style;
+            header.style.backgroundColor = rootStyle.getPropertyValue('--page-bg-dark');
+            header.style.color = rootStyle.getPropertyValue('--page-text');
+            overlay.style.backgroundColor = rootStyle.getPropertyValue('--page-bg-dark'); // Apply to overlay directly
+        }
+
+        // --- Component Library (js/components.js concept) ---
+        // Functions that generate HTML strings for reusable components.
+
+        function createHeroCarousel(slides, idPrefix) {
+            const slideHtml = slides.map((slide, index) => `
+                <div class="swiper-slide min-h-[500px] flex items-center justify-center p-8 relative overflow-hidden rounded-xl shadow-lg">
+                    <div class="absolute inset-0 bg-gradient-to-br from-page-primary to-page-accent opacity-90"></div>
+                    <div class="geometric-shape w-40 h-40 top-10 left-10 animate-pulse opacity-30"></div>
+                    <div class="geometric-shape w-60 h-60 bottom-10 right-10 animate-spin-slow opacity-30"></div>
+                    <div class="relative z-10 text-center space-y-4" data-aos="fade-up" data-aos-delay="${index * 100}">
+                        <i class="${slide.icon} text-5xl md:text-7xl text-page-secondary mb-4"></i>
+                        <h2 class="text-4xl md:text-6xl font-lora font-bold text-page-text leading-tight">${slide.title}</h2>
+                        <p class="text-lg md:text-xl font-roboto text-page-text max-w-2xl mx-auto">${slide.caption}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            return `
+                <section class="hero-section py-20 md:py-32 overflow-hidden relative rounded-b-3xl">
+                    <div class="swiper-container ${idPrefix}-hero-swiper rounded-xl">
+                        <div class="swiper-wrapper">
+                            ${slideHtml}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function createInteractiveCards(cards) {
+            const cardHtml = cards.map((card, index) => `
+                <div class="card-bg p-8 rounded-2xl shadow-xl flex flex-col items-center text-center space-y-4 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative overflow-hidden" data-aos="fade-up" data-aos-delay="${index * 150}">
+                    <div class="geometric-shape w-24 h-24 top-0 left-0 -translate-x-1/2 -translate-y-1/2 opacity-20"></div>
+                    <div class="geometric-shape w-20 h-20 bottom-0 right-0 translate-x-1/2 translate-y-1/2 opacity-20"></div>
+                    <i class="${card.icon} text-6xl text-page-secondary mb-4"></i>
+                    <h3 class="text-3xl font-lora font-semibold">${card.title}</h3>
+                    <p class="font-roboto flex-grow">${card.content}</p>
+                    <a href="${card.ctaLink}" class="cta-button py-3 px-6 rounded-full text-lg font-semibold transition-transform transform hover:scale-105 nav-link">${card.ctaText} <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            `).join('');
+
+            return `
+                <section class="container mx-auto py-16 px-6 relative">
+                    <h2 class="section-title text-center text-4xl md:text-5xl font-lora font-bold mb-12" data-aos="fade-down">What do you feel like today?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        ${cardHtml}
+                    </div>
+                </section>
+            `;
+        }
+
+        function createTextMediaSection(subtitle, title, caption, ctaText, ctaLink, reverse = false, sectionIcon = null, extraContent = '') {
+            const mediaIcon = sectionIcon ? `<i class="fas fa-${sectionIcon} text-7xl md:text-9xl text-page-primary opacity-50"></i>` : '';
+            const content = `
+                <div class="relative bg-gradient-to-br from-page-primary to-page-accent p-8 md:p-12 rounded-xl shadow-xl flex flex-col justify-center space-y-6 overflow-hidden min-h-[300px]" data-aos="${reverse ? 'fade-left' : 'fade-right'}">
+                    <div class="geometric-shape w-20 h-20 bottom-10 left-10 rotate-45 opacity-20"></div>
+                    <p class="section-subtitle text-xl md:text-2xl font-dancing font-medium text-page-secondary">${subtitle}</p>
+                    <h3 class="text-4xl md:text-5xl font-lora font-bold text-page-text leading-tight">${title}</h3>
+                    <p class="font-roboto text-page-text text-lg">${caption}</p>
+                    ${extraContent}
+                    <a href="${ctaLink}" class="cta-button py-3 px-6 rounded-full text-lg font-semibold w-fit transition-transform transform hover:scale-105 nav-link">${ctaText} <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            `;
+            const media = `
+                <div class="relative bg-page-secondary p-8 md:p-12 rounded-xl shadow-xl flex items-center justify-center min-h-[300px] overflow-hidden" data-aos="${reverse ? 'fade-right' : 'fade-left'}">
+                    <div class="geometric-shape w-40 h-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-12 opacity-20"></div>
+                    ${mediaIcon}
+                    <p class="absolute bottom-4 left-4 text-page-primary text-opacity-70 text-lg font-satisfy">Visual Concept</p>
+                </div>
+            `;
+
+            return `
+                <section class="container mx-auto py-16 px-6 text-page-text text-center md:text-left">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch text-page-text text-center md:text-left ${reverse ? 'md:grid-flow-col-dense' : ''} text-page-text text-center md:text-left">
+                        ${reverse ? media : content}
+                        ${reverse ? content : media}
+                    </div>
+                </section>
+            `;
+        }
+
+        function createNumbersSection() {
+            const numbers = [
+                { value: "50+", label: "Luxury Suites", icon: "fas fa-bed" },
+                { value: "2", label: "Multi-Cuisine Restaurants", icon: "fas fa-utensils" },
+                { value: "3", label: "Grand Event Halls", icon: "fas fa-champagne-glasses" },
+                { value: "100%", label: "Guest Satisfaction", icon: "fas fa-heart" }
+            ];
+
+            const numberHtml = numbers.map((item, index) => `
+                <div class="p-6 md:p-8 rounded-2xl shadow-lg card-bg flex flex-col items-center justify-center space-y-3 relative overflow-hidden transition-transform duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="${index * 100}">
+                    <div class="geometric-shape w-20 h-20 -top-5 -left-5 opacity-20"></div>
+                    <div class="geometric-shape w-24 h-24 -bottom-5 -right-5 opacity-20"></div>
+                    <i class="${item.icon} text-5xl text-page-secondary"></i>
+                    <p class="text-5xl font-lora font-bold">${item.value}</p>
+                    <p class="text-lg font-roboto">${item.label}</p>
+                </div>
+            `).join('');
+
+            return `
+                <section class="container mx-auto py-16 px-6 pattern-bg-dots rounded-3xl">
+                    <h2 class="section-title text-center text-4xl md:text-5xl font-lora font-bold mb-12" data-aos="fade-down">Our Achievements in Numbers</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        ${numberHtml}
+                    </div>
+                </section>
+            `;
+        }
+
+        function createAestheticGallery(images) {
+            const slideHtml = images.map((img, index) => `
+                <div class="swiper-slide bg-page-primary rounded-xl shadow-lg flex items-center justify-center min-h-[300px] text-page-text text-3xl font-lora relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-page-primary to-page-accent opacity-80"></div>
+                    <div class="geometric-shape w-full h-full opacity-10 animate-spin-slow-reverse"></div>
+                    <span class="relative z-10">${img} (Concept)</span>
+                </div>
+            `).join('');
+
+            return `
+                <section class="container mx-auto py-16 px-6 relative">
+                    <h2 class="section-title text-center text-4xl md:text-5xl font-lora font-bold mb-12" data-aos="fade-down">Aesthetic Gallery</h2>
+                    <div class="swiper-container home-gallery-swiper rounded-xl">
+                        <div class="swiper-wrapper">
+                            ${slideHtml}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function createTestimonialSection(testimonials) {
+            const testimonialHtml = testimonials.map((testimonial, index) => `
+                <div class="swiper-slide p-8 md:p-10 rounded-2xl shadow-xl card-bg text-center space-y-4 flex flex-col justify-between items-center relative overflow-hidden" data-aos="fade-up" data-aos-delay="${index * 100}">
+                    <div class="geometric-shape w-20 h-20 top-0 right-0 opacity-20"></div>
+                    <i class="fas fa-quote-left text-4xl text-page-secondary mb-4"></i>
+                    <p class="text-lg md:text-xl font-roboto italic flex-grow">"${testimonial.quote}"</p>
+                    <p class="font-dancing text-2xl font-semibold mt-4">- ${testimonial.author}</p>
+                </div>
+            `).join('');
+
+            return `
+                <section class="container mx-auto py-16 px-6 relative">
+                    <h2 class="section-title text-center text-4xl md:text-5xl font-lora font-bold mb-12" data-aos="fade-down">What Our Guests Say</h2>
+                    <div class="swiper-container testimonial-swiper rounded-xl">
+                        <div class="swiper-wrapper">
+                            ${testimonialHtml}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function createContactSection() {
+            return `
+                <section id="contact" class="container mx-auto py-16 px-6 relative rounded-3xl" style="background-color: var(--page-bg-dark);">
+                    <h2 class="section-title text-center text-4xl md:text-5xl font-lora font-bold mb-12" data-aos="fade-down">Get In Touch</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div class="bg-gradient-to-br from-page-primary to-page-accent p-8 md:p-12 rounded-2xl shadow-xl text-page-text relative overflow-hidden" data-aos="fade-right">
+                            <h3 class="text-3xl font-lora font-semibold mb-6">Send Us a Message</h3>
+                            <form class="space-y-6">
+                                <div>
+                                    <label for="name" class="block text-lg font-medium mb-2 font-roboto">Name</label>
+                                    <input type="text" id="name" name="name" class="w-full p-3 rounded-lg bg-page-bg-light text-page-primary border border-page-secondary focus:ring-2 focus:ring-page-secondary focus:border-transparent font-roboto" placeholder="Your Name">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-lg font-medium mb-2 font-roboto">Email</label>
+                                    <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-page-bg-light text-page-primary border border-page-secondary focus:ring-2 focus:ring-page-secondary focus:border-transparent font-roboto" placeholder="your@email.com">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-lg font-medium mb-2 font-roboto">Message</label>
+                                    <textarea id="message" name="message" rows="5" class="w-full p-3 rounded-lg bg-page-bg-light text-page-primary border border-page-secondary focus:ring-2 focus:ring-page-secondary focus:border-transparent font-roboto" placeholder="How can we help you?"></textarea>
+                                </div>
+                                <button type="submit" class="cta-button py-3 px-8 rounded-full text-lg font-semibold transition-transform transform hover:scale-105">Send Message <i class="fas fa-paper-plane ml-2"></i></button>
+                            </form>
+                        </div>
+                        <div class="space-y-8 text-center md:text-left" data-aos="fade-left">
+                            <h3 class="text-3xl font-lora font-semibold text-page-primary">Direct Inquiries</h3>
+                            <ul class="space-y-4 text-lg font-roboto text-page-text">
+                                <li><i class="fas fa-phone mr-3 text-page-secondary"></i> +1 (234) 567-8900</li>
+                                <li><i class="fas fa-envelope mr-3 text-page-secondary"></i> info@hotelcaps.com</li>
+                                <li><i class="fas fa-map-marker-alt mr-3 text-page-secondary"></i> 123 Luxury Lane, Cityville, State 12345</li>
+                            </ul>
+                            <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-8">
+                                <a href="#" target="_blank" class="bg-blue-600 text-white p-3 rounded-full flex items-center justify-center text-2xl w-14 h-14 hover:scale-110 transition-transform duration-300 shadow-md"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" target="_blank" class="bg-blue-400 text-white p-3 rounded-full flex items-center justify-center text-2xl w-14 h-14 hover:scale-110 transition-transform duration-300 shadow-md"><i class="fab fa-twitter"></i></a>
+                                <a href="#" target="_blank" class="bg-pink-600 text-white p-3 rounded-full flex items-center justify-center text-2xl w-14 h-14 hover:scale-110 transition-transform duration-300 shadow-md"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="mt-8 space-y-3 text-page-primary text-xl font-semibold font-lora">
+                                <p>Enquiries: <span class="font-roboto font-normal">General questions, concierge.</span></p>
+                                <p>Order Food Online: <span class="font-roboto font-normal">Direct restaurant orders.</span></p>
+                                <p>Book Room: <span class="font-roboto font-normal">Reservations for suites.</span></p>
+                                <p>Book Event: <span class="font-roboto font-normal">Hall bookings and event planning.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // --- SPA Page Generation (js/pages.js concept) ---
+
+        function homePage() {
+            applyTheme('home');
+            return `
+                ${createHeroCarousel(appData.heroSlides.home, 'home')}
+                ${createInteractiveCards(appData.whatYouFeelLike)}
+                ${createTextMediaSection(
+                    "Our Story",
+                    "About HOTEL CAPS",
+                    "A legacy of luxury and hospitality, HOTEL CAPS is designed for discerning travelers seeking unparalleled comfort and bespoke experiences.",
+                    "Explore Our Legacy",
+                    "#about-us",
+                    false, // Not reversed
+                    'hotel' // for FA icon
+                )}
+                ${createTextMediaSection(
+                    "Your Private Oasis",
+                    "Luxury Suites",
+                    "Indulge in spacious comfort, sophisticated design, and breathtaking views, tailored for your ultimate relaxation.",
+                    "Discover Suites",
+                    "#suites",
+                    true, // Reversed
+                    'bed' // for FA icon
+                )}
+                ${createTextMediaSection(
+                    "A Culinary Journey",
+                    "Multi-Cuisine Restaurant",
+                    "Savor a world of flavors curated by master chefs, offering a dining experience that delights every palate.",
+                    "View Menu",
+                    "#restaurant",
+                    false, // Not reversed
+                    'utensils' // for FA icon
+                )}
+                ${createTextMediaSection(
+                    "Host Unforgettable Events",
+                    "Grand Event Hall",
+                    "From intimate gatherings to lavish celebrations, our versatile spaces and dedicated team ensure every event is a success.",
+                    "Plan Your Event",
+                    "#events",
+                    true, // Reversed
+                    'glass-cheers' // for FA icon
+                )}
+                ${createNumbersSection()}
+                ${createAestheticGallery(appData.galleryImages)}
+                ${createTestimonialSection(appData.testimonials)}
+                ${createContactSection()}
+            `;
+        }
+
+        function aboutUsPage() {
+            applyTheme('about-us');
+            return `
+                <section class="hero-section py-20 md:py-32 overflow-hidden relative rounded-b-3xl text-center">
+                    <div class="absolute inset-0 bg-gradient-to-br from-page-primary to-page-accent opacity-90"></div>
+                    <div class="geometric-shape w-60 h-60 top-10 left-10 animate-spin-slow opacity-20"></div>
+                    <div class="geometric-shape w-80 h-80 bottom-10 right-10 animate-spin-slow-reverse opacity-20"></div>
+                    <div class="relative z-10 text-page-text space-y-4 px-6">
+                        <i class="fas fa-info-circle text-5xl md:text-7xl text-page-secondary mb-4" data-aos="fade-down"></i>
+                        <h2 class="text-4xl md:text-6xl font-lora font-bold leading-tight" data-aos="fade-up">About HOTEL CAPS</h2>
+                        <p class="text-lg md:text-xl font-dancing text-page-secondary max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Where elegance meets unparalleled hospitality.</p>
+                    </div>
+                </section>
+
+                <section class="container mx-auto py-16 px-6 text-page-text relative">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div class="bg-gradient-to-br from-page-secondary to-page-accent p-8 md:p-12 rounded-xl shadow-xl relative overflow-hidden" data-aos="fade-right">
+                            <div class="geometric-shape w-40 h-40 top-0 left-0 opacity-20"></div>
+                            <h3 class="text-3xl font-lora font-semibold text-page-primary mb-4">Our Vision</h3>
+                            <p class="font-roboto text-lg leading-relaxed">
+                                At HOTEL CAPS, we envision a world where every guest experience is a masterpiece of comfort, luxury, and personalized attention. We strive to be more than just a destination; we aim to be a sanctuary where moments are cherished, and memories are made. Our commitment to excellence in service, sustainable practices, and innovative hospitality sets us apart.
+                            </p>
+                        </div>
+                        <div class="relative bg-page-primary p-8 md:p-12 rounded-xl shadow-xl flex items-center justify-center min-h-[300px] overflow-hidden" data-aos="fade-left">
+                            <div class="geometric-shape w-40 h-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-12 opacity-20"></div>
+                            <i class="fas fa-building text-7xl md:text-9xl text-page-secondary opacity-50"></i>
+                            <p class="absolute bottom-4 right-4 text-page-secondary text-opacity-70 text-lg font-satisfy">Our Foundation</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16">
+                        <div class="relative bg-page-primary p-8 md:p-12 rounded-xl shadow-xl flex items-center justify-center min-h-[300px] overflow-hidden order-2 md:order-1" data-aos="fade-right">
+                            <div class="geometric-shape w-50 h-50 bottom-0 right-0 opacity-20 rotate-45"></div>
+                            <i class="fas fa-handshake text-7xl md:text-9xl text-page-secondary opacity-50"></i>
+                            <p class="absolute top-4 left-4 text-page-secondary text-opacity-70 text-lg font-satisfy">Our Promise</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-page-secondary to-page-accent p-8 md:p-12 rounded-xl shadow-xl relative overflow-hidden order-1 md:order-2" data-aos="fade-left">
+                            <div class="geometric-shape w-40 h-40 bottom-0 right-0 opacity-20"></div>
+                            <h3 class="text-3xl font-lora font-semibold text-page-primary mb-4">Our Commitment</h3>
+                            <p class="font-roboto text-lg leading-relaxed">
+                                We are committed to crafting exceptional moments for our guests, employees, and community. This includes fostering a culture of genuine warmth and impeccable service, upholding the highest standards of quality, and contributing positively to the local environment. Your satisfaction is the cornerstone of our success.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="container mx-auto py-16 px-6 text-center">
+                    <div class="bg-gradient-to-br from-page-primary to-page-accent p-8 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 relative overflow-hidden" data-aos="zoom-in">
+                        <div class="geometric-shape w-32 h-32 top-0 left-0 opacity-20"></div>
+                        <h3 class="text-3xl font-lora font-bold text-page-text">Discover Your Perfect Stay</h3>
+                        <a href="#contact" class="cta-button py-3 px-8 rounded-full text-lg font-semibold transition-transform transform hover:scale-105 nav-link">Contact Us Today <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </section>
+            `;
+        }
+
+        function suitesPage() {
+            applyTheme('suites');
+            const suiteCards = appData.suites.map((suite, index) => `
+                <div class="card-bg p-6 rounded-xl shadow-md flex flex-col items-center text-center space-y-3 transition-transform duration-300 hover:scale-105 hover:shadow-xl relative overflow-hidden" data-aos="fade-up" data-aos-delay="${index * 100}">
+                    <div class="geometric-shape w-16 h-16 top-0 right-0 opacity-20"></div>
+                    <i class="fas fa-couch text-5xl text-page-secondary mb-3"></i>
+                    <h3 class="text-2xl font-lora font-semibold">${suite.name}</h3>
+                    <p class="font-roboto text-sm">${suite.tagline}</p>
+                    <p class="text-xl font-bold font-roboto text-page-primary">${suite.price}</p>
+                    <a href="#suite-detail-${suite.id}" class="cta-button py-2 px-5 rounded-full text-md font-semibold nav-link">Explore <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            `).join('');
+
+            const localAttractionSlides = appData.localAttractions.map((attraction, index) => `
+                <div class="swiper-slide bg-page-primary rounded-xl shadow-lg flex items-center justify-center min-h-[200px] text-page-text text-center p-4 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-page-primary to-page-accent opacity-80"></div>
+                    <div class="relative z-10 space-y-2">
+                        <i class="${attraction.icon} text-4xl text-page-secondary"></i>
+                        <h4 class="text-xl font-lora font-semibold text-page-text">${attraction.title}</h4>
+                        <p class="text-sm font-roboto text-page-text">${attraction.caption}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            return `
+                ${createHeroCarousel(appData.heroSlides.suites, 'suites')}
+                <section class="container mx-auto py-16 px-6 text-center text-page-text relative">
+                    <div class="relative bg-gradient-to-tr from-page-primary to-page-accent p-8 md:p-12 rounded-xl shadow-xl overflow-hidden" data-aos="fade-up">
+                        <div class="geometric-shape w-40 h-40 top-0 left-0 -translate-x-1/4 -translate-y-1/4 opacity-20"></div>
+                        <h2 class="text-4xl md:text-5xl font-lora font-bold text-page-text mb-6 text-center">Your Sanctuary of Comfort</h2>
+                        <p class="font-roboto text-page-text text-lg max-w-3xl mx-auto">
+                            Step into a world of refined elegance and unparalleled comfort. Our luxury suites are meticulously designed to offer a serene escape, blending sophisticated aesthetics with modern amenities for an unforgettable stay.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="container mx-auto py-16 px-6">
+                    <h2 class="section-title text-center text-4xl md:text-5xl font-lora font-bold mb-12" data-aos="fade-down">Our Luxury Suites</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        ${suiteCards}
+                    </div>
+                </section>
+
+                <section class="container mx-auto py-16 px-6 relative">
+                    <h2 class="section-title text-center text-4xl md:text-5xl font-lora font-bold mb-12" data-aos="fade-down">Explore Local Attractions</h2>
+                    <div class="swiper-container local-attractions-swiper rounded-xl">
+                        <div class="swiper-wrapper">
+                            ${localAttractionSlides}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </section>
+
+                <section class="container mx-auto py-16 px-6 text-center">
+                    <div class="bg-gradient-to-br from-page-primary to-page-accent p-8 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 relative overflow-hidden" data-aos="zoom-in">
+                        <div class="geometric-shape w-32 h-32 top-0 left-0 opacity-20"></div>
+                        <h3 class="text-3xl font-lora font-bold text-page-text">Ready to Book Your Dream Stay?</h3>
+                        <a href="#contact" class="cta-button py-3 px-8 rounded-full text-lg font-semibold transition-transform transform hover:scale-105 nav-link">Book Your Room Now <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </section>
+            `;
+        }
+
+        function suiteDetailPage(suiteId) {
+            applyTheme('suite-detail');
+            const suite = appData.suites.find(s => s.id === suiteId);
+            if (!suite) {
+                return `<section class="container mx-auto py-16 text-center text-page-primary">Suite not found.</section>`;
+            }
+
+            const amenityGrid = suite.amenities.map(amenity => `
+                <div class="flex items-center space-x-3 card-bg p-3 rounded-lg shadow-sm">
+                    <i class="${amenity.icon} text-page-secondary text-xl"></i>
+                    <span class="text-sm font-roboto">${amenity.text}</span>
+                </div>
+            `).join('');
+
+            const otherSuitesCards = appData.suites.filter(s => s.id !== suiteId).map(s => `
+                <div class="card-bg p-4 rounded-xl shadow-md flex flex-col items-center text-center space-y-2 transition-transform duration-300 hover:scale-105 hover:shadow-xl relative overflow-hidden">
+                    <div class="geometric-shape w-12 h-12 top-0 right-0 opacity-20"></div>
+                    <i class="fas fa-couch text-4xl text-page-secondary mb-2"></i>
+                    <h4 class="text-xl font-lora font-semibold">${s.name}</h4>
+                    <p class="font-roboto text-xs">${s.tagline}</p>
+                    <a href="#suite-detail-${s.id}" class="cta-button py-1 px-4 rounded-full text-sm font-semibold nav-link">View <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            `).join('');
+
+            return `
+                <section class="container mx-auto py-16 px-6 text-page-text">
+                    <div class="text-center mb-12">
+                        <h2 class="section-title text-4xl md:text-5xl font-lora font-bold" data-aos="fade-down">${suite.name}</h2>
+                        <p class="section-subtitle text-xl md:text-2xl font-dancing text-page-secondary mt-2" data-aos="fade-up">${suite.tagline}</p>
+                    </div>
+
+                    <!-- 1 + 4 Image Switching Viewer -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+                        <div class="image-viewer-main rounded-xl shadow-xl flex items-center justify-center text-5xl font-lora" id="main-suite-image" data-aos="zoom-in" data-aos-delay="200">
+                            ${suite.gallery[0]}
+                        </div>
+                        <div class="grid grid-cols-2 gap-4" id="suite-thumbs" data-aos="zoom-in" data-aos-delay="400">
+                            ${suite.gallery.slice(0,4).map((img, index) => `
+                                <div class="image-viewer-thumbs-item flex items-center justify-center ${index === 0 ? 'active' : ''}" data-image-text="${img}">
+                                    ${img.split(' - ')[1] || img}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Suite Details and Features -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                        <div class="card-bg p-8 rounded-xl shadow-xl relative overflow-hidden" data-aos="fade-right">
+                            <h3 class="text-3xl font-lora font-semibold text-page-primary mb-4">About This Suite</h3>
+                            <p class="font-roboto text-lg mb-6">${suite.description}</p>
+                            <h4 class="text-2xl font-lora font-semibold text-page-secondary mb-3">Key Features:</h4>
+                            <ul class="list-disc list-inside font-roboto text-md space-y-2">
+                                ${suite.features.map(feature => `<li><i class="fas fa-check-circle mr-2 text-page-secondary"></i>${feature}</li>`).join('')}
+                            </ul>
+                            <p class="text-3xl font-lora font-bold text-page-primary mt-6">${suite.price}</p>
+                        </div>
+                        <div class="card-bg p-8 rounded-xl shadow-xl relative overflow-hidden" data-aos="fade-left">
+                            <div class="geometric-shape w-40 h-40 bottom-0 left-0 opacity-10"></div>
+                            <h3 class="text-3xl font-lora font-semibold text-page-primary mb-4">Amenities</h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                ${amenityGrid}
+                            </div>
+                            <div class="mt-8 text-center md:text-left">
+                                <a href="#contact" class="cta-button py-3 px-8 rounded-full text-lg font-semibold nav-link">Book This Suite <i class="fas fa-chevron-right ml-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Suite Photo Gallery (Swiper) -->
+                    <section class="container mx-auto py-8 px-0 relative">
+                        <h3 class="section-title text-center text-3xl font-lora font-bold mb-8" data-aos="fade-down">Suite Photo Gallery</h3>
+                        <div class="swiper-container suite-gallery-swiper rounded-xl">
+                            <div class="swiper-wrapper">
+                                ${suite.gallery.map((img, index) => `
+                                    <div class="swiper-slide bg-page-accent rounded-xl shadow-lg flex items-center justify-center min-h-[250px] text-page-text text-xl font-lora relative overflow-hidden">
+                                        <div class="absolute inset-0 bg-gradient-to-br from-page-accent to-page-secondary opacity-80"></div>
+                                        <span class="relative z-10">${img}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </section>
+
+                    <!-- Book Room Strip -->
+                    <section class="container mx-auto py-16 px-0 text-center">
+                        <div class="bg-gradient-to-br from-page-primary to-page-accent p-8 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 relative overflow-hidden" data-aos="zoom-in">
+                            <div class="geometric-shape w-24 h-24 bottom-0 right-0 opacity-20"></div>
+                            <h3 class="text-3xl font-lora font-bold text-page-text">Secure Your Luxurious Stay!</h3>
+                            <a href="#contact" class="cta-button py-3 px-8 rounded-full text-lg font-semibold transition-transform transform hover:scale-105 nav-link">Book Now <i class="fas fa-arrow-right ml-2"></i></a>
+                        </div>
+                    </section>
+
+                    <!-- Other Suites Listing -->
+                    <section class="container mx-auto py-16 px-0">
+                        <h3 class="section-title text-center text-3xl font-lora font-bold mb-8" data-aos="fade-down">Explore Other Suites</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${otherSuitesCards}
+                        </div>
+                    </section>
+                </section>
+            `;
+        }
+
+        function restaurantPage() {
+            applyTheme('restaurant');
+            return `
+                ${createHeroCarousel(appData.heroSlides.restaurant, 'restaurant')}
+                <section class="container mx-auto py-16 px-6 text-page-text">
+                    <div class="relative bg-gradient-to-tr from-page-primary to-page-accent p-8 md:p-12 rounded-xl shadow-xl overflow-hidden" data-aos="fade-up">
+                        <div class="geometric-shape w-40 h-40 top-0 left-0 -translate-x-1/4 -translate-y-1/4 opacity-20"></div>
+                        <h2 class="text-4xl md:text-5xl font-lora font-bold text-page-text mb-6 text-center">A World of Flavors Awaits</h2>
+                        <p class="font-roboto text-page-text text-lg max-w-3xl mx-auto text-center">
+                            Embark on an exquisite culinary journey at our multi-cuisine restaurant, where every dish is a masterpiece crafted with passion and the finest ingredients. From global delights to local specialties, a symphony of flavors awaits.
+                        </p>
+                    </div>
+                </section>
+
+                ${createTextMediaSection(
+                    "Behind the Culinary Magic",
+                    "Meet Our Kitchen",
+                    "Our team of award-winning chefs brings passion and expertise to every dish, creating an unforgettable dining experience.",
+                    "Meet the Culinary Team",
+                    "#restaurant-kitchen",
+                    false,
+                    'chef-hat'
+                )}
+
+                <section class="container mx-auto py-16 px-6">
+                    <h2 class="section-title text-center text-4xl md:text-5xl font-lora font-bold mb-12" data-aos="fade-down">Our Diverse Offerings</h2>
+                    <div class="swiper-container restaurant-decor-swiper rounded-xl" data-aos="zoom-in" data-swiper-no-pointer-events="true">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide bg-page-accent rounded-xl shadow-lg flex items-center justify-center min-h-[300px] text-page-text text-3xl font-dancing relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-tr from-page-accent to-page-secondary opacity-80"></div>
+                                <div class="geometric-shape w-48 h-48 top-10 left-10 animate-spin-slow-reverse opacity-20"></div>
+                                <span class="relative z-10">Fresh Ingredients, Global Inspiration <i class="fas fa-seedling ml-3"></i></span>
+                            </div>
+                            <div class="swiper-slide bg-page-primary rounded-xl shadow-lg flex items-center justify-center min-h-[300px] text-page-text text-3xl font-dancing relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-tr from-page-primary to-page-accent opacity-80"></div>
+                                <div class="geometric-shape w-48 h-48 bottom-10 left-10 rotate-12 opacity-20"></div>
+                                <span class="relative z-10">Exquisite Tastes, Unforgettable Moments <i class="fas fa-wine-glass-alt ml-3"></i></span>
+                            </div>
+                             <div class="swiper-slide bg-page-accent rounded-xl shadow-lg flex items-center justify-center min-h-[300px] text-page-text text-3xl font-dancing relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-page-accent to-page-secondary opacity-80"></div>
+                                <div class="geometric-shape w-48 h-48 top-10 left-10 animate-spin-slow-reverse opacity-20"></div>
+                                <span class="relative z-10">Artistry on a Plate <i class="fas fa-palette ml-3"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                ${createTextMediaSection(
+                    "A Taste for Every Palate",
+                    "Our Signature Menu",
+                    "Explore a diverse selection of appetizers, main courses, and desserts, meticulously crafted to satisfy every craving.",
+                    "View Full Menu",
+                    "#restaurant-menu",
+                    true,
+                    'book-open'
+                )}
+
+                <section class="container mx-auto py-16 px-6 relative">
+                    <h2 class="section-title text-center text-4xl md:text-5xl font-lora font-bold mb-12" data-aos="fade-down">Restaurant Gallery</h2>
+                    <div class="swiper-container restaurant-gallery-swiper rounded-xl">
+                        <div class="swiper-wrapper">
+                            ${appData.galleryImages.map((img, index) => `
+                                <div class="swiper-slide bg-page-secondary rounded-xl shadow-lg flex items-center justify-center min-h-[250px] text-page-text text-xl font-lora relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-br from-page-secondary to-page-accent opacity-80"></div>
+                                    <div class="geometric-shape w-24 h-24 top-5 left-5 opacity-20"></div>
+                                    <span class="relative z-10">Dining Scene ${index + 1}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </section>
+
+                <section class="container mx-auto py-16 px-6 text-center">
+                    <div class="bg-gradient-to-br from-page-primary to-page-accent p-8 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 relative overflow-hidden" data-aos="zoom-in">
+                        <div class="geometric-shape w-32 h-32 top-0 right-0 opacity-20"></div>
+                        <h3 class="text-3xl font-lora font-bold text-page-text">Ready to Plan Your Food Experience?</h3>
+                        <a href="#contact" class="cta-button py-3 px-8 rounded-full text-lg font-semibold transition-transform transform hover:scale-105 nav-link">Book a Table / Order Online <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </section>
+            `;
+        }
+
+        function restaurantKitchenPage() {
+            applyTheme('restaurant-kitchen');
+            return `
+                <section class="container mx-auto py-16 px-6 text-page-text">
+                    <div class="text-center mb-12">
+                        <h2 class="section-title text-4xl md:text-5xl font-lora font-bold" data-aos="fade-down">Meet Our Culinary Masters</h2>
+                        <p class="section-subtitle text-xl md:text-2xl font-dancing text-page-secondary mt-2" data-aos="fade-up">The Heart of HOTEL CAPS's Kitchen</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
+                        <div class="card-bg p-8 rounded-xl shadow-xl relative overflow-hidden" data-aos="fade-right">
+                            <h3 class="text-3xl font-lora font-semibold text-page-primary mb-4">Our Philosophy</h3>
+                            <p class="font-roboto text-lg leading-relaxed">
+                                At HOTEL CAPS, our culinary philosophy is rooted in passion, precision, and plate artistry. We believe in using the freshest, seasonal ingredients, sourced locally whenever possible, to create dishes that are not just food, but an experience. Our chefs are artisans, blending traditional techniques with innovative approaches to delight every palate.
+                            </p>
+                        </div>
+                        <div class="relative bg-page-accent p-8 md:p-12 rounded-xl shadow-xl flex items-center justify-center min-h-[300px] overflow-hidden" data-aos="fade-left">
+                            <div class="geometric-shape w-40 h-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 opacity-20"></div>
+                            <i class="fas fa-hotpot text-7xl md:text-9xl text-page-primary opacity-50"></i>
+                            <p class="absolute bottom-4 left-4 text-page-primary text-opacity-70 text-lg font-satisfy">Kitchen Artistry</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                        <div class="card-bg p-6 rounded-xl shadow-md text-center relative overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="geometric-shape w-24 h-24 top-0 right-0 opacity-20"></div>
+                            <i class="fas fa-hat-chef text-5xl text-page-secondary mb-3"></i>
+                            <h4 class="text-2xl font-lora font-semibold text-page-primary mb-2">Chef Isabella Rossi</h4>
+                            <p class="font-roboto text-sm">Lead Executive Chef</p>
+                            <p class="font-roboto mt-3">Specializing in Mediterranean and European cuisine, Chef Rossi brings over 20 years of international experience.</p>
+                        </div>
+                        <div class="card-bg p-6 rounded-xl shadow-md text-center relative overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="geometric-shape w-24 h-24 bottom-0 left-0 opacity-20"></div>
+                            <i class="fas fa-wok text-5xl text-page-secondary mb-3"></i>
+                            <h4 class="text-2xl font-lora font-semibold text-page-primary mb-2">Chef Kenji Tanaka</h4>
+                            <p class="font-roboto text-sm">Head Sushi Chef</p>
+                            <p class="font-roboto mt-3">Master of authentic Japanese flavors, renowned for his exquisite sushi and sashimi.</p>
+                        </div>
+                        <div class="card-bg p-6 rounded-xl shadow-md text-center relative overflow-hidden" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="geometric-shape w-24 h-24 top-0 left-0 opacity-20"></div>
+                            <i class="fas fa-cookie text-5xl text-page-secondary mb-3"></i>
+                            <h4 class="text-2xl font-lora font-semibold text-page-primary mb-2">Chef Pierre Dubois</h4>
+                            <p class="font-roboto text-sm">Pastry Chef</p>
+                            <p class="font-roboto mt-3">Creator of delectable desserts and pastries, blending classic French techniques with modern twists.</p>
+                        </div>
+                    </div>
+
+                    <section class="container mx-auto py-16 px-0 text-center">
+                        <div class="bg-gradient-to-br from-page-primary to-page-accent p-8 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 relative overflow-hidden" data-aos="zoom-in">
+                            <div class="geometric-shape w-32 h-32 top-0 right-0 opacity-20"></div>
+                            <h3 class="text-3xl font-lora font-bold text-page-text">Experience Our Culinary Excellence</h3>
+                            <a href="#contact" class="cta-button py-3 px-8 rounded-full text-lg font-semibold transition-transform transform hover:scale-105 nav-link">Book a Table <i class="fas fa-arrow-right ml-2"></i></a>
+                        </div>
+                    </section>
+                </section>
+            `;
+        }
+
+        function restaurantMenuPage() {
+            applyTheme('restaurant-menu');
+            const menuCategories = appData.restaurantMenu.categories.map(cat => `
+                <button class="menu-category-btn cta-button py-3 px-6 rounded-full text-lg font-semibold transition-transform transform hover:scale-105" data-category="${cat.id}">${cat.name}</button>
+            `).join('');
+
+            const menuItems = appData.restaurantMenu.items.map(item => `
+                <div class="menu-item card-bg p-5 rounded-xl shadow-md relative overflow-hidden flex flex-col" data-category="${item.category}" data-aos="fade-up">
+                    <div class="geometric-shape w-16 h-16 top-0 right-0 opacity-10"></div>
+                    <div class="flex items-center mb-3">
+                        <i class="${item.icon} text-page-secondary text-2xl mr-3"></i>
+                        <h4 class="text-xl font-lora font-semibold">${item.name}</h4>
+                        <span class="ml-auto text-xl font-bold font-roboto text-page-secondary">${item.price}</span>
+                    </div>
+                    <p class="font-roboto text-sm flex-grow">${item.description}</p>
+                </div>
+            `).join('');
+
+            return `
+                <section class="container mx-auto py-16 px-6 text-page-text">
+                    <div class="text-center mb-12">
+                        <h2 class="section-title text-4xl md:text-5xl font-lora font-bold" data-aos="fade-down">Our Exquisite Menu</h2>
+                        <p class="section-subtitle text-xl md:text-2xl font-dancing text-page-secondary mt-2" data-aos="fade-up">A Culinary Journey for Every Palate</p>
+                    </div>
+
+                    <div class="relative bg-gradient-to-tr from-page-primary to-page-accent p-8 md:p-12 rounded-xl shadow-xl overflow-hidden mb-12 text-center" data-aos="fade-up">
+                        <h3 class="text-3xl font-lora font-semibold text-page-text mb-4">Crafted with Passion</h3>
+                        <p class="font-roboto text-lg max-w-3xl mx-auto">
+                            Our chefs meticulously prepare each dish, combining fresh, locally sourced ingredients with international culinary techniques to offer a dining experience that is both innovative and deeply satisfying.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 mb-12" id="menu-category-filter" data-aos="zoom-in">
+                        <button class="menu-category-btn cta-button py-3 px-6 rounded-full text-lg font-semibold transition-transform transform hover:scale-105 active" data-category="all">All</button>
+                        ${menuCategories}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-items-container">
+                        ${menuItems}
+                    </div>
+
+                    <section class="container mx-auto py-16 px-0 text-center">
+                        <div class="bg-gradient-to-br from-page-primary to-page-accent p-8 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 relative overflow-hidden" data-aos="zoom-in">
+                            <div class="geometric-shape w-32 h-32 bottom-0 left-0 opacity-20"></div>
+                            <h3 class="text-3xl font-lora font-bold text-page-text">Ready to Indulge?</h3>
+                            <a href="#contact" class="cta-button py-3 px-8 rounded-full text-lg font-semibold transition-transform transform hover:scale-105 nav-link">Plan Your Meal / Book a Table <i class="fas fa-arrow-right ml-2"></i></a>
+                        </div>
+                    </section>
+                </section>
+            `;
+        }
+
+        function eventsPage() {
+            applyTheme('events');
+
+            const facilityMatrix = appData.eventFacilities.map((facility, index) => `
+                <div class="card-bg p-5 rounded-xl shadow-md text-center flex flex-col items-center space-y-2 relative overflow-hidden" data-aos="zoom-in" data-aos-delay="${index * 70}">
+                    <div class="geometric-shape w-16 h-16 top-0 right-0 opacity-10"></div>
+                    <i class="${facility.icon} text-5xl text-page-secondary"></i>
+                    <p class="font-roboto text-lg font-semibold">${facility.text}</p>
+                </div>
+            `).join('');
+
+            const eventTypeTabs = appData.eventTypes.map((type, index) => `
+                <button class="event-type-tab cta-button py-3 px-6 rounded-full text-lg font-semibold transition-transform transform hover:scale-105 ${index === 0 ? 'active' : ''}" data-event-type="${type.id}">${type.name}</button>
+            `).join('');
+
+            const eventTypeSlides = appData.eventTypes.map((type, index) => `
+                <div class="swiper-slide card-bg p-8 rounded-xl shadow-lg flex flex-col items-center text-center relative overflow-hidden" data-event-type="${type.id}">
+                    <div class="geometric-shape w-32 h-32 top-0 right-0 opacity-10"></div>
+                    <i class="${type.icon} text-6xl text-page-secondary mb-4"></i>
+                    <h3 class="text-3xl font-lora font-bold text-page-primary mb-3">${type.name}</h3>
+                    <p class="font-roboto text-lg">${type.description}</p>
+                </div>
+            `).join('');
+
+
+            return `
+                ${createHeroCarousel(appData.heroSlides.events, 'events')}
+                <section class="container mx-auto py-16 px-6 text-page-text">
+                    <div class="relative bg-gradient-to-tr from-page-primary to-page-accent p-8 md:p-12 rounded-xl shadow-xl overflow-hidden text-center" data-aos="fade-up">
+                        <h2 class="text-4xl md:text-5xl font-lora font-bold text-page-text mb-6">Where Every Moment Becomes a Memory</h2>
+                        <p class="font-roboto text-page-text text-lg max-w-3xl mx-auto">
+                            Our grand event hall is the perfect canvas for your most cherished occasions. With versatile spaces, exquisite catering, and a dedicated team, we bring your vision to life, ensuring every detail is perfectly managed.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="container mx-auto py-16 px-6">
+                    <h2 class="section-title text-center text-4xl md:text-5xl font-lora font-bold mb-12" data-aos="fade-down">Event Facilities</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        ${facilityMatrix}
+                    </div>
+                </section>
+
+                <section class="container mx-auto py-16 px-6 relative">
+                    <h2 class="section-title text-center text-4xl md:text-5xl font-lora font-bold mb-12" data-aos="fade-down">Our Events</h2>
+                    <div class="flex flex-wrap justify-center gap-4 mb-10" id="event-type-tabs" data-aos="zoom-in">
+                        ${eventTypeTabs}
+                    </div>
+                    <div class="swiper-container event-type-swiper rounded-xl" data-aos="fade-up">
+                        <div class="swiper-wrapper">
+                            ${eventTypeSlides}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </section>
+
+                <section class="container mx-auto py-16 px-6 text-center">
+                    <div class="bg-gradient-to-br from-page-primary to-page-accent p-8 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 relative overflow-hidden" data-aos="zoom-in">
+                        <div class="geometric-shape w-32 h-32 top-0 left-0 opacity-20"></div>
+                        <h3 class="text-3xl font-lora font-bold text-page-text">Ready to Host Your Next Unforgettable Event?</h3>
+                        <a href="#contact" class="cta-button py-3 px-8 rounded-full text-lg font-semibold transition-transform transform hover:scale-105 nav-link">Book Your Event Now <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </section>
+            `;
+        }
+
+        // --- SPA Routing and App Logic (js/app.js concept) ---
+        const appContent = document.getElementById('app-content');
+        const overlayMenu = document.getElementById('overlay-menu');
+        const hamburgerMenuBtn = document.getElementById('hamburger-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const mainHeader = document.getElementById('main-header'); // Get header element
+        // No longer query all nav links, use event delegation on body for all link clicks
+
+        let activeSwipers = []; // Keep track of active Swiper instances
+
+        function destroySwipers() {
+            activeSwipers.forEach(swiper => {
+                if (swiper && typeof swiper.destroy === 'function') {
+                    swiper.destroy(true, true);
+                }
+            });
+            activeSwipers = []; // Clear the array
+        }
+
+        function initSwipersForPage(pageName) {
+            destroySwipers(); // Destroy any existing swipers first
+
+            if (pageName === 'home') {
+                activeSwipers.push(new Swiper('.home-hero-swiper', {
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                }));
+                activeSwipers.push(new Swiper('.home-gallery-swiper', {
+                    loop: true,
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        640: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                    }
+                }));
+                activeSwipers.push(new Swiper('.testimonial-swiper', {
+                    loop: true,
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    autoplay: {
+                        delay: 6000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                    }
+                }));
+            } else if (pageName === 'suites') {
+                activeSwipers.push(new Swiper('.suites-hero-swiper', {
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                }));
+                 activeSwipers.push(new Swiper('.local-attractions-swiper', {
+                    loop: true,
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    autoplay: {
+                        delay: 4500,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        640: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                    }
+                }));
+            } else if (pageName.startsWith('suite-detail')) {
+                 activeSwipers.push(new Swiper('.suite-gallery-swiper', {
+                    loop: true,
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        640: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                    }
+                }));
+                // Init image viewer logic - simplified, as recreating element handles old listeners
+                const mainImageDiv = document.getElementById('main-suite-image');
+                const thumbContainer = document.getElementById('suite-thumbs');
+                if (mainImageDiv && thumbContainer) {
+                    thumbContainer.addEventListener('click', (e) => {
+                        const thumb = e.target.closest('.image-viewer-thumbs-item');
+                        if (thumb) {
+                            document.querySelectorAll('.image-viewer-thumbs-item').forEach(t => t.classList.remove('active'));
+                            thumb.classList.add('active');
+                            mainImageDiv.textContent = thumb.dataset.imageText;
+                        }
+                    });
+                }
+
+            } else if (pageName === 'restaurant') {
+                activeSwipers.push(new Swiper('.restaurant-hero-swiper', {
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                }));
+                activeSwipers.push(new Swiper('.restaurant-decor-swiper', {
+                    loop: true,
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    autoplay: {
+                        delay: 3500,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    allowTouchMove: false, // Disable user interaction
+                    breakpoints: {
+                        640: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                    }
+                }));
+                activeSwipers.push(new Swiper('.restaurant-gallery-swiper', {
+                    loop: true,
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        640: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                    }
+                }));
+            } else if (pageName === 'restaurant-menu') {
+                const filterContainer = document.getElementById('menu-category-filter');
+                const menuItemsContainer = document.getElementById('menu-items-container');
+
+                if (filterContainer && menuItemsContainer) {
+                    // Re-attach event listener without storing function reference in dataset
+                    filterContainer.addEventListener('click', (e) => {
+                        const btn = e.target.closest('.menu-category-btn');
+                        if (btn) {
+                            document.querySelectorAll('.menu-category-btn').forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                            const category = btn.dataset.category;
+
+                            menuItemsContainer.querySelectorAll('.menu-item').forEach(item => {
+                                if (category === 'all' || item.dataset.category === category) {
+                                    item.style.display = 'flex'; // Use flex to maintain layout for hidden items
+                                } else {
+                                    item.style.display = 'none';
+                                }
+                            });
+                        }
+                    });
+                }
+
+            } else if (pageName === 'events') {
+                activeSwipers.push(new Swiper('.events-hero-swiper', {
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                }));
+                 const eventTypeSwiper = new Swiper('.event-type-swiper', {
+                    loop: true,
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                     breakpoints: {
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                    }
+                });
+                activeSwipers.push(eventTypeSwiper);
+
+                const eventTypeTabsContainer = document.getElementById('event-type-tabs');
+                if (eventTypeTabsContainer) {
+                    // Re-attach event listener without storing function reference in dataset
+                    eventTypeTabsContainer.addEventListener('click', (e) => {
+                        const tabBtn = e.target.closest('.event-type-tab');
+                        if (tabBtn) {
+                            document.querySelectorAll('.event-type-tab').forEach(btn => btn.classList.remove('active'));
+                            tabBtn.classList.add('active');
+                            const eventType = tabBtn.dataset.eventType;
+                            const slideIndex = Array.from(eventTypeSwiper.slides).findIndex(slide => slide.dataset.eventType === eventType);
+                            if (slideIndex !== -1) {
+                                eventTypeSwiper.slideToLoop(slideIndex);
+                            }
+                        }
+                    });
+                }
+            }
+
+             AOS.refresh(); // Refresh AOS animations for new content
+             gsap.fromTo(appContent, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
+        }
+
+
+        function loadPage(hash) {
+            let pageContent = '';
+            let pageName = 'home';
+            const currentHash = window.location.hash.replace('#', '');
+            const targetSection = hash.includes('#') ? hash.split('#')[1] : '';
+
+            // Remove leading # if present
+            hash = hash.startsWith('#') ? hash.substring(1) : hash;
+
+            let shouldScrollToContact = false;
+            // Determine if the target is the contact section and if we need to load the home page first
+            if (targetSection === 'contact') {
+                if (hash === 'home' || currentHash.split('-')[0] !== hash.split('-')[0]) {
+                    // If going to home page from another page and targeting contact, or if changing base page to home to get to contact
+                    shouldScrollToContact = true;
+                    // Ensure the hash is set to #home if we're scrolling to contact on the home page from outside
+                    if (hash !== 'home') {
+                       // This will effectively load the home page content if not already on it
+                    }
+                    hash = 'home'; // Force loading of home page if target is contact
+                } else if (currentHash.split('-')[0] === hash.split('-')[0]) {
+                    // If already on the same base page (e.g., restaurant-menu) and targeting contact, just scroll
+                    shouldScrollToContact = true;
+                }
+            }
+
+
+            if (hash.startsWith('suite-detail-')) {
+                const suiteId = hash.replace('suite-detail-', '');
+                pageContent = suiteDetailPage(suiteId);
+                pageName = 'suite-detail';
+            } else if (hash === 'suites') {
+                pageContent = suitesPage();
+                pageName = 'suites';
+            } else if (hash === 'restaurant') {
+                pageContent = restaurantPage();
+                pageName = 'restaurant';
+            } else if (hash === 'restaurant-kitchen') {
+                pageContent = restaurantKitchenPage();
+                pageName = 'restaurant-kitchen';
+            } else if (hash === 'restaurant-menu') {
+                pageContent = restaurantMenuPage();
+                pageName = 'restaurant-menu';
+            } else if (hash === 'events') {
+                pageContent = eventsPage();
+                pageName = 'events';
+            } else if (hash === 'about-us') {
+                pageContent = aboutUsPage();
+                pageName = 'about-us';
+            }
+            else {
+                pageContent = homePage();
+                pageName = 'home';
+            }
+
+            // Animate page transition out before loading new content
+            gsap.to(appContent, {
+                opacity: 0,
+                y: -20,
+                duration: 0.3,
+                ease: "power2.in",
+                onComplete: () => {
+                    appContent.innerHTML = pageContent;
+                    initSwipersForPage(pageName); // Re-initialize swipers for the new page
+                    applyTheme(pageName); // Apply the correct theme
+                    AOS.init({ once: true, offset: 50, duration: 800 }); // Re-init AOS
+
+                    if (shouldScrollToContact) {
+                        // Ensure #contact exists and scroll to it
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                            contactSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    } else {
+                        window.scrollTo(0, 0); // Scroll to top on regular page load
+                    }
+                }
+            });
+        }
+
+        // Router function
+        function router() {
+            const hash = window.location.hash || '#home';
+            loadPage(hash);
+            // overlayMenu.classList.remove('open'); // Only close menu when a specific page link is clicked
+        }
+
+        // Event Listeners for main application flow
+        window.addEventListener('hashchange', router);
+        window.addEventListener('DOMContentLoaded', router); // Load initial page on startup
+
+        hamburgerMenuBtn.addEventListener('click', () => {
+            overlayMenu.classList.add('open');
+            // Ensure overlay menu background matches current page theme when opened
+            const rootStyle = document.documentElement.style;
+            overlayMenu.style.backgroundColor = rootStyle.getPropertyValue('--page-bg-dark');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            overlayMenu.classList.remove('open');
+        });
+
+        // Overlay menu toggle for sub-menus and general navigation clicks
+        overlayMenu.addEventListener('click', (e) => {
+            const toggleBtn = e.target.closest('.menu-toggle-btn');
+            if (toggleBtn) {
+                e.preventDefault(); // Prevent direct navigation for toggle buttons
+                const subMenu = toggleBtn.nextElementSibling;
+                if (subMenu && subMenu.classList.contains('sub-menu')) {
+                    subMenu.classList.toggle('hidden');
+                    subMenu.classList.toggle('open');
+                    toggleBtn.classList.toggle('rotated');
+                }
+            } else if (e.target.closest('.nav-link')) {
+                const link = e.target.closest('.nav-link');
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault(); // Prevent default link behavior
+                    window.location.hash = href; // Update hash and trigger router
+                    // Close menu only when a leaf page is clicked (i.e., not a sub-menu toggle)
+                    if (!link.classList.contains('menu-toggle-btn')) {
+                        overlayMenu.classList.remove('open');
+                    }
+                }
+            }
+        });
+
+        // Event listeners for Scroll to Top Button - Wrapped in DOMContentLoaded
+        // to ensure the element exists before trying to attach listeners.
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+            if (scrollToTopBtn) { // Defensive check
+                // Show/Hide Scroll to Top button
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        scrollToTopBtn.style.display = 'flex';
+                    } else {
+                        scrollToTopBtn.style.display = 'none';
+                    }
+                });
+
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            } else {
+                console.warn("Scroll to top button not found in DOM.");
+            }
+        });
+
+
+        // Initialize AOS on first load
+        AOS.init({
+            once: true, // animations only run once
+            offset: 50, // offset (in px) from the original trigger point
+            duration: 800, // values from 0 to 3000, with step 50ms
+        });
+
+        // GSAP ScrollTrigger setup
+        gsap.registerPlugin(ScrollTrigger);
+
+    </script>
 </body>
 </html>

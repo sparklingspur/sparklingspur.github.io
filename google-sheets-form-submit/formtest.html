@@ -1,0 +1,309 @@
+<!-- CONNECT FORM FINAL -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassy Contact Form</title>
+    <style>
+        :root {
+
+            --primary-color: rgb(172, 11, 3);
+            --bg-color: #360303;
+            --text-color: #f7d6d6;
+            --accent-color: #f09c3b;
+            --hero-bg: url('/images/hero-fire.png');
+            --hero-filter: brightness(110%) contrast(114%) hue-rotate(360deg) saturate(0);
+            --hero-filter-hover: brightness(110%) contrast(114%) hue-rotate(360deg) saturate(2);
+            --text-gradient-two: linear-gradient(to right, #6a040fff, #9d0208ff, #d00000ff, #dc2f02ff, #e85d04ff, #f48c06ff, #faa307ff, #ffba08ff);
+            --connect-background-linear: linear-gradient(rgba(47, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+
+
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+
+        .main-content {
+            position: relative;
+            background: var(--connect-background-linear);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .form-container {
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            width: 50rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.8rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            outline: none;
+            font-size: 1.5rem;
+            resize: none;
+            box-sizing: border-box;
+
+            &::placeholder {
+                color: rgba(255, 255, 255, 0.65);
+            }
+        }
+
+        .submit-btn {
+            width: 96%;
+            padding: 1rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 1rem;
+            backdrop-filter: blur(1rem);
+            -webkit-backdrop-filter: blur(1rem);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            text-align: center;
+            justify-self: center;
+        }
+
+        .form-success {
+            * {
+                margin: 1rem;
+                padding: 0;
+                text-align: center;
+                letter-spacing: 1px;
+                color: var(--text-color);
+
+                strong {
+                    color: var(--accent-color);
+                }
+            }
+
+            h2 {
+                font-size: 2rem;
+                font-weight: 600;
+            }
+
+            p {
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 .2rem 2rem 0.2rem var(--accent-color);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.95);
+        }
+
+        .error {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-content"></div>
+    <script>
+        const root = document.querySelector(".main-content");
+
+        const connectFormWrap = document.createElement('div');
+        connectFormWrap.className = 'connect-form-wrapper';
+        root.appendChild(connectFormWrap);
+
+
+        function createContactForm() {
+            const container = document.createElement('div');
+            container.className = 'form-container';
+
+            // const title = document.createElement('h2');
+            // title.textContent = 'Contact Us';
+            // container.appendChild(title);
+
+            const groupName = document.createElement('div');
+            groupName.className = 'form-group';
+
+            const inputName = document.createElement('input');
+            inputName.id = 'name';
+            inputName.type = 'text';
+            inputName.placeholder = 'Name';
+
+            const errorName = document.createElement('div');
+            errorName.id = inputName.id + 'Error';
+            errorName.className = 'error';
+
+            groupName.appendChild(inputName);
+            groupName.appendChild(errorName);
+            container.appendChild(groupName);
+
+            const groupEmail = document.createElement('div');
+            groupEmail.className = 'form-group';
+
+            const inputEmail = document.createElement('input');
+            inputEmail.id = 'email';
+            inputEmail.type = 'email';
+            inputEmail.placeholder = 'Email ID';
+
+            const errorEmail = document.createElement('div');
+            errorEmail.id = inputEmail.id + 'Error';
+            errorEmail.className = 'error';
+
+            groupEmail.appendChild(inputEmail);
+            groupEmail.appendChild(errorEmail);
+            container.appendChild(groupEmail);
+
+            const messageGroup = document.createElement('div');
+            messageGroup.className = 'form-group';
+
+            const textarea = document.createElement('textarea');
+            textarea.id = 'message';
+            textarea.placeholder = 'Your Message...';
+            textarea.rows = 4;
+            textarea.style.resize = 'none';
+
+            const messageError = document.createElement('div');
+            messageError.id = 'messageError';
+            messageError.className = 'error';
+
+            messageGroup.appendChild(textarea);
+            messageGroup.appendChild(messageError);
+            container.appendChild(messageGroup);
+
+            const button = document.createElement('div');
+            button.className = 'submit-btn';
+            button.textContent = 'Submit';
+            button.onclick = submitForm;
+
+            container.appendChild(button);
+            connectFormWrap.appendChild(container);
+
+            container.addEventListener('keydown', function (e) {
+                if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+                    e.stopPropagation();
+                }
+            });
+        }
+
+        function submitForm() {
+            ['name', 'email', 'message'].forEach(id => {
+                document.getElementById(id + 'Error').textContent = '';
+            });
+
+            const submitBtn = document.querySelector('.submit-btn');
+            const formContainer = document.querySelector('.form-container');
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            let valid = true;
+
+            if (!name) {
+                document.getElementById('nameError').textContent = 'Name is required';
+                valid = false;
+            }
+
+            if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+                document.getElementById('emailError').textContent = 'Valid email is required';
+                valid = false;
+            }
+
+            if (!message) {
+                document.getElementById('messageError').textContent = 'Message cannot be empty';
+                valid = false;
+            }
+
+            if (valid) {
+
+                // ▼▼▼ PASTE YOUR GOOGLE APPS SCRIPT URL HERE ▼▼▼
+                const webAppUrl = 'https://script.google.com/macros/s/AKfycbxyf_n5-zxdxwCZuVbRMZ8e459DokglL0-ZiDtawkyS2PdMr0KqmD-JxSx69PguBT54Lg/exec';
+                // ▲▲▲ PASTE YOUR GOOGLE APPS SCRIPT URL HERE ▲▲▲
+
+                const formData = {
+                    name: name,
+                    email: email,
+                    message: message
+                };
+
+                // Provide immediate feedback to the user
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+
+                // Send the data to your Google Apps Script
+                fetch(webAppUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.result === 'success') {
+                            // On success, show the thank you message
+                            formContainer.innerHTML = `
+                            <div class="form-success">
+                                <h2>Thank You, <strong>${name}!</strong></h2>
+                                <p>Your message has been sent successfully. We will get back to you shortly.</p>
+                            </div>
+                        `;
+                            setTimeout(() => {
+                                connectFormWrap.innerHTML = '';
+                                createContactForm();
+                            }, 5000);
+                        } else {
+                            // If the script returns an error, show it
+                            throw new Error(data.message || 'An unknown error occurred.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        // On failure, inform the user and re-enable the button
+                        submitBtn.textContent = 'Send Message';
+                        submitBtn.disabled = false;
+                        alert('Sorry, there was an error sending your message. Please try again.');
+                    });
+
+            }
+        }
+
+        createContactForm();
+
+    </script>
+</body>
+
+</html>

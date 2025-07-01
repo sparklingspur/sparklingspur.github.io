@@ -253,11 +253,10 @@
                 const webAppUrl = 'https://script.google.com/macros/s/AKfycbxyf_n5-zxdxwCZuVbRMZ8e459DokglL0-ZiDtawkyS2PdMr0KqmD-JxSx69PguBT54Lg/exec';
                 // ▲▲▲ PASTE YOUR GOOGLE APPS SCRIPT URL HERE ▲▲▲
 
-                const formData = {
-                    name: name,
-                    email: email,
-                    message: message
-                };
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('email', email);
+                formData.append('message', message);
 
                 // Provide immediate feedback to the user
                 submitBtn.textContent = 'Sending...';
@@ -266,29 +265,20 @@
                 // Send the data to your Google Apps Script
                 fetch(webAppUrl, {
                     method: 'POST',
-                    body: JSON.stringify(formData),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    mode: 'no-cors',
+                    body: formData
                 })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.result === 'success') {
-                            // On success, show the thank you message
-                            formContainer.innerHTML = `
+                    .then(() => {
+                        formContainer.innerHTML = `
                             <div class="form-success">
                                 <h2>Thank You, <strong>${name}!</strong></h2>
                                 <p>Your message has been sent successfully. We will get back to you shortly.</p>
                             </div>
                         `;
-                            setTimeout(() => {
-                                connectFormWrap.innerHTML = '';
-                                createContactForm();
-                            }, 5000);
-                        } else {
-                            // If the script returns an error, show it
-                            throw new Error(data.message || 'An unknown error occurred.');
-                        }
+                        setTimeout(() => {
+                            connectFormWrap.innerHTML = '';
+                            createContactForm();
+                        }, 5000);
                     })
                     .catch(error => {
                         console.error('Error:', error);

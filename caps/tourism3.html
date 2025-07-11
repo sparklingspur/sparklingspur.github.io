@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Sandbox</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP Core and ScrollTrigger Plugin CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Swiper.js CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <style>
+        /* --- LIGHT THEME STYLES --- */
+        body {
+            background-color: #f8fafc; /* bg-slate-50 */
+            color: #374151; /* bg-gray-700 */
+            overflow-x: hidden;
+        }
+        
+        .swiper-wrapper {
+            transition-timing-function: linear !important;
+        }
+        
+        .modal-content::-webkit-scrollbar { width: 8px; }
+        .modal-content::-webkit-scrollbar-track { background: #e5e7eb; }
+        .modal-content::-webkit-scrollbar-thumb { background: #9ca3af; border-radius: 4px; }
+        .modal-content::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+
+        /* Robust CSS for aspect ratios */
+        .aspect-ratio-1-1 { position: relative; width: 100%; padding-top: 100%; }
+        .aspect-ratio-16-8 { position: relative; width: 100%; padding-top: 50%; }
+        .aspect-ratio-1-1 > *, .aspect-ratio-16-8 > * { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* --- PURE CSS CONTOUR LINES BACKGROUND (v2 - ROBUST) --- */
+        #component-container {
+            background-color: #f8fafc; /* bg-slate-50 */
+            position: relative;
+            z-index: 1;
+        }
+        #component-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background-image:
+                /* A series of layered radial gradients creating "rings" */
+                radial-gradient(circle at 15% 85%, #e2e8f0 1px, transparent 1px),
+                radial-gradient(circle at 16% 86%, #e2e8f0 1px, transparent 1px),
+                radial-gradient(circle at 85% 15%, #e2e8f0 1px, transparent 1px),
+                radial-gradient(circle at 86% 16%, #e2e8f0 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, #e2e8f0 1px, transparent 1px),
+                radial-gradient(circle at 51% 51%, #e2e8f0 1px, transparent 1px);
+            background-size: 
+                40em 40em,
+                42em 42em,
+                30em 30em,
+                32em 32em,
+                50em 50em,
+                52em 52em;
+            background-repeat: no-repeat;
+            opacity: 0.75;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans">
+
+    <!-- Top Fullscreen Div: Light Grey -->
+    <div class="h-screen w-full flex items-center justify-center bg-slate-200">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold text-slate-700">Top Sandbox Area</h1>
+            <p class="text-slate-500 mt-2">Scroll down to see the component area.</p>
+        </div>
+    </div>
+
+    <!-- 
+      =======================================================================
+      ||                                                                   ||
+      ||                   COMPONENT CODE GOES HERE                        ||
+      ||                                                                   ||
+      =======================================================================
+    -->
+    <main id="component-container" class="relative py-20 lg:py-32 overflow-hidden">
+        
+        <!-- COMPONENT: Local Tourist Attractions Slider -->
+        <section id="attractions-slider-component" class="w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Local Tourist Attractions</h2>
+            </div>
+            
+            <!-- Swiper Container -->
+            <div class="swiper attractions-swiper w-full">
+                <div class="swiper-wrapper" id="attractions-wrapper">
+                    <!-- Slides will be dynamically inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+        <!-- END COMPONENT -->
+
+    </main>
+    <!-- ======================================================================= -->
+
+
+    <!-- Bottom Fullscreen Div: Light Teal Green -->
+    <div class="h-screen w-full flex items-center justify-center bg-teal-200">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold text-teal-800">Bottom Sandbox Area</h1>
+            <p class="text-teal-600 mt-2">This area helps test exit animations.</p>
+        </div>
+    </div>
+
+    <!-- MODAL POPUP HTML STRUCTURE (Light Theme) -->
+    <div id="attraction-modal" class="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-4 z-50" style="visibility: hidden;">
+        <!-- Modal Panel -->
+        <div id="modal-panel" class="bg-white text-gray-700 rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden">
+            <!-- Scrollable Content Area -->
+            <div class="overflow-y-auto modal-content">
+                <!-- Cover Image -->
+                <div class="aspect-ratio-16-8">
+                    <img id="modal-img" src="" alt="Attraction" class="object-cover">
+                </div>
+                
+                <!-- Text Content & Map -->
+                <div class="p-6 md:p-8">
+                    <h3 id="modal-title" class="text-3xl font-bold text-gray-900 mb-2"></h3>
+                    <p id="modal-distance" class="text-lg text-teal-600 font-medium mb-6"></p>
+
+                    <!-- Map Widget -->
+                    <div class="mb-6">
+                        <h4 class="text-xl font-semibold mb-3 text-gray-800">Location</h4>
+                        <div class="h-96 rounded-lg overflow-hidden border border-gray-200">
+                            <iframe id="modal-map" class="w-full h-full" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Notes -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-gray-800">Notes</h4>
+                        <ul id="modal-notes" class="list-disc list-inside space-y-2 text-gray-600">
+                            <!-- Notes will be dynamically inserted here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+             <!-- Close Button -->
+            <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-900 bg-white/50 backdrop-blur-sm rounded-full p-2 transition-all duration-300 hover:scale-110 hover:bg-white/80 z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        // Register the GSAP ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- 1. VALIDATED & TEMPLATED DATA ---
+            const attractionsData = [
+                { id: 1, title: 'Alleppey Backwaters', distance: 58, lat: 9.50, lon: 76.33, notes: ['Famous for houseboat cruises.', 'Experience village life and paddy fields.', 'Best time to visit is winter.'], imgUrl: 'https://sparklingspur.github.io/images/tourism/1.jpg'},
+                { id: 2, title: 'Munnar Tea Gardens', distance: 130, lat: 10.08, lon: 77.05, notes: ['Lush green landscapes.', 'Visit a tea factory to see the process.', 'Look for the rare Neelakurinji flower.'], imgUrl: 'https://sparklingspur.github.io/images/tourism/2.jpg'},
+                { id: 3, title: 'Fort Kochi', distance: 1, lat: 9.96, lon: 76.24, notes: ['Historic area with Dutch, Portuguese, and British influences.', 'See the iconic Chinese Fishing Nets.', 'Explore the charming colonial-era streets.'], imgUrl: 'https://sparklingspur.github.io/images/tourism/3.jpg'},
+                { id: 4, title: 'Thekkady (Periyar National Park)', distance: 165, lat: 9.60, lon: 77.16, notes: ['Home to elephants, tigers, and various birds.', 'Take a boat safari on Periyar Lake.', 'Ideal for nature lovers and wildlife photographers.'], imgUrl: 'https://sparklingspur.github.io/images/tourism/4.jpg'},
+                { id: 5, title: 'Varkala Beach', distance: 180, lat: 8.73, lon: 76.71, notes: ['Famous for its cliff-side setting.', 'Known for natural springs with medicinal properties.', 'A great spot for surfing and paragliding.'], imgUrl: 'https://sparklingspur.github.io/images/tourism/5.jpg'},
+                { id: 6, title: 'Wayanad Ghats', distance: 280, lat: 11.68, lon: 76.13, notes: ['Offers stunning views of the Western Ghats.', 'Numerous trekking and hiking trails.', 'Visit ancient caves and waterfalls.'], imgUrl: 'https://sparklingspur.github.io/images/tourism/6.jpg'},
+                { id: 7, title: 'Kovalam Beach', distance: 230, lat: 8.39, lon: 76.97, notes: ['Three crescent-shaped beaches.', 'Features a lighthouse with panoramic views.', 'Popular for swimming and sunbathing.'], imgUrl: 'https://sparklingspur.github.io/images/tourism/7.jpg'},
+                { id: 8, title: 'Athirappilly Waterfalls', distance: 70, lat: 10.28, lon: 76.56, notes: ['The largest waterfall in Kerala.', 'Often called the "Niagara of India".', 'Featured in several famous movies.'], imgUrl: 'https://sparklingspur.github.io/images/tourism/8.jpg'},
+                { id: 9, title: 'Marari Beach', distance: 45, lat: 9.60, lon: 76.31, notes: ['A quiet and pristine beach destination.', 'Perfect for a relaxing and peaceful getaway.', 'Experience local fishing village culture.'], imgUrl: 'https://sparklingspur.github.io/images/tourism/9.jpg'},
+                { id: 10, title: 'Poovar Island', distance: 250, lat: 8.31, lon: 77.08, notes: ['An estuary where the river meets the sea.', 'Floating cottages and resorts are available.', 'Enjoy a boat trip through the mangroves.'], imgUrl: 'https://sparklingspur.github.io/images/tourism/10.jpg'},
+                { id: 11, title: 'Silent Valley National Park', distance: 145, lat: 11.09, lon: 76.45, notes: ['A core area of the Nilgiri Biosphere Reserve.', 'Rich in biodiversity and rare species.', 'Access is restricted; requires special permission.'], imgUrl: 'https://sparklingspur.github.io/images/tourism/11.jpg'},
+                { id: 12, title: 'Bekal Fort', distance: 350, lat: 12.39, lon: 75.03, notes: ['Largest and best-preserved fort in Kerala.', 'Offers magnificent views of the Arabian Sea.', 'Features an observation tower and beautiful walkways.'], imgUrl: 'https://sparklingspur.github.io/images/tourism/12.jpg'}
+            ];
+
+            // --- 2. DYNAMICALLY GENERATE SLIDES ---
+            const wrapper = document.getElementById('attractions-wrapper');
+            attractionsData.forEach((attraction, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'swiper-slide';
+                slide.dataset.index = index; 
+                
+                slide.innerHTML = `
+                    <div class="group aspect-ratio-1-1 block rounded-xl overflow-hidden cursor-pointer shadow-lg">
+                        <div class="w-full h-full">
+                            <img src="${attraction.imgUrl}" alt="${attraction.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/e2e8f0/94a3b8?text=Image+${index+1}';">
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="plus-icon opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white/90 drop-shadow-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                wrapper.appendChild(slide);
+            });
+
+            // --- 3. INITIALIZE SWIPER.JS ---
+            const swiperContainer = document.querySelector('.attractions-swiper');
+            const swiper = new Swiper(swiperContainer, {
+                loop: true, speed: 4000,
+                autoplay: { delay: 1, disableOnInteraction: false },
+                slidesPerView: 'auto', spaceBetween: 16,
+                freeMode: { enabled: true, momentum: true, momentumRatio: 0.5 },
+                grabCursor: true, keyboard: { enabled: true },
+                breakpoints: { 320: { slidesPerView: 2, spaceBetween: 16 }, 640: { slidesPerView: 3, spaceBetween: 24 }, 1024: { slidesPerView: 4, spaceBetween: 32 }, 1280: { slidesPerView: 5, spaceBetween: 32 } }
+            });
+
+            // --- 3.5. ROBUST AUTOPLAY PAUSE LOGIC ---
+            swiperContainer.addEventListener('mouseenter', () => swiper.autoplay.stop());
+            swiperContainer.addEventListener('mouseleave', () => swiper.autoplay.start());
+            swiperContainer.addEventListener('touchstart', () => swiper.autoplay.stop(), { passive: true });
+            swiperContainer.addEventListener('touchend', () => swiper.autoplay.start(), { passive: true });
+
+            // --- 4. MODAL LOGIC ---
+            const modal = document.getElementById('attraction-modal');
+            const modalPanel = document.getElementById('modal-panel');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            
+            const modalImg = document.getElementById('modal-img');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDistance = document.getElementById('modal-distance');
+            const modalMap = document.getElementById('modal-map');
+            const modalNotes = document.getElementById('modal-notes');
+            const modalContent = modalPanel.querySelector('.modal-content');
+
+            function openModal(attraction) {
+                document.body.style.overflow = 'hidden';
+                modalImg.src = attraction.imgUrl;
+                modalImg.alt = attraction.title;
+                modalTitle.textContent = attraction.title;
+                modalDistance.textContent = `${attraction.distance} km away`;
+                modalMap.src = `https://www.openstreetmap.org/export/embed.html?bbox=${attraction.lon-0.1},${attraction.lat-0.1},${attraction.lon+0.1},${attraction.lat+0.1}&layer=mapnik&marker=${attraction.lat},${attraction.lon}`;
+                
+                modalNotes.innerHTML = '';
+                attraction.notes.forEach(note => {
+                    const li = document.createElement('li');
+                    li.textContent = note;
+                    modalNotes.appendChild(li);
+                });
+                
+                modalContent.scrollTop = 0;
+
+                gsap.to(modal, { autoAlpha: 1, duration: 0.4 });
+                gsap.from(modalPanel, { y: 50, opacity: 0, duration: 0.4, ease: 'power2.out' });
+            }
+
+            function closeModal() {
+                document.body.style.overflow = '';
+                gsap.to(modal, { autoAlpha: 0, duration: 0.3 });
+            }
+            
+            wrapper.addEventListener('click', (e) => {
+                const slide = e.target.closest('.swiper-slide');
+                if (slide) {
+                    const index = slide.dataset.index;
+                    openModal(attractionsData[index]);
+                }
+            });
+            
+            modalCloseBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+            document.addEventListener('keydown', (e) => { if (e.key === "Escape") closeModal(); });
+
+            // --- 5. GSAP ENTRANCE ANIMATION ---
+            gsap.from("#attractions-slider-component", {
+                scrollTrigger: { trigger: "#attractions-slider-component", start: "top 80%", toggleActions: "play none none none" },
+                opacity: 0, y: 100, duration: 1, ease: 'power3.out'
+            });
+        });
+    </script>
+
+</body>
+</html>

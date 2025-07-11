@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Sandbox</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP Core and ScrollTrigger Plugin CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Swiper.js CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Phosphor Icons CDN -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* --- LIGHT THEME STYLES --- */
+        body {
+            background-color: #f8fafc; /* bg-slate-50 */
+            color: #374151; /* bg-gray-700 */
+            overflow-x: hidden;
+        }
+
+        /* Custom Swiper Navigation Styles */
+        .testimonial-slider .swiper-button-next,
+        .testimonial-slider .swiper-button-prev {
+            position: static;
+            width: 3rem; height: 3rem;
+            margin: 0;
+            background-color: #f1f5f9;
+            color: #475569;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .testimonial-slider .swiper-button-next:hover,
+        .testimonial-slider .swiper-button-prev:hover {
+            background-color: #e2e8f0;
+            color: #1e293b;
+        }
+        .testimonial-slider .swiper-button-next::after,
+        .testimonial-slider .swiper-button-prev::after {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        
+        /* --- HEXAGON AVATAR STYLES --- */
+        .hex-avatar {
+            flex-shrink: 0;
+            overflow: hidden;
+            width: 4em; /* 64px */
+            height: 3.46em; /* ~55px */
+            transform: rotate(-30deg) skewX(30deg);
+            border-radius: .5em;
+        }
+        .hex-avatar-inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: inherit; height: inherit;
+            border-radius: inherit;
+            transform: skewX(-30deg) rotate(60deg) skewX(30deg);
+            background: #e9d5ff; /* purple-200 */
+        }
+        .hex-avatar-inner i {
+            color: #6b21a8; /* purple-800 */
+            transform: rotate(-30deg); /* Counter-rotate the icon */
+        }
+    </style>
+</head>
+<body class="antialiased font-sans">
+
+    <!-- Top Fullscreen Div: Light Grey -->
+    <div class="h-screen w-full flex items-center justify-center bg-slate-200">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold text-slate-700">Top Sandbox Area</h1>
+            <p class="text-slate-500 mt-2">Scroll down to see the component area.</p>
+        </div>
+    </div>
+
+    <!-- 
+      =======================================================================
+      ||                                                                   ||
+      ||                   COMPONENT CODE GOES HERE                        ||
+      ||                                                                   ||
+      =======================================================================
+    -->
+    <main id="component-container" class="relative py-20 lg:py-32">
+        
+        <!-- COMPONENT: Testimonials & Gallery -->
+        <section id="testimonials-component" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Column: Text Content & Slider -->
+                <div class="text-content-col space-y-8">
+                    <div>
+                        <p class="text-sm font-bold uppercase tracking-widest text-purple-700">Testimonials</p>
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mt-2">What Our Guests Say</h2>
+                        <p class="mt-4 text-lg text-gray-600">Hear directly from our valued guests about their memorable experiences and unforgettable stays with us.</p>
+                    </div>
+
+                    <!-- Swiper Slider -->
+                    <div class="testimonial-slider relative h-72">
+                        <div class="swiper h-full">
+                            <div class="swiper-wrapper" id="testimonial-wrapper">
+                                <!-- Testimonial slides will be injected here -->
+                            </div>
+                        </div>
+                        <!-- Navigation -->
+                        <div class="absolute bottom-0 right-0 flex space-x-2 z-10">
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Corrected 2x2 Image Gallery -->
+                <div class="image-gallery-col">
+                    <div class="grid grid-cols-2 grid-rows-2 gap-4 aspect-square">
+                        <div class="gallery-item group relative rounded-2xl overflow-hidden shadow-lg">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-in-out group-hover:scale-110" style="background-image: url('https://sparklingspur.github.io/images/hall-3.jpg')"></div>
+                        </div>
+                        <div class="gallery-item group relative rounded-2xl overflow-hidden shadow-lg">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-in-out group-hover:scale-110" style="background-image: url('https://sparklingspur.github.io/images/hotel-p.jpg')"></div>
+                        </div>
+                        <div class="gallery-item group relative rounded-2xl overflow-hidden shadow-lg">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-in-out group-hover:scale-110" style="background-image: url('https://sparklingspur.github.io/images/suite-p.jpg')"></div>
+                        </div>
+                         <div class="gallery-item group relative rounded-2xl overflow-hidden shadow-lg">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-in-out group-hover:scale-110" style="background-image: url('https://sparklingspur.github.io/images/hotel-7.jpg')"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- END COMPONENT -->
+
+    </main>
+    <!-- ======================================================================= -->
+
+
+    <!-- Bottom Fullscreen Div: Light Teal Green -->
+    <div class="h-screen w-full flex items-center justify-center bg-teal-200">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold text-teal-800">Bottom Sandbox Area</h1>
+            <p class="text-teal-600 mt-2">This area helps test exit animations.</p>
+        </div>
+    </div>
+
+    <script>
+        // Register the GSAP ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // --- 1. MOCK DATA FOR TESTIMONIALS ---
+            const testimonialData = [
+                { quote: "An absolutely unforgettable experience. The attention to detail and the warmth of the staff made our stay perfect. We're already planning our next visit!", name: "Priya Sharma", location: "Mumbai, India" },
+                { quote: "From the stunning views to the impeccable service, everything exceeded our expectations. It felt like a true home away from home. Highly recommended.", name: "Johnathan Lee", location: "Singapore" },
+                { quote: "The perfect blend of luxury and comfort. We were blown away by the quality of the amenities and the serene atmosphere. A five-star experience all around.", name: "Aisha Al-Farsi", location: "Dubai, UAE" },
+                { quote: "I travel frequently for business, and this was by far one of the most seamless and enjoyable stays I've had. The staff went above and beyond.", name: "David Chen", location: "San Francisco, USA" },
+                { quote: "A hidden gem! The location is perfect, and the ambiance is simply magical. We loved every moment of our stay and can't wait to return.", name: "Elena Petrova", location: "Moscow, Russia" },
+                { quote: "The team made our family vacation so special. They were incredibly accommodating to our needs and offered fantastic local recommendations.", name: "Carlos Rodriguez", location: "Madrid, Spain" }
+            ];
+
+            // --- 2. DYNAMICALLY GENERATE TESTIMONIAL SLIDES ---
+            const testimonialWrapper = document.getElementById('testimonial-wrapper');
+            testimonialData.forEach(item => {
+                const slide = document.createElement('div');
+                slide.className = 'swiper-slide flex flex-col justify-between h-full';
+                slide.innerHTML = `
+                    <div class="relative flex-grow">
+                        <span class="absolute top-8 left-4 text-9xl text-slate-100 font-serif z-0 select-none">&quot;</span>
+                        <p class="relative text-lg md:text-xl text-gray-700 italic  leading-normal z-10 pt-4">"${item.quote}"</p>
+                    </div>
+                    <div class="mt-6 flex items-center space-x-4">
+                        <div class="hex-avatar">
+                            <div class="hex-avatar-inner">
+                                <i class="ph-duotone ph-user text-4xl"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-800">${item.name}</p>
+                            <p class="text-sm text-gray-500">${item.location}</p>
+                        </div>
+                    </div>
+                `;
+                testimonialWrapper.appendChild(slide);
+            });
+
+            // --- 3. INITIALIZE SWIPER.JS ---
+            const testimonialSwiper = new Swiper('.testimonial-slider .swiper', {
+                loop: true,
+                effect: 'fade',
+                fadeEffect: { crossFade: true },
+                autoplay: { delay: 5000, disableOnInteraction: false },
+                navigation: {
+                    nextEl: '.testimonial-slider .swiper-button-next',
+                    prevEl: '.testimonial-slider .swiper-button-prev',
+                },
+            });
+
+            // --- 4. GSAP ENTRANCE ANIMATION ---
+            const component = document.getElementById('testimonials-component');
+            if (component) {
+                gsap.timeline({
+                    scrollTrigger: { trigger: component, start: "top 70%", toggleActions: "play none none none" }
+                })
+                .from(component.querySelector('.text-content-col'), { opacity: 0, x: -50, duration: 0.8, ease: 'power3.out' })
+                .from(component.querySelectorAll('.gallery-item'), { opacity: 0, y: 50, duration: 0.6, stagger: 0.15, ease: 'power2.out' }, "-=0.5");
+            }
+        });
+
+    </script>
+
+</body>
+</html>

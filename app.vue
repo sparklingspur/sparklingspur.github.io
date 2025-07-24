@@ -1,0 +1,54 @@
+<script setup>
+import { ref, onMounted } from 'vue';
+import Loader from '~/components/Loader.vue';
+
+const isLoading = ref(true);
+
+onMounted(() => {
+  // This is a simpler, more reliable way to handle the loader.
+  // We'll show the loader for a fixed duration to allow the animation to play,
+  // and then reliably fade it out.
+  const MIN_ANIMATION_TIME = 5500; // 4.5 seconds
+
+  setTimeout(() => {
+    isLoading.value = false;
+  }, MIN_ANIMATION_TIME);
+});
+</script>
+
+<template>
+  <div>
+    <!-- The Transition component handles the smooth fade-out -->
+    <Transition name="fade">
+      <Loader v-if="isLoading" />
+    </Transition>
+    
+    <!-- This div will now become visible after the loader fades out -->
+    <div :class="{ 'content-hidden': isLoading, 'content-visible': !isLoading }">
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </div>
+  </div>
+</template>
+
+<style>
+/* Global fade transition for the loader */
+.fade-leave-active {
+  transition: opacity 0.6s ease;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Hides main content initially */
+.content-hidden {
+  opacity: 0;
+}
+
+/* Fades in the main content after loading */
+.content-visible {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+</style>

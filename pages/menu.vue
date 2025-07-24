@@ -228,7 +228,7 @@ const handleScrollToCategory = (category) => {
   if(currentScrollPosition < navTop + navHeight + 500) {
     gsap.to(window, {
       duration: 1, 
-      scrollTo: { y: `#section-${safeId}`, offsetY: 700}, // Adjusted offset
+      scrollTo: { y: `#section-${safeId}`, offsetY: 400}, // Adjusted offset
       ease: 'power2.inOut'
     });
   } else {

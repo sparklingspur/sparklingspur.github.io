@@ -13,13 +13,6 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts' // Add the new module here
   ],
 
-  image: {
-    provider: 'static', // Use the static provider for GitHub Pages
-    static: {
-      baseURL: '/', // Ensure paths are correct for the root domain
-    }
-  },
-
   googleFonts: {
     families: {
       // Display Font (for titles)

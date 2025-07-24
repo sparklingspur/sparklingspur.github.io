@@ -19,6 +19,9 @@ const main = ref(null);
 
 // --- ANIMATION LOGIC ---
 onMounted(() => {
+
+  window.scrollTo(0, 0); // Scrolls to the top (x: 0, y: 0)
+
   // Use a GSAP context for safe animation management and cleanup
   let ctx = gsap.context(() => {
     const roomCards = gsap.utils.toArray('.room-card');
@@ -33,21 +36,21 @@ onMounted(() => {
       gsap.from(details, {
         x: isReversed ? 50 : -50,
         opacity: 0,
-        duration: 1,
+        duration: 1.5,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: card,
-          start: 'top 80%',
+          start: 'top 65%',
         }
       });
       gsap.from(gallery, {
         x: isReversed ? -50 : 50,
         opacity: 0,
-        duration: 1,
+        duration: 1.5,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: card,
-          start: 'top 80%',
+          start: 'top 75%',
         }
       });
     });

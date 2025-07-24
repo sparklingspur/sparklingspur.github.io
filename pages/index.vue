@@ -9,26 +9,37 @@ useHead({
 
 <template>
   <div>
-    <!-- Hero uses Swiper.js, which must run on the client -->
+    <!-- 
+      The following components use browser-only libraries (Swiper, GSAP ScrollTrigger, YouTube API).
+      Wrapping them in <ClientOnly> is the correct, state-of-the-art way to prevent
+      server-side rendering errors during the `npm run generate` command.
+    -->
     <ClientOnly>
       <Hero />
     </ClientOnly>
     
-    <Features />
-    <About />
+    <ClientOnly>
+      <Features />
+    </ClientOnly>
     
-    <!-- CapsTouch contains the YouTube Player, which must run on the client -->
+    <ClientOnly>
+      <About />
+    </ClientOnly>
+    
     <ClientOnly>
       <CapsTouch />
     </ClientOnly>
     
-    <ThematicSections />
+    <ClientOnly>
+      <ThematicSections />
+    </ClientOnly>
     
-    <!-- Testimonials uses Swiper.js, which must run on the client -->
     <ClientOnly>
       <Testimonials />
     </ClientOnly>
     
-    <Achievements />
+    <ClientOnly>
+      <Achievements />
+    </ClientOnly>
   </div>
 </template>

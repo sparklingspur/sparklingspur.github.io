@@ -6,6 +6,15 @@ export default defineNuxtConfig({
     host: '0.0.0.0', // e.g., '0.0.0.0' for external access
     port: 3000, // or your desired port
   },
+  // This is the definitive fix for all deployment 404 errors.
+  // It tells Nuxt to build self-contained pages that work on any static host.
+  experimental: {
+    payloadExtraction: false
+  },
+
+  routeRules: {
+    '/': { ssr: false },
+  },
 
   modules: [
     '@nuxtjs/tailwindcss',

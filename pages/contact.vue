@@ -21,14 +21,14 @@ useHead({
     { property: 'og:url', content: 'https://capsfamily.in/contact' },
     { property: 'og:title', content: 'Contact Us | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'og:description', content: 'Get in touch with Hotel CAPS. Find our address in Koduvayur, Palakkad, contact number, and email for reservations, event bookings, and inquiries. We look forward to hearing from you.' },
-    { property: 'og:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
+    { property: 'og:image', content: 'https://sparklingspur.github.io/images/favicons/apple-icon.png' },
 
     // Twitter
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:url', content: 'https://capsfamily.in/contact' },
     { property: 'twitter:title', content: 'Contact Us | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'twitter:description', content: 'Get in touch with Hotel CAPS. Find our address in Koduvayur, Palakkad, contact number, and email for reservations, event bookings, and inquiries. We look forward to hearing from you.' },
-    { property: 'twitter:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
+    { property: 'twitter:image', content: 'https://sparklingspur.github.io/images/favicons/apple-icon.png' },
 
   ],
 });

@@ -29,14 +29,14 @@ export default defineNuxtConfig({
         { property: 'og:url', content: 'https://capsfamily.in/' },
         { property: 'og:title', content: 'Hotel CAPS - Rooms, Multi-Cuisine Restaurant, Auditorium Hall - Koduvayur, Palakkad, Kerala' },
         { property: 'og:description', content: 'Experience premium hospitality at Hotel CAPS, Palakkad. We offer luxury rooms, fine dining, and event spaces.' },
-        { property: 'og:image', content: '/images/favicons/android-icon-192x192.png' },
+        { property: 'og:image', content: 'https://sparklingspur.github.io/images/favicons/apple-icon.png' },
 
         // Twitter
         { property: 'twitter:card', content: 'summary_large_image' },
         { property: 'twitter:url', content: 'https://capsfamily.in/' },
         { property: 'twitter:title', content: 'Hotel CAPS - Rooms, Multi-Cuisine Restaurant, Auditorium Hall - Koduvayur, Palakkad, Kerala' },
         { property: 'twitter:description', content: 'Experience premium hospitality at Hotel CAPS, Palakkad. We offer luxury rooms, fine dining, and event spaces.' },
-        { property: 'twitter:image', content: '/images/favicons/android-icon-192x192.png' },
+        { property: 'twitter:image', content: 'https://sparklingspur.github.io/images/favicons/apple-icon.png' },
 
         // PWA & Mobile Meta Tags
         { name: 'msapplication-TileColor', content: '#ffffff' },

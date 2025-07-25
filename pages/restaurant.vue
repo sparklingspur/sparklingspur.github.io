@@ -21,14 +21,14 @@ useHead({
     { property: 'og:url', content: 'https://capsfamily.in/restaurant' },
     { property: 'og:title', content: 'Multi-Cuisine Restaurant | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'og:description', content: 'Embark on a culinary journey at the Hotel CAPS multi-cuisine restaurant. Enjoy a symphony of flavors, from authentic Keralan delicacies to global favorites in Palakkad.' },
-    { property: 'og:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
+    { property: 'og:image', content: 'https://sparklingspur.github.io/images/favicons/apple-icon.png' },
 
     // Twitter
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:url', content: 'https://capsfamily.in/restaurant' },
     { property: 'twitter:title', content: 'Multi-Cuisine Restaurant | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'twitter:description', content: 'Embark on a culinary journey at the Hotel CAPS multi-cuisine restaurant. Enjoy a symphony of flavors, from authentic Keralan delicacies to global favorites in Palakkad.' },
-    { property: 'twitter:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
+    { property: 'twitter:image', content: 'https://sparklingspur.github.io/images/favicons/apple-icon.png' },
 
   ],
   

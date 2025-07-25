@@ -21,14 +21,14 @@ useHead({
     { property: 'og:url', content: 'https://capsfamily.in/catering' },
     { property: 'og:title', content: 'Outdoor Catering Services | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'og:description', content: 'Bring the taste of Hotel CAPS to your event with our professional outdoor catering services in the Palakkad region. Perfect for weddings, corporate events, and parties.' },
-    { property: 'og:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
+    { property: 'og:image', content: 'https://sparklingspur.github.io/images/favicons/apple-icon.png' },
 
     // Twitter
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:url', content: 'https://capsfamily.in/catering' },
     { property: 'twitter:title', content: 'Outdoor Catering Services | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'twitter:description', content: 'Bring the taste of Hotel CAPS to your event with our professional outdoor catering services in the Palakkad region. Perfect for weddings, corporate events, and parties.' },
-    { property: 'twitter:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
+    { property: 'twitter:image', content: 'https://sparklingspur.github.io/images/favicons/apple-icon.png' },
 
   ],
 });

@@ -21,14 +21,14 @@ useHead({
     { property: 'og:url', content: 'https://capsfamily.in/policy' },
     { property: 'og:title', content: 'Privacy Policy | Hotel CAPS' },
     { property: 'og:description', content: 'Learn about how Hotel CAPS collects, uses, and protects your personal data. Our commitment to your privacy.' },
-    { property: 'og:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
+    { property: 'og:image', content: 'https://sparklingspur.github.io/images/favicons/apple-icon.png' },
 
     // Twitter
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:url', content: 'https://capsfamily.in/policy' },
     { property: 'twitter:title', content: 'Privacy Policy | Hotel CAPS' },
     { property: 'twitter:description', content: 'Learn about how Hotel CAPS collects, uses, and protects your personal data. Our commitment to your privacy.' },
-    { property: 'twitter:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
+    { property: 'twitter:image', content: 'https://sparklingspur.github.io/images/favicons/apple-icon.png' },
 
   ],
   

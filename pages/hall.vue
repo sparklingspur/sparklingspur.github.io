@@ -21,14 +21,14 @@ useHead({
     { property: 'og:url', content: 'https://capsfamily.in/hall' },
     { property: 'og:title', content: 'Events & Banquet Hall | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'og:description', content: 'Host your perfect wedding, conference, or celebration in our state-of-the-art auditorium and banquet hall. Discover the ideal event space in Palakkad at Hotel CAPS.' },
-    { property: 'og:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
+    { property: 'og:image', content: 'https://sparklingspur.github.io/images/favicons/apple-icon.png' },
 
     // Twitter
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:url', content: 'https://capsfamily.in/hall' },
     { property: 'twitter:title', content: 'Events & Banquet Hall | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'twitter:description', content: 'Host your perfect wedding, conference, or celebration in our state-of-the-art auditorium and banquet hall. Discover the ideal event space in Palakkad at Hotel CAPS.' },
-    { property: 'twitter:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
+    { property: 'twitter:image', content: 'https://sparklingspur.github.io/images/favicons/apple-icon.png' },
 
   ],
 

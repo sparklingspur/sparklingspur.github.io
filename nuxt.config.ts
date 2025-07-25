@@ -9,28 +9,11 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/google-fonts'
   ],
 
-  googleFonts: {
-    families: {
-      // Display Font (for titles)
-      'Faculty Glyphic': true,
-      // Cursive Font (for sub titles)
-      'Dancing Script': {
-        wght: [400, 500, 600, 700]
-      },
-      // Body Font (for paragraphs and general UI)
-      Inter: {
-        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-        ital: [100, 200, 300, 400, 500, 600, 700, 800, 900]
-      }, 
-      // Number Font (for statistics, etc.)
-      Cinzel: {
-        wght: [400, 500, 600, 700, 800, 900]
-      }
-    }
-  },
+  css: [
+    '~/assets/css/fonts.css'
+  ],
 
   app: {
     baseURL: '/',
@@ -71,3 +54,4 @@ export default defineNuxtConfig({
     }
   }
 })
+

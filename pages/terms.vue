@@ -7,12 +7,7 @@ const heroImages = ref([
   '/images/rooms/hero/room-hero-2.jpg'
 ]);
 
-useHead({
-  title: 'Terms & Conditions | Hotel CAPS, Koduvayur, Palakkad',
-  meta: [
-    { name: 'description', content: 'Read the terms and conditions for bookings, stays, and use of services at Hotel CAPS, Palakkad.' }
-  ]
-});
+const siteUrl = useRequestURL().origin;
 
 useHead({
   title: 'Terms & Conditions | Hotel CAPS, Koduvayur, Palakkad',
@@ -28,14 +23,14 @@ useHead({
     { property: 'og:url', content: 'https://capsfamily.in/terms' },
     { property: 'og:title', content: 'Terms & Conditions | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'og:description', content: 'Read the terms and conditions for bookings, stays, and use of services at Hotel CAPS, Palakkad.' },
-    { property: 'og:image', content: '/images/favicons/android-icon-192x192.png' },
+    { property: 'og:image', content: `${siteUrl}/images/favicons/android-icon-192x192.png` },
 
     // Twitter
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:url', content: 'https://capsfamily.in/terms' },
     { property: 'twitter:title', content: 'Terms & Conditions | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'twitter:description', content: 'Read the terms and conditions for bookings, stays, and use of services at Hotel CAPS, Palakkad.' },
-    { property: 'twitter:image', content: '/images/favicons/android-icon-192x192.png' },
+    { property: 'twitter:image', content: `${siteUrl}/images/favicons/android-icon-192x192.png` },
 
   ],
   

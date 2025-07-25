@@ -354,32 +354,37 @@ onUnmounted(() => {
   categoryObservers.forEach(observer => observer.disconnect());
 });
 
-useHead({
-  title: 'Restaurant Menu | Hotel CAPS, Koduvayur, Palakkad',
+const siteUrl = useRequestURL().origin;
 
-  meta: [
-    // SEO and Page Information
-    { name: 'description', content: 'Browse the complete menu of the multi-cuisine restaurant at Hotel CAPS. Explore a wide range of starters, main courses, traditional Keralan highlights, and more.' },
-    { name: 'keywords', content: 'Hotel CAPS, hotel in palakkad, best hotel kerala, best hotels palakkad, best hotels koduvayur, luxury rooms palakkad, multi-cuisine restaurant palakkad, auditorium hall palakkad, accommodation kerala, palakkad hotels' },
-    { name: 'author', content: 'kriz - https://www.brandsta.in' },
-
-    // Open Graph / Facebook
-    { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://capsfamily.in/menu' },
-    { property: 'og:title', content: 'Restaurant Menu | Hotel CAPS, Koduvayur, Palakkad' },
-    { property: 'og:description', content: 'Browse the complete menu of the multi-cuisine restaurant at Hotel CAPS. Explore a wide range of starters, main courses, traditional highlights, and more.' },
-    { property: 'og:image', content: '/images/favicons/android-icon-192x192.png' },
-
-    // Twitter
-    { property: 'twitter:card', content: 'summary_large_image' },
-    { property: 'twitter:url', content: 'https://capsfamily.in/menu' },
-    { property: 'twitter:title', content: 'Restaurant Menu | Hotel CAPS, Koduvayur, Palakkad' },
-    { property: 'twitter:description', content: 'Browse the complete menu of the multi-cuisine restaurant at Hotel CAPS. Explore a wide range of starters, main courses, traditional highlights, and more.' },
-    { property: 'twitter:image', content: '/images/favicons/android-icon-192x192.png' },
-
-  ],
+// This is the new, correct pattern for server-only meta tags.
+if (import.meta.server) {
+  useHead({
+    title: 'Restaurant Menu | Hotel CAPS, Koduvayur, Palakkad',
   
-});
+    meta: [
+      // SEO and Page Information
+      { name: 'description', content: 'Browse the complete menu of the multi-cuisine restaurant at Hotel CAPS. Explore a wide range of starters, main courses, traditional Keralan highlights, and more.' },
+      { name: 'keywords', content: 'Hotel CAPS, hotel in palakkad, best hotel kerala, best hotels palakkad, best hotels koduvayur, luxury rooms palakkad, multi-cuisine restaurant palakkad, auditorium hall palakkad, accommodation kerala, palakkad hotels' },
+      { name: 'author', content: 'kriz - https://www.brandsta.in' },
+  
+      // Open Graph / Facebook
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: 'https://capsfamily.in/menu' },
+      { property: 'og:title', content: 'Restaurant Menu | Hotel CAPS, Koduvayur, Palakkad' },
+      { property: 'og:description', content: 'Browse the complete menu of the multi-cuisine restaurant at Hotel CAPS. Explore a wide range of starters, main courses, traditional highlights, and more.' },
+      { property: 'og:image', content: `${siteUrl}/images/favicons/android-icon-192x192.png` },
+  
+      // Twitter
+      { property: 'twitter:card', content: 'summary_large_image' },
+      { property: 'twitter:url', content: 'https://capsfamily.in/menu' },
+      { property: 'twitter:title', content: 'Restaurant Menu | Hotel CAPS, Koduvayur, Palakkad' },
+      { property: 'twitter:description', content: 'Browse the complete menu of the multi-cuisine restaurant at Hotel CAPS. Explore a wide range of starters, main courses, traditional highlights, and more.' },
+      { property: 'twitter:image', content: `${siteUrl}/images/favicons/android-icon-192x192.png` },
+  
+    ],
+    
+  });
+}
 
 </script>
 

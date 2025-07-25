@@ -13,7 +13,7 @@
           :class="stat.colorClass"
         >
           <component :is="stat.iconComponent" class="text-4xl sm:text-5xl" weight="regular" />
-          <h3 class="font-serif-thin text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-black mt-4">
+          <h3 class="font-number text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-zinc-800 mt-4">
             <span :ref="el => { if (el) statNumbers[index] = el }">{{ stat.startNumber }}</span>{{ stat.suffix }}
           </h3>
           <p class="mt-2 text-sm sm:text-base text-gray-600 tracking-wide">{{ stat.label }}</p>

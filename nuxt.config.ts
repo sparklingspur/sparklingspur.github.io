@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1, user-scalable=no',
-      title: 'Hotel CAPS - Rooms, Multi-Cuisine Restaurant, Auditorium Hall - Palakkad, Kerala, India',
+      title: 'Hotel CAPS - Rooms, Multi-Cuisine Restaurant, Auditorium Hall - Koduvayur, Palakkad, Kerala',
       meta: [
         // SEO and Page Information
         { name: 'description', content: 'Hotel CAPS offers luxury rooms, a multi-cuisine restaurant, and a spacious auditorium hall in the heart of Palakkad, Kerala. Experience premium hospitality and comfort.' },
@@ -27,14 +27,14 @@ export default defineNuxtConfig({
         // Open Graph / Facebook
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://capsfamily.in/' },
-        { property: 'og:title', content: 'Hotel CAPS - Rooms, Multi-Cuisine Restaurant, Auditorium Hall - Palakkad, Kerala, India' },
+        { property: 'og:title', content: 'Hotel CAPS - Rooms, Multi-Cuisine Restaurant, Auditorium Hall - Koduvayur, Palakkad, Kerala' },
         { property: 'og:description', content: 'Experience premium hospitality at Hotel CAPS, Palakkad. We offer luxury rooms, fine dining, and event spaces.' },
         { property: 'og:image', content: '/images/favicons/android-icon-192x192.png' },
 
         // Twitter
         { property: 'twitter:card', content: 'summary_large_image' },
         { property: 'twitter:url', content: 'https://capsfamily.in/' },
-        { property: 'twitter:title', content: 'Hotel CAPS - Rooms, Multi-Cuisine Restaurant, Auditorium Hall - Palakkad, Kerala, India' },
+        { property: 'twitter:title', content: 'Hotel CAPS - Rooms, Multi-Cuisine Restaurant, Auditorium Hall - Koduvayur, Palakkad, Kerala' },
         { property: 'twitter:description', content: 'Experience premium hospitality at Hotel CAPS, Palakkad. We offer luxury rooms, fine dining, and event spaces.' },
         { property: 'twitter:image', content: '/images/favicons/android-icon-192x192.png' },
 

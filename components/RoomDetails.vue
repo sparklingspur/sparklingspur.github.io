@@ -35,8 +35,8 @@ defineProps({
       </li>
     </ul>
 
-    <a href="/contact" class="mt-8 block w-full bg-stone-900 text-white text-center font-bold py-4 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors duration-300">
+    <NuxtLink href="/contact" class="mt-8 block w-full bg-stone-900 text-white text-center font-bold py-4 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors duration-300">
       Book Now
-    </a>
+    </NuxtLink>
   </div>
 </template>

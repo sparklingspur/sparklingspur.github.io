@@ -7,6 +7,8 @@ const heroImages = ref([
   '/images/rooms/hero/room-hero-2.jpg'
 ]);
 
+const siteUrl = useRequestURL().origin;
+
 useHead({
   title: 'Privacy Policy | Hotel CAPS',
 
@@ -21,14 +23,14 @@ useHead({
     { property: 'og:url', content: 'https://capsfamily.in/policy' },
     { property: 'og:title', content: 'Privacy Policy | Hotel CAPS' },
     { property: 'og:description', content: 'Learn about how Hotel CAPS collects, uses, and protects your personal data. Our commitment to your privacy.' },
-    { property: 'og:image', content: '/images/favicons/android-icon-192x192.png' },
+    { property: 'og:image', content: `${siteUrl}/images/favicons/android-icon-192x192.png` },
 
     // Twitter
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:url', content: 'https://capsfamily.in/policy' },
     { property: 'twitter:title', content: 'Privacy Policy | Hotel CAPS' },
     { property: 'twitter:description', content: 'Learn about how Hotel CAPS collects, uses, and protects your personal data. Our commitment to your privacy.' },
-    { property: 'twitter:image', content: '/images/favicons/android-icon-192x192.png' },
+    { property: 'twitter:image', content: `${siteUrl}/images/favicons/android-icon-192x192.png` },
 
   ],
   

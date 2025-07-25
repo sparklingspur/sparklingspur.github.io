@@ -14,6 +14,33 @@ useHead({
   ]
 });
 
+useHead({
+  title: 'Terms & Conditions | Hotel CAPS, Koduvayur, Palakkad',
+
+  meta: [
+    // SEO and Page Information
+    { name: 'description', content: 'Read the terms and conditions for bookings, stays, and use of services at Hotel CAPS, Palakkad.' },
+    { name: 'keywords', content: 'Hotel CAPS, hotel in palakkad, best hotel kerala, best hotels palakkad, best hotels koduvayur, luxury rooms palakkad, multi-cuisine restaurant palakkad, auditorium hall palakkad, accommodation kerala, palakkad hotels' },
+    { name: 'author', content: 'kriz - https://www.brandsta.in' },
+
+    // Open Graph / Facebook
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://capsfamily.in/terms' },
+    { property: 'og:title', content: 'Terms & Conditions | Hotel CAPS, Koduvayur, Palakkad' },
+    { property: 'og:description', content: 'Read the terms and conditions for bookings, stays, and use of services at Hotel CAPS, Palakkad.' },
+    { property: 'og:image', content: '/images/favicons/android-icon-192x192.png' },
+
+    // Twitter
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:url', content: 'https://capsfamily.in/terms' },
+    { property: 'twitter:title', content: 'Terms & Conditions | Hotel CAPS, Koduvayur, Palakkad' },
+    { property: 'twitter:description', content: 'Read the terms and conditions for bookings, stays, and use of services at Hotel CAPS, Palakkad.' },
+    { property: 'twitter:image', content: '/images/favicons/android-icon-192x192.png' },
+
+  ],
+  
+});
+
 </script>
 
 <template>

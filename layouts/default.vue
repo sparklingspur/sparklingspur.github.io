@@ -70,6 +70,11 @@ const openDropdownOnHover = (itemName) => {
   }
 };
 
+// Closes dropdown on mouse leave
+const closeDropdownOnMouseLeave = () => {
+  activeDropdown.value = null;
+};
+
 // --- SCROLL, CLICK-AWAY & VIEWPORT HANDLING ---
 
 // Watch for changes in the mobile menu state to apply/remove locks

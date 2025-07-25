@@ -82,7 +82,7 @@ onMounted(() => {
     ease: "power4.out",
     scrollTrigger: {
       trigger: "#achievements-section",
-      start: "top 65%",
+      start: "top 75%",
       toggleActions: "play none none none",
     }
   });

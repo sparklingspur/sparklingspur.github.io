@@ -8,11 +8,32 @@ const heroImages = ref([
   '/images/rooms/hero/room-hero-2.jpg'
 ]);
 
+
 useHead({
-  title: 'Luxury Suites & Rooms | Hotel CAPS, Koduvayur, Palakkad',
+  title: 'Suites & Rooms | Hotel CAPS, Koduvayur, Palakkad',
+
   meta: [
-    { name: 'description', content: 'Explore our collection of elegant suites and rooms at Hotel CAPS. Discover your personal sanctuary of comfort and modern luxury for an unforgettable stay in Palakkad.' }
-  ]
+    // SEO and Page Information
+    { name: 'description', content: 'Explore our collection of elegant suites and rooms at Hotel CAPS. Discover your personal sanctuary of comfort and modern luxury for an unforgettable stay in Palakkad.' },
+    { name: 'keywords', content: 'Hotel CAPS, hotel in palakkad, best hotel kerala, best hotels palakkad, best hotels koduvayur, luxury rooms palakkad, multi-cuisine restaurant palakkad, auditorium hall palakkad, accommodation kerala, palakkad hotels' },
+    { name: 'author', content: 'kriz - https://www.brandsta.in' },
+
+    // Open Graph / Facebook
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://capsfamily.in/rooms' },
+    { property: 'og:title', content: 'Suites & Rooms | Hotel CAPS, Koduvayur, Palakkad' },
+    { property: 'og:description', content: 'Explore our collection of elegant suites and rooms at Hotel CAPS. Discover your personal sanctuary of comfort and modern luxury for an unforgettable stay in Palakkad.' },
+    { property: 'og:image', content: '/images/favicons/android-icon-192x192.png' },
+
+    // Twitter
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:url', content: 'https://capsfamily.in/rooms' },
+    { property: 'twitter:title', content: 'Suites & Rooms | Hotel CAPS, Koduvayur, Palakkad' },
+    { property: 'twitter:description', content: 'Explore our collection of elegant suites and rooms at Hotel CAPS. Discover your personal sanctuary of comfort and modern luxury for an unforgettable stay in Palakkad.' },
+    { property: 'twitter:image', content: '/images/favicons/android-icon-192x192.png' },
+
+  ],
+  
 });
 
 </script>

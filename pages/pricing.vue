@@ -40,7 +40,7 @@ onMounted(() => {
         ease: 'power3.out',
         scrollTrigger: {
           trigger: card,
-          start: 'top 65%',
+          start: 'top 75%',
         }
       });
       gsap.from(gallery, {
@@ -63,10 +63,31 @@ onMounted(() => {
 
 useHead({
   title: 'Rooms & Suites Pricing | Hotel CAPS, Koduvayur, Palakkad',
+
   meta: [
-    { name: 'description', content: 'View the detailed pricing and tariffs for our Standard, Deluxe, and Suite rooms at Hotel CAPS. Plan your perfect stay in Palakkad with transparent and competitive rates.' }
-  ]
+    // SEO and Page Information
+    { name: 'description', content: 'View the detailed pricing and tariffs for our Standard, Deluxe, and Suite rooms at Hotel CAPS. Plan your perfect stay in Palakkad with transparent and competitive rates.' },
+    { name: 'keywords', content: 'Hotel CAPS, hotel in palakkad, best hotel kerala, best hotels palakkad, best hotels koduvayur, luxury rooms palakkad, multi-cuisine restaurant palakkad, auditorium hall palakkad, accommodation kerala, palakkad hotels' },
+    { name: 'author', content: 'kriz - https://www.brandsta.in' },
+
+    // Open Graph / Facebook
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://capsfamily.in/pricing' },
+    { property: 'og:title', content: 'Rooms & Suites Pricing | Hotel CAPS, Koduvayur, Palakkad' },
+    { property: 'og:description', content: 'View the detailed pricing and tariffs for our Standard, Deluxe, and Suite rooms at Hotel CAPS. Plan your perfect stay in Palakkad with transparent and competitive rates.' },
+    { property: 'og:image', content: '/images/favicons/android-icon-192x192.png' },
+
+    // Twitter
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:url', content: 'https://capsfamily.in/pricing' },
+    { property: 'twitter:title', content: 'Rooms & Suites Pricing | Hotel CAPS, Koduvayur, Palakkad' },
+    { property: 'twitter:description', content: 'View the detailed pricing and tariffs for our Standard, Deluxe, and Suite rooms at Hotel CAPS. Plan your perfect stay in Palakkad with transparent and competitive rates.' },
+    { property: 'twitter:image', content: '/images/favicons/android-icon-192x192.png' },
+
+  ],
+  
 });
+
 </script>
 
 <template>

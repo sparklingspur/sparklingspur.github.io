@@ -11,10 +11,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
   ],
 
-  css: [
-    '~/assets/css/fonts.css'
-  ],
-
   app: {
     baseURL: '/',
     buildAssetsDir: 'assets', // This can also help with caching. Best practice
@@ -25,26 +21,46 @@ export default defineNuxtConfig({
       meta: [
         // SEO and Page Information
         { name: 'description', content: 'Hotel CAPS offers luxury rooms, a multi-cuisine restaurant, and a spacious auditorium hall in the heart of Palakkad, Kerala. Experience premium hospitality and comfort.' },
-        { name: 'keywords', content: 'Hotel CAPS, hotel in palakkad, best hotel kerala, luxury rooms palakkad, multi-cuisine restaurant palakkad, auditorium hall palakkad, accommodation kerala, palakkad hotels' },
-        { name: 'author', content: 'Hotel CAPS' },
+        { name: 'keywords', content: 'Hotel CAPS, hotel in palakkad, best hotel kerala, best hotels palakkad, best hotels koduvayur, luxury rooms palakkad, multi-cuisine restaurant palakkad, auditorium hall palakkad, accommodation kerala, palakkad hotels' },
+        { name: 'author', content: 'kriz - https://www.brandsta.in' },
 
         // Open Graph / Facebook
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://capsfamily.in/' },
         { property: 'og:title', content: 'Hotel CAPS - Rooms, Multi-Cuisine Restaurant, Auditorium Hall - Palakkad, Kerala, India' },
         { property: 'og:description', content: 'Experience premium hospitality at Hotel CAPS, Palakkad. We offer luxury rooms, fine dining, and event spaces.' },
-        { property: 'og:image', content: '/images/caps-solid-logo.png' }, // Using local public image
+        { property: 'og:image', content: '/images/favicons/android-icon-192x192.png' },
 
         // Twitter
         { property: 'twitter:card', content: 'summary_large_image' },
         { property: 'twitter:url', content: 'https://capsfamily.in/' },
         { property: 'twitter:title', content: 'Hotel CAPS - Rooms, Multi-Cuisine Restaurant, Auditorium Hall - Palakkad, Kerala, India' },
         { property: 'twitter:description', content: 'Experience premium hospitality at Hotel CAPS, Palakkad. We offer luxury rooms, fine dining, and event spaces.' },
-        { property: 'twitter:image', content: '/images/caps-solid-logo.png' }, // Using local public image
+        { property: 'twitter:image', content: '/images/favicons/android-icon-192x192.png' },
+
+        // PWA & Mobile Meta Tags
+        { name: 'msapplication-TileColor', content: '#ffffff' },
+        { name: 'msapplication-TileImage', content: '/images/favicons/ms-icon-144x144.png' },
+        { name: 'theme-color', content: '#ffffff' },
+        // --- NEW: Link to browserconfig.xml ---
+        { name: 'msapplication-config', content: '/images/favicons/browserconfig.xml' }
       ],
       link: [
-        // Favicon
-        { rel: 'icon', type: 'image/png', href: '/images/caps-solid-logo.png' }
+        // PWA & Favicon Links
+        { rel: 'apple-touch-icon', sizes: '57x57', href: '/images/favicons/apple-icon-57x57.png' },
+        { rel: 'apple-touch-icon', sizes: '60x60', href: '/images/favicons/apple-icon-60x60.png' },
+        { rel: 'apple-touch-icon', sizes: '72x72', href: '/images/favicons/apple-icon-72x72.png' },
+        { rel: 'apple-touch-icon', sizes: '76x76', href: '/images/favicons/apple-icon-76x76.png' },
+        { rel: 'apple-touch-icon', sizes: '114x114', href: '/images/favicons/apple-icon-114x114.png' },
+        { rel: 'apple-touch-icon', sizes: '120x120', href: '/images/favicons/apple-icon-120x120.png' },
+        { rel: 'apple-touch-icon', sizes: '144x144', href: '/images/favicons/apple-icon-144x144.png' },
+        { rel: 'apple-touch-icon', sizes: '152x152', href: '/images/favicons/apple-icon-152x152.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/images/favicons/apple-icon-180x180.png' },
+        { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/images/favicons/android-icon-192x192.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/images/favicons/favicon-32x32.png' },
+        { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/images/favicons/favicon-96x96.png' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/images/favicons/favicon-16x16.png' },
+        { rel: 'manifest', href: '/images/favicons/manifest.json' },
       ],
       script: [
         {

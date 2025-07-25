@@ -52,11 +52,11 @@ onMounted(() => {
     <!-- Main Preview Image Slider -->
     <div ref="mainSwiperRef" class="swiper main-swiper">
       <div class="swiper-wrapper">
-        <div v-for="(image, index) in galleryImages" :key="index" class="swiper-slide aspect-[3/2] group-hover:scale(110)">
+        <div v-for="(image, index) in galleryImages" :key="index" class="swiper-slide aspect-[3/2] ">
           <img
             :src="image" 
             :alt="`Room image ${index + 1}`"
-            class="w-full h-full object-cover aspect-square rounded-2xl"
+            class="w-full h-full object-cover aspect-square rounded-2xl transform transition-transform duration-300 hover:scale-110"
             loading="lazy" 
           />
         </div>

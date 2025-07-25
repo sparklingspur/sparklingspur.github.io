@@ -5,6 +5,7 @@ import Loader from '~/components/Loader.vue';
 const isLoading = ref(true);
 
 onMounted(() => {
+  window.scrollTo(0, 0);
   // This is a simpler, more reliable way to handle the loader.
   // We'll show the loader for a fixed duration to allow the animation to play,
   // and then reliably fade it out.
@@ -33,6 +34,17 @@ onMounted(() => {
 </template>
 
 <style>
+
+
+@import '~/assets/css/fonts.css';
+
+/* This global style is a simple and effective way to lock the scroll 
+  when the loader is active, without needing complex JavaScript watchers.
+*/
+body:has(.loader) {
+  overflow: hidden;
+}
+
 /* Global fade transition for the loader */
 .fade-leave-active {
   transition: opacity 0.6s ease;

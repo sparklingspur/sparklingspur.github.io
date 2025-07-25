@@ -54,7 +54,7 @@ const footerNav = ref([
         <!-- Logo and Socials Column -->
         <div class="space-y-4 md:col-span-1">
           <div class="flex items-center space-x-4">
-            <NuxtImg class="h-20 w-auto" src="/images/caps-solid-logo.png" alt="Hotel CAPS Logo" />
+            <img class="h-20 w-auto" src="/images/caps-solid-logo.png" alt="Hotel CAPS Logo" />
             <div class="text-white font-display">
               <p class="text-2xl font-medium tracking-widest leading-loose">HOTEL</p>
               <p class="text-3xl font-bold tracking-widest -mt-1">CAPS</p>

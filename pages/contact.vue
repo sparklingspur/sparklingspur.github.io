@@ -9,9 +9,28 @@ const heroImages = ref([
 
 useHead({
   title: 'Contact Us | Hotel CAPS, Koduvayur, Palakkad',
+
   meta: [
-    { name: 'description', content: 'Get in touch with Hotel CAPS. Find our address in Koduvayur, Palakkad, contact number, and email for reservations, event bookings, and inquiries. We look forward to hearing from you.' }
-  ]
+    // SEO and Page Information
+    { name: 'description', content: 'Get in touch with Hotel CAPS. Find our address in Koduvayur, Palakkad, contact number, and email for reservations, event bookings, and inquiries. We look forward to hearing from you.' },
+    { name: 'keywords', content: 'Hotel CAPS, hotel in palakkad, best hotel kerala, best hotels palakkad, best hotels koduvayur, luxury rooms palakkad, multi-cuisine restaurant palakkad, auditorium hall palakkad, accommodation kerala, palakkad hotels' },
+    { name: 'author', content: 'kriz - https://www.brandsta.in' },
+
+    // Open Graph / Facebook
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://capsfamily.in/contact' },
+    { property: 'og:title', content: 'Contact Us | Hotel CAPS, Koduvayur, Palakkad' },
+    { property: 'og:description', content: 'Get in touch with Hotel CAPS. Find our address in Koduvayur, Palakkad, contact number, and email for reservations, event bookings, and inquiries. We look forward to hearing from you.' },
+    { property: 'og:image', content: '/images/favicons/android-icon-192x192.png' },
+
+    // Twitter
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:url', content: 'https://capsfamily.in/contact' },
+    { property: 'twitter:title', content: 'Contact Us | Hotel CAPS, Koduvayur, Palakkad' },
+    { property: 'twitter:description', content: 'Get in touch with Hotel CAPS. Find our address in Koduvayur, Palakkad, contact number, and email for reservations, event bookings, and inquiries. We look forward to hearing from you.' },
+    { property: 'twitter:image', content: '/images/favicons/android-icon-192x192.png' },
+
+  ],
 });
 </script>
 

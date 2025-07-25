@@ -63,7 +63,7 @@ onMounted(() => {
       x: -50,
       duration: 0.8,
       ease: 'power4.out',
-      stagger: 0.3, // This creates the beautiful cascading effect
+      stagger: 0.2, // This creates the beautiful cascading effect
       scrollTrigger: {
         trigger: main.value,
         start: 'top 70%'

@@ -9,9 +9,28 @@ const heroImages = ref([
 
 useHead({
   title: 'Outdoor Catering Services | Hotel CAPS, Koduvayur, Palakkad',
+
   meta: [
-    { name: 'description', content: 'Bring the taste of Hotel CAPS to your event with our professional outdoor catering services in the Palakkad region. Perfect for weddings, corporate events, and parties.' }
-  ]
+    // SEO and Page Information
+    { name: 'description', content: 'Bring the taste of Hotel CAPS to your event with our professional outdoor catering services in the Palakkad region. Perfect for weddings, corporate events, and parties.' },
+    { name: 'keywords', content: 'Hotel CAPS, hotel in palakkad, best hotel kerala, best hotels palakkad, best hotels koduvayur, luxury rooms palakkad, multi-cuisine restaurant palakkad, auditorium hall palakkad, accommodation kerala, palakkad hotels' },
+    { name: 'author', content: 'kriz - https://www.brandsta.in' },
+
+    // Open Graph / Facebook
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://capsfamily.in/catering' },
+    { property: 'og:title', content: 'Outdoor Catering Services | Hotel CAPS, Koduvayur, Palakkad' },
+    { property: 'og:description', content: 'Bring the taste of Hotel CAPS to your event with our professional outdoor catering services in the Palakkad region. Perfect for weddings, corporate events, and parties.' },
+    { property: 'og:image', content: '/images/favicons/android-icon-192x192.png' },
+
+    // Twitter
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:url', content: 'https://capsfamily.in/catering' },
+    { property: 'twitter:title', content: 'Outdoor Catering Services | Hotel CAPS, Koduvayur, Palakkad' },
+    { property: 'twitter:description', content: 'Bring the taste of Hotel CAPS to your event with our professional outdoor catering services in the Palakkad region. Perfect for weddings, corporate events, and parties.' },
+    { property: 'twitter:image', content: '/images/favicons/android-icon-192x192.png' },
+
+  ],
 });
 </script>
 

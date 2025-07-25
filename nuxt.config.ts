@@ -11,6 +11,16 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
   ],
 
+  // This tells Nuxt to build self-contained pages for static hosting.
+  experimental: {
+    payloadExtraction: false
+  },
+
+  // This tells Nuxt to render the interactive homepage on the client-side only.
+  routeRules: {
+    '/': { ssr: false },
+  },
+
   app: {
     baseURL: '/',
     buildAssetsDir: 'assets', // This can also help with caching. Best practice

@@ -354,8 +354,6 @@ onUnmounted(() => {
   categoryObservers.forEach(observer => observer.disconnect());
 });
 
-const siteUrl = useRequestURL().origin;
-
 // This is the new, correct pattern for server-only meta tags.
 if (import.meta.server) {
   useHead({
@@ -372,14 +370,14 @@ if (import.meta.server) {
       { property: 'og:url', content: 'https://capsfamily.in/menu' },
       { property: 'og:title', content: 'Restaurant Menu | Hotel CAPS, Koduvayur, Palakkad' },
       { property: 'og:description', content: 'Browse the complete menu of the multi-cuisine restaurant at Hotel CAPS. Explore a wide range of starters, main courses, traditional highlights, and more.' },
-      { property: 'og:image', content: `${siteUrl}/images/favicons/android-icon-192x192.png` },
+      { property: 'og:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
   
       // Twitter
       { property: 'twitter:card', content: 'summary_large_image' },
       { property: 'twitter:url', content: 'https://capsfamily.in/menu' },
       { property: 'twitter:title', content: 'Restaurant Menu | Hotel CAPS, Koduvayur, Palakkad' },
       { property: 'twitter:description', content: 'Browse the complete menu of the multi-cuisine restaurant at Hotel CAPS. Explore a wide range of starters, main courses, traditional highlights, and more.' },
-      { property: 'twitter:image', content: `${siteUrl}/images/favicons/android-icon-192x192.png` },
+      { property: 'twitter:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
   
     ],
     

@@ -2,14 +2,10 @@
 import { ref } from 'vue';
 import PageHero from '~/components/PageHero.vue';
 
-
-
 // Define the data for our hero section
 const heroImages = ref([
   '/images/rooms/hero/room-hero-2.jpg'
 ]);
-
-const siteUrl = useRequestURL().origin;
 
 useHead({
   title: 'About Us | Hotel CAPS, Koduvayur, Palakkad',
@@ -25,14 +21,14 @@ useHead({
     { property: 'og:url', content: 'https://capsfamily.in/about' },
     { property: 'og:title', content: 'About Us | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'og:description', content: 'Learn about the vision and story behind Hotel CAPS. Discover our commitment to blending modern luxury with the timeless tradition of Kerala hospitality in Koduvayur, Palakkad.' },
-    { property: 'og:image', content: `${siteUrl}/images/favicons/android-icon-192x192.png` },
+    { property: 'og:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
 
     // Twitter
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:url', content: 'https://capsfamily.in/about' },
     { property: 'twitter:title', content: 'About Us | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'twitter:description', content: 'Learn about the vision and story behind Hotel CAPS. Discover our commitment to blending modern luxury with the timeless tradition of Kerala hospitality in Koduvayur, Palakkad.' },
-    { property: 'twitter:image', content: `${siteUrl}/images/favicons/android-icon-192x192.png` },
+    { property: 'twitter:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
 
   ],
 

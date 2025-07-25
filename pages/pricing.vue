@@ -61,9 +61,6 @@ onMounted(() => {
   });
 });
 
-const siteUrl = useRequestURL().origin;
-
-
 useHead({
   title: 'Suites & Rooms Pricing | Hotel CAPS, Koduvayur, Palakkad',
 
@@ -78,14 +75,14 @@ useHead({
     { property: 'og:url', content: 'https://capsfamily.in/pricing' },
     { property: 'og:title', content: 'Suites & Rooms Pricing | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'og:description', content: 'View the detailed pricing and tariffs for our Standard, Deluxe, and Suite rooms at Hotel CAPS. Plan your perfect stay in Palakkad with transparent and competitive rates.' },
-    { property: 'og:image', content: `${siteUrl}/images/favicons/android-icon-192x192.png` },
+    { property: 'og:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
 
     // Twitter
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:url', content: 'https://capsfamily.in/pricing' },
     { property: 'twitter:title', content: 'Suites & Rooms Pricing | Hotel CAPS, Koduvayur, Palakkad' },
     { property: 'twitter:description', content: 'View the detailed pricing and tariffs for our Standard, Deluxe, and Suite rooms at Hotel CAPS. Plan your perfect stay in Palakkad with transparent and competitive rates.' },
-    { property: 'twitter:image', content: `${siteUrl}/images/favicons/android-icon-192x192.png` },
+    { property: 'twitter:image', content: 'https://sparklingspur.github.io//images/favicons/caps-og-image.jpg' },
 
   ],
   

@@ -116,9 +116,7 @@ onMounted(() => {
 
         <!-- Right Column: YouTube Player -->
         <div class="caps-touch-video lg:pt-4 w-full md:w-1/2 lg:w-3/5 mt-12 md:mt-0">
-          <ClientOnly>
             <YoutubePlayer video-id="tH9RlFQ9Hf0" />
-          </ClientOnly>
         </div>
 
       </div>

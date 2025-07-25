@@ -53,12 +53,11 @@ onMounted(() => {
     <div ref="mainSwiperRef" class="swiper main-swiper">
       <div class="swiper-wrapper">
         <div v-for="(image, index) in galleryImages" :key="index" class="swiper-slide aspect-[3/2]">
-          <NuxtImg 
+          <img
             :src="image" 
             :alt="`Room image ${index + 1}`"
             class="w-full h-full object-cover aspect-square rounded-2xl"
-            format="webp"
-            quality="95"
+            loading="lazy" 
           />
         </div>
       </div>
@@ -69,12 +68,11 @@ onMounted(() => {
       <div ref="thumbsSwiperRef" class="swiper thumbs-swiper">
         <div class="swiper-wrapper">
           <div v-for="(image, index) in galleryImages" :key="index" class="swiper-slide thumb-slide">
-            <NuxtImg 
+            <img
               :src="image" 
               :alt="`Room thumbnail ${index + 1}`"
               class="w-full h-full object-cover rounded-lg cursor-pointer"
-              format="webp"
-              quality="70"
+              loading="lazy" 
             />
           </div>
         </div>

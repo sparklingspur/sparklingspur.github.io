@@ -63,12 +63,11 @@ onMounted(() => {
   <section ref="sectionRef" class="feature-section relative w-full flex items-center justify-center overflow-hidden rounded-2xl">
     <!-- Background Image Layer -->
     <div class="absolute inset-0 z-0">
-      <NuxtImg 
+      <img 
         :src="imageSrc" 
         :alt="imageAlt"
         class="bg-image w-full h-full object-cover" 
-        format="webp"
-        quality="100"
+        loading="lazy"
       />
       <div class="absolute inset-0 bg-black/30"></div> <!-- Image Tint -->
     </div>

@@ -2,7 +2,7 @@
   <section id="hero-slider" ref="swiperEl" class="swiper relative w-full h-screen">
     <div class="swiper-wrapper">
       <div v-for="slide in slides" :key="slide.title" class="swiper-slide">
-        <NuxtImg :src="slide.image" class="slide-bg-image" :alt="slide.alt" format="webp" quality="100" />
+        <img :src="slide.image" class="slide-bg-image" :alt="slide.alt" loading="lazy" />
         <div class="absolute inset-0 "></div>
         <div class="relative w-full h-full flex flex-col justify-center items-center text-center bg-black/70 text-white px-12 md:px-16">
           <div class="hero-slide-content">

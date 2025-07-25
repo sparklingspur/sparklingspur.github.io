@@ -136,12 +136,11 @@ onMounted(() => {
       <div class="image-gallery-col">
         <div class="grid grid-cols-2 grid-rows-2 gap-4 aspect-square">
           <div v-for="(image, index) in galleryImages" :key="index" class="gallery-item group relative rounded-2xl overflow-hidden shadow-lg">
-            <NuxtImg 
+            <img 
               :src="image.src" 
               :alt="image.alt"
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-              format="webp"
-              quality="80"
+              loading="lazy"
             />
             <div class="absolute inset-0 bg-black/10"></div>
           </div>

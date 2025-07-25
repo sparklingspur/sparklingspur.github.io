@@ -89,12 +89,12 @@ onMounted(() => {
       <div v-if="isSlider" ref="swiperEl" class="swiper h-full w-full">
         <div class="swiper-wrapper">
           <div v-for="(image, index) in images" :key="index" class="swiper-slide">
-            <NuxtImg :src="image" :alt="`${title} background image ${index + 1}`" class="bg-image h-full w-full object-cover" format="webp" quality="100" />
+            <img :src="image" :alt="`${title} background image ${index + 1}`" class="bg-image h-full w-full object-cover" loading="lazy" />
           </div>
         </div>
       </div>
       <div v-else class="h-full w-full">
-        <NuxtImg v-if="images.length > 0" :src="images[0]" :alt="`${title} background image`" class="bg-image h-full w-full object-cover" format="webp" quality="80" />
+        <img v-if="images.length > 0" :src="images[0]" :alt="`${title} background image`" class="bg-image h-full w-full object-cover" loading="lazy" />
       </div>
     </div>
 

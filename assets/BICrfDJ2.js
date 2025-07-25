@@ -1,0 +1,1 @@
+import{C as s,D as a,E as r,s as u,G as o}from"./Z_ok7fB5.js";function i(e){const n=e||a();return n.ssrContext?.head||n.runWithContext(()=>{if(r()){const t=u(o);if(!t)throw new Error("[nuxt] [unhead] Missing Unhead instance.");return t}})}function d(e,n={}){const t=i(n.nuxt);return s(e,{head:t,...n})}export{d as u};

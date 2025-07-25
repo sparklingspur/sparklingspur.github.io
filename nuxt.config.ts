@@ -16,6 +16,10 @@ export default defineNuxtConfig({
     '/': { ssr: false },
   },
 
+  image: {
+    provider: 'static',
+  },
+
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/image',

@@ -26,7 +26,7 @@ export default defineNuxtConfig({
     buildAssetsDir: 'assets', // This can also help with caching. Best practice
     head: {
       charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1, user-scalable=no',
+      viewport: 'width=device-width, initial-scale=1',
       title: 'Hotel CAPS - Rooms, Multi-Cuisine Restaurant, Auditorium Hall - Koduvayur, Palakkad, Kerala',
       meta: [
         // SEO and Page Information

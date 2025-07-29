@@ -1,5 +1,11 @@
 <template>
-  <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM12 8L7 13H11V16H13V13H17L12 8Z"/>
+  <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <rect fill="none" stroke="currentColor" stroke-miterlimit = "10" stroke-width = "2px" x="2.45" y="1.5" width="19.09" height="21" />
+    <line fill="none" stroke="currentColor" stroke-miterlimit = "10" stroke-width = "2px" x1="11.05" y1="4.36" x2="12.95" y2="4.36" />
+    <line fill="none" stroke="currentColor" stroke-miterlimit = "10" stroke-width = "2px" x1="7.23" y1="4.36" x2="9.14" y2="4.36" />
+    <line fill="none" stroke="currentColor" stroke-miterlimit = "10" stroke-width = "2px" x1="14.86" y1="4.36" x2="16.77" y2="4.36" />
+    <rect fill="none" stroke="currentColor" stroke-miterlimit = "10" stroke-width = "2px" x="6.27" y="7.23" width="11.45" height="15.27" />
+    <line fill="none" stroke="currentColor" stroke-miterlimit = "10" stroke-width = "2px" x1="12" y1="7.23" x2="12" y2="22.5" />
+    <line fill="none" stroke="currentColor" stroke-miterlimit = "10" stroke-width = "2px" x1="0.55" y1="22.5" x2="23.45" y2="22.5" />
   </svg>
 </template>

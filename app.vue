@@ -9,7 +9,7 @@ onMounted(() => {
   // This is a simpler, more reliable way to handle the loader.
   // We'll show the loader for a fixed duration to allow the animation to play,
   // and then reliably fade it out.
-  const MIN_ANIMATION_TIME = 5500; // 4.5 seconds
+  const MIN_ANIMATION_TIME = 4100; // 4.5 seconds
 
   setTimeout(() => {
     isLoading.value = false;
@@ -62,5 +62,16 @@ body:has(.loader) {
 .content-visible {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
+}
+
+/* NUXT Page Transition */
+.page-enter-active,
+.page-leave-active {
+  transition: all .6s ease-in-out;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 1;
+  filter: blur(1rem);
 }
 </style>

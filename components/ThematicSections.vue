@@ -7,9 +7,9 @@ import { PhHouseLine, PhBed, PhForkKnife, PhConfetti } from '@phosphor-icons/vue
 // Image paths have been updated to your new themed assets.
 const sections = shallowRef([
   {
-    theme: 'blue',
+    theme: 'amber',
     align: 'right',
-    imageSrc: '/images/home/themed/caps-theme.jpg',
+    imageSrc: '/images/home/themed/caps-theme.webp',
     imageAlt: 'The exterior of Hotel CAPS',
     category: 'About',
     title: 'The CAPS Story',
@@ -19,9 +19,9 @@ const sections = shallowRef([
     icon: markRaw(PhHouseLine)
   },
   {
-    theme: 'amber',
+    theme: 'blue',
     align: 'left',
-    imageSrc: '/images/home/themed/rooms-theme.jpg',
+    imageSrc: '/images/home/themed/rooms-theme.webp',
     imageAlt: 'A luxurious and comfortable hotel room at Hotel CAPS',
     category: 'Rooms',
     title: 'Sanctuary of Comfort',
@@ -33,7 +33,7 @@ const sections = shallowRef([
   {
     theme: 'green',
     align: 'right',
-    imageSrc: '/images/home/themed/restaurant-theme.jpg',
+    imageSrc: '/images/home/themed/restaurant-theme.webp',
     imageAlt: 'The elegant dining area of the multi-cuisine restaurant',
     category: 'Restaurant',
     title: 'A Culinary Journey',
@@ -45,7 +45,7 @@ const sections = shallowRef([
   {
     theme: 'pink',
     align: 'left',
-    imageSrc: '/images/home/themed/hall-theme.jpg',
+    imageSrc: '/images/home/themed/hall-theme.webp',
     imageAlt: 'A grand and beautifully decorated auditorium for events',
     category: 'Auditorium',
     title: 'Celebrate in Style',

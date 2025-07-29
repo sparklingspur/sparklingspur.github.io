@@ -1,10 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue';
-import Swiper from 'swiper';
-import { EffectFade, Autoplay } from 'swiper/modules';
 import { gsap } from 'gsap';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
 
 // --- PROPS ---
 const props = defineProps({
@@ -24,55 +20,30 @@ const props = defineProps({
 });
 
 // --- REFS & COMPUTED ---
-const swiperEl = ref(null);
 const heroContentRef = ref(null);
 const heroSectionRef = ref(null);
-const isSlider = computed(() => props.images.length > 1);
+const bgImageRef = ref(null);
 
 // --- LIFECYCYCLE HOOKS ---
 onMounted(() => {
   let ctx = gsap.context(() => {
+
+    gsap.from(bgImageRef.value, {
+      delay: 0,
+      opacity: 0.5,
+      scale: 1.15,
+      duration: 2.5,
+      ease: 'power5.out'
+    });
     
     // Animate the text content once on load, with your specified parameters.
     gsap.from(heroContentRef.value.children, {
       opacity: 0,
       y: 30,
-      duration: 0.3,
+      duration: 1.5,
       ease: 'power4.out',
-      stagger: 0.2
+      stagger: 0.3
     });
-
-    // Conditional logic for background animation
-    if (isSlider.value && swiperEl.value) {
-      // --- SLIDER LOGIC (2+ images) ---
-      const animateSlide = (swiper) => {
-        const activeImage = swiper.slides[swiper.activeIndex].querySelector('.bg-image');
-        gsap.killTweensOf(activeImage);
-        gsap.fromTo(activeImage, 
-          { scale: 1.15 }, 
-          { scale: 1, duration: 8, ease: 'power2.out' }
-        );
-      };
-
-      new Swiper(swiperEl.value, {
-        modules: [EffectFade, Autoplay],
-        effect: 'fade',
-        fadeEffect: { crossFade: true },
-        loop: true,
-        allowTouchMove: false,
-        speed: 2000,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-        on: {
-          init: animateSlide,
-          slideChangeTransitionStart: animateSlide,
-        },
-      });
-    } 
-    // --- STATIC IMAGE LOGIC (1 image) ---
-    // No animation is applied here, as requested.
 
   }, heroSectionRef.value);
 
@@ -86,14 +57,8 @@ onMounted(() => {
   <section ref="heroSectionRef" class="relative h-[60vh] portrait:h-[45vh]  w-full flex items-center text-white overflow-hidden">
     <!-- Background Layer (z-0) -->
     <div class="absolute inset-0 z-0">
-      <div v-if="isSlider" ref="swiperEl" class="swiper h-full w-full">
-        <div class="swiper-wrapper">
-          <div v-for="(image, index) in images" :key="index" class="swiper-slide">
-            <img :src="image" :alt="`${title} background image ${index + 1}`" class="bg-image h-full w-full object-cover" loading="lazy" />
-          </div>
-        </div>
-      </div>
-      <div v-else class="h-full w-full">
+      
+      <div ref="bgImageRef" class="h-full w-full">
         <img v-if="images.length > 0" :src="images[0]" :alt="`${title} background image`" class="bg-image h-full w-full object-cover" loading="lazy" />
       </div>
     </div>

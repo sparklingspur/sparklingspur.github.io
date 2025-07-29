@@ -7,6 +7,14 @@ export default defineNuxtConfig({
     port: 3000, // or your desired port
   },
 
+  runtimeConfig: {
+    // apiSecret: 'my-secret', 
+    public: {
+      // Public keys (client & server) - these are reactive on the client
+      initialAnimationDelay: 4, // Example: The delay you want to use
+    }
+  },
+
   modules: [
     '@nuxtjs/tailwindcss',
   ],
@@ -24,6 +32,7 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/',
     buildAssetsDir: 'assets', // This can also help with caching. Best practice
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',

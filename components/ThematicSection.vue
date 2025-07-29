@@ -25,9 +25,9 @@ const sectionRef = ref(null);
 
 // --- DYNAMIC CLASSES ---
 const themeClasses = {
-  blue: { bg: 'bg-sky-950', card: 'card-theme-blue', text: 'text-sky-300', btn: 'btn-blue', icon: 'text-blue-300' },
+  blue: { bg: 'bg-slate-900', card: 'card-theme-blue', text: 'text-sky-400', btn: 'btn-blue', icon: 'text-blue-400' },
   amber: { bg: 'bg-stone-900', card: 'card-theme-amber', text: 'text-amber-300', btn: 'btn-amber' , icon: 'text-stone-300' },
-  green: { bg: 'bg-emerald-950', card: 'card-theme-green', text: 'text-emerald-300', btn: 'btn-green', icon: 'text-emerald-300' },
+  green: { bg: 'bg-teal-950', card: 'card-theme-green', text: 'text-emerald-300', btn: 'btn-green', icon: 'text-emerald-500' },
   pink: { bg: 'bg-pink-950', card: 'card-theme-pink', text: 'text-pink-300', btn: 'btn-pink', icon: 'text-pink-300' }
 };
 const currentTheme = themeClasses[props.theme];
@@ -78,9 +78,9 @@ onMounted(() => {
       :class="{ 'md:justify-end': align === 'right', 'md:justify-start': align === 'left' }"
     >
       <div class="feature-text-container w-full sm:w-full md:w-[65%] lg:w-1/2 xl:w-[40%]">
-        <div class="rounded-2xl p-2 sm:p-4 bg-opacity-90 text-white shadow-2xl" :class="currentTheme.bg">
+        <div class="rounded-2xl p-2 sm:p-4 bg-opacity-95 text-white shadow-2xl" :class="currentTheme.bg">
           <div class="feature-card-content p-6 sm:p-8 lg:p-10 rounded-xl" :class="currentTheme.card">
-            <component :is="icon" class="absolute top-4 right-4 text-7xl opacity-10 -translate-y-1/4 translate-x-1/4" :class="currentTheme.icon" />
+            <component :is="icon" class="absolute top-4 right-4 text-7xl opacity-30 -translate-y-1/4 translate-x-1/4" :class="currentTheme.icon" />
             <p class="text-sm font-bold uppercase tracking-widest" :class="currentTheme.text">{{ category }}</p>
             <h2 class="text-3xl sm:text-4xl lg:text-4xl font-display font-semibold tracking-wider mt-2 mb-4">{{ title }}</h2>
             <p class="text-base sm:text-base text-white/80 leading-relaxed sm:leading-loose tracking-wide">
@@ -121,16 +121,16 @@ onMounted(() => {
 .bubble-button:hover::before { transform: scaleX(1); }
 
 .btn-blue { border: 1px solid #93c5fd; color: #dbeafe; }
-.btn-blue::before { background-color: #0098f0; }
+.btn-blue::before { background-color: #035ec7; }
 
 .btn-amber { border: 1px solid #d4c3b3; color: #e9e3de; }
 .btn-amber::before { background-color: #e49c00; }
 
 .btn-green { border: 1px solid #6ee7b7; color: #d1fae5; }
-.btn-green::before { background-color: #019c70; }
+.btn-green::before { background-color: #007448; }
 
 .btn-pink { border: 1px solid #f9a8d4; color: #fce7f3; }
-.btn-pink::before { background-color: #fc3a91; }
+.btn-pink::before { background-color: #ca226e; }
 
 /* --- Thematic Text Cards with Decorative Inner Borders --- */
 .feature-card-content {

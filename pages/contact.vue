@@ -42,9 +42,10 @@ useHead({
       :images="heroImages"
     />
 
-    <!-- The rest of your rooms page content will go here -->
-    <div class="py-20 text-center">
-      <h2 class="text-3xl font-bold">Contact listings will go here...</h2>
-    </div>
+    <GetInTouchContact />
+    <Gmaps />
+    <ContactForm />
+
+
   </div>
 </template>

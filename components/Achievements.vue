@@ -1,19 +1,19 @@
 <template>
-  <section id="achievements-section" class="bg-stone-50 py-16 sm:py-20 lg:py-24 dotted-bg">
+  <section id="achievements-section" class="bg-stone-300 pt-12 pb-16 lg:pt-20 lg:pb-28 dotted-bg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 md:mb-16">
-        <h2 class="text-gray-800 text-4xl sm:text-4xl lg:text-5xl font-display font-semibold tracking-wider mt-2">Our Achievements in Numbers</h2>
+        <h2 class=" text-gray-800 text-3xl sm:text-4xl text-center lg:text-4xl font-display font-semibold tracking-wider mt-2">Our Achievements in Numbers</h2>
       </div>
       <div class="flex flex-wrap justify-center gap-4 sm:gap-8">
 
         <div 
           v-for="(stat, index) in achievements" 
           :key="index"
-          class="achievement-card p-4 sm:p-6 lg:p-10 rounded-xl shadow-lg text-center flex flex-col items-center justify-center aspect-square shadow-[inset_-24px_-18px_40px_#46464620] shadow-[2px_11px_21px_5px_rgba(0,_0,_0,_0.2)] w-[calc(47.5%)] sm:w-[calc(50%-1rem)] md:w-[calc(33.33%-1.5rem)] xl:w-[calc(25%-1.5rem)]"
+          class="achievement-card p-4 sm:p-6 lg:p-10 rounded-xl shadow-lg text-center flex flex-col items-center justify-center aspect-square shadow-[inset_-24px_-18px_40px_#46464620] shadow-[2px_11px_21px_5px_rgba(0,_0,_0,_0.2)] w-[calc(47%)] sm:w-[calc(33.33%-1.5rem)] md:w-[calc(25%-1.5rem)]"
           :class="stat.colorClass"
         >
           <component :is="stat.iconComponent" class="text-4xl sm:text-5xl" weight="regular" />
-          <h3 class="font-number text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-zinc-800 mt-4">
+          <h3 class="font-number text-4xl sm:text-5xl lg:text-7xl font-semibold text-zinc-800 mt-4">
             <span :ref="el => { if (el) statNumbers[index] = el }">{{ stat.startNumber }}</span>{{ stat.suffix }}
           </h3>
           <p class="mt-2 text-sm sm:text-base text-gray-600 tracking-wide">{{ stat.label }}</p>
@@ -37,7 +37,7 @@ gsap.registerPlugin(ScrollTrigger);
 const achievements = shallowRef([
   { 
     iconComponent: PhUsersThree, 
-    colorClass: 'bg-amber-400 text-amber-900',
+    colorClass: 'bg-sky-400 text-blue-800',
     startNumber: 0,
     targetNumber: 5, 
     suffix: 'K+', 
@@ -61,7 +61,7 @@ const achievements = shallowRef([
   },
   { 
     iconComponent: PhSparkle, 
-    colorClass: 'bg-sky-400 text-blue-800',
+    colorClass: 'bg-amber-400 text-amber-900',
     startNumber: 0,
     targetNumber: 100, 
     suffix: '%', 
@@ -82,7 +82,7 @@ onMounted(() => {
     ease: "power4.out",
     scrollTrigger: {
       trigger: "#achievements-section",
-      start: "top 75%",
+      start: "top 80%",
       toggleActions: "play none none none",
     }
   });

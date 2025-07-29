@@ -128,11 +128,11 @@ onMounted(() => {
 
 /* Blue Button */
 .bubble-button-blue { 
-  border: 2px solid #f5aa08; 
-  color: #f5aa08; 
+  border: 2px solid #2375e0; 
+  color: #2375e0; 
 }
 .bubble-button-blue::before { 
-  background-color: #f5aa08; 
+  background-color: #2375e0; 
 }
 
 /* Green Button */

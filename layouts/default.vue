@@ -33,7 +33,6 @@ const navLinks = ref([
     subLinks: [
       { text: 'View Restaurant', link: '/restaurant' },
       { text: 'Our Menu', link: '/menu' },
-      { text: 'Our Catering', link: '/catering' },
     ]
   },
   {
@@ -41,6 +40,7 @@ const navLinks = ref([
     link: '/hall',
     subLinks: [
       { text: 'View Hall', link: '/hall' },
+      { text: 'Our Catering', link: '/catering' },
     ]
   }
 ]);
@@ -152,28 +152,29 @@ onUnmounted(() => {
               v-for="navItem in navLinks" 
               :key="navItem.text"
               class="relative"
+              @mouseenter="openDropdownOnHover(navItem.text)"
+              @mouseleave="closeDropdownOnMouseLeave"
             >
               <!-- Main navigation link -->
               <a 
                 href="#"
                 @click.prevent="toggleDropdown(navItem.subLinks.length > 0 ? navItem.text : null)"
-                class="flex items-center xl:text-lg text-white font-display tracking-wider hover:text-amber-500 transition-colors duration-300"
+                class="flex items-center xl:text-lg text-white font-display tracking-wider hover:text-amber-500 transition-all duration-300"
               >
                 {{ navItem.text }}
-                <PhCaretDown v-if="navItem.subLinks.length > 0" :size="16" class="ml-1" />
+                <PhCaretDown :class="{ 'rotate-180': activeDropdown === navItem.text }" v-if="navItem.subLinks.length > 0" :size="16" class="ml-1 transition-all duration-300" />
               </a>
 
               <!-- Dropdown Menu -->
               <Transition name="dropdown">
                 <div 
-                  :class="{ 
+                  v-if="navItem.subLinks.length > 0 && activeDropdown === navItem.text"
+                  class="absolute top-full left-1/2 -translate-x-1/2 pt-6 w-40 rounded-t-none rounded-md shadow-2xl overflow-hidden"
+                >
+                  <ul class="pb-2" :class="{ 
                     'bg-zinc-900/20 backdrop-blur-lg': !isScrolled, 
                     'bg-zinc-900/90 backdrop-blur-lg shadow-lg': isScrolled 
-                  }"
-                  v-if="navItem.subLinks.length > 0 && activeDropdown === navItem.text"
-                  class="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-40 rounded-t-none rounded-md shadow-2xl overflow-hidden"
-                >
-                  <ul class="">
+                  }">
                     <li v-for="subLink in navItem.subLinks" :key="subLink.text">
                       <NuxtLink 
                         :to="subLink.link" 
@@ -236,7 +237,7 @@ onUnmounted(() => {
             </div>
           </div>
         </nav>
-        <NuxtLink to="/contact" @click="closeMenu" class="contact-bubble-button mt-6 py-3 px-8 text-xl rounded-xl font-semibold border-2 border-white text-white transition-all duration-300">
+        <NuxtLink to="/contact" @click="closeMenu" class="contact-bubble-button mt-6 py-3 px-8 text-xl rounded-lg font-semibold border-2 border-white text-white transition-all duration-300">
           Contact Us
         </NuxtLink>
       </div>
@@ -247,6 +248,7 @@ onUnmounted(() => {
       <slot />
     </main>
 
+    <ScrollButtonSticky />
     <!-- FOOTER -->
     <Footer />
   </div>
@@ -257,7 +259,7 @@ onUnmounted(() => {
 .contact-bubble-button {
   position: relative;
   display: inline-block;
-  transition: color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 1;
   border: 1px solid white;
   color: white;
@@ -269,14 +271,15 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  background-color: #F97715;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.4s cubic-bezier(0.7, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.7, 0, 0.2, 1);
   z-index: -1;
 }
 .contact-bubble-button:hover {
-  color: black;
+  border: 1px solid #F97715;
 }
 .contact-bubble-button:hover::before {
   transform: scaleX(1);
@@ -348,5 +351,9 @@ onUnmounted(() => {
 .overlay-enter-from,
 .overlay-leave-to {
   opacity: 0;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
 }
 </style>

@@ -1,10 +1,12 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, markRaw } from 'vue';
 import Swiper from 'swiper';
 import { Navigation, EffectFade, Autoplay } from 'swiper/modules';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PhUser } from '@phosphor-icons/vue';
+import IconHexagon from '~/components/icons/IconHexagon.vue';
+
 
 // Import Swiper's CSS
 import 'swiper/css';
@@ -104,16 +106,12 @@ onMounted(() => {
                   <div class="w-1 bg-purple-500 rounded-full flex-shrink-0 self-stretch"></div>
                   <!-- Content -->
                   <div class="pl-0">
-                    <p class="testimonial-quote text-lg md:text-lg text-gray-700 leading-relaxed font-body italic">
-                      {{ testimonial.quote }}
+                    <p class="testimonial-quote py-4 pr-3 text-lg md:text-lg text-gray-700 bg-purple-200 rounded-e-xl leading-relaxed font-body italic">
+                      "{{ testimonial.quote }}"
                     </p>
                     <!-- Author Block -->
                     <div class="mt-4 flex items-center absolute bottom-0 space-x-4">
-                      <div class="hex-avatar">
-                        <div class="hex-avatar-inner">
-                          <PhUser :size="32" weight="duotone" />
-                        </div>
-                      </div>
+                      <IconHexagon class="text-purple-500 w-16 h-16" />
                       <div>
                         <p class="font-bold text-gray-800 font-sans">{{ testimonial.name }}</p>
                         <p class="text-sm text-gray-500 font-sans">{{ testimonial.location }}</p>
@@ -201,7 +199,9 @@ onMounted(() => {
   height: 3.46em; /* ~55px */
   transform: rotate(-30deg) skewX(30deg);
   border-radius: .5em;
+  position: relative;
 }
+
 .hex-avatar-inner {
   display: flex;
   justify-content: center;

@@ -52,7 +52,7 @@ onMounted(() => {
 </style>
 
 <template>
-  <section ref="main" class="py-20 lg:py-28">
+  <section ref="main" class="py-20 ">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 lg:mb-16">
         <h2 class="font-display text-4xl md:text-5xl font-bold tracking-wide leading-snug text-gray-800">{{ title }}</h2>

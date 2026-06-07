@@ -1,118 +1,33 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import gsap from 'gsap'
-
-// Prevent this page from using the global layout
 definePageMeta({
-  layout: false
-})
-
-const demoCards = ref([
-  { id: '01', title: 'Home 1', description: 'The primary landing page that sets the tone for the journey.', link: '/home-1' },
-  { id: '02', title: 'Home 2', description: 'An alternative landing page layout and experience.', link: '/home-2' },
-  { id: '03', title: 'About', description: 'Our story, our purpose, and the philosophy behind Slow Routes.', link: '/about' },
-  { id: '04', title: 'Plan Your Journey', description: 'Interactive questionnaire to craft a bespoke travel experience.', link: '/planyourjourney' },
-  { id: '05', title: 'Itinerary Listing', description: 'Explore our handcrafted journeys across lands and cultures.', link: '/itinerary-listing' },
-  { id: '06', title: 'Stay Listing', description: 'Discover unique, handpicked places to stay that feel like home.', link: '/stay-listing' },
-  { id: '07', title: 'Stories', description: 'Real experiences and perspectives shared by our travellers.', link: '/stories' },
-  { id: '08', title: 'Our Difference', description: 'The values, principles, and impact that guide our travel approach.', link: '/ourdifference' },
-  { id: '09', title: 'Community Listing', description: 'Meet the artisans, guides, and locals who bring journeys to life.', link: '/community-listing' },
-  { id: '10', title: 'Blog Listing', description: 'Tips, reflections, and inspiration for your next meaningful trip.', link: '/blog-listing' },
-  { id: '11', title: 'Itinerary Detail', description: 'Deep dive into a specific journey, day-by-day breakdowns.', link: '/itinerary-detail' },
-  { id: '12', title: 'Stay Detail', description: 'Immersive look into a specific property, amenities, and surroundings.', link: '/stay-detail' },
-  { id: '13', title: 'Blog Detail', description: 'A detailed journal entry and editorial travel story.', link: '/blog-detail' },
-  { id: '14', title: 'Community Detail', description: 'An intimate look at a specific local artisan or community member.', link: '/communty-detail' }
-])
-
-onMounted(() => {
-  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-  gsap.set('.reveal-item', { autoAlpha: 1 })
-
-  tl.fromTo('.header-elem', 
-    { y: 30, opacity: 0 }, 
-    { y: 0, opacity: 1, duration: 1.2, stagger: 0.2 }
-  )
-  .fromTo('.card-elem',
-    { y: 40, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1, stagger: 0.08 },
-    "-=0.6" 
-  )
-  .fromTo('.footer-elem',
-    { opacity: 0 },
-    { opacity: 1, duration: 1 },
-    "-=0.4"
-  )
+  layout: 'header-two'
 })
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-[#F9F8F6] text-[#1A1A1A] selection:bg-[#C47552] selection:text-white font-sans">
-    <div class="flex-grow flex flex-col pt-20 pb-10 px-6 md:px-12 lg:px-24">
-      
-      <header class="max-w-3xl mx-auto text-center mb-16 reveal-item header-elem">
-        <div class="flex justify-center mb-6">
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-[#C47552]">
-            <path d="M22 2L24.5 15.5L38 18L24.5 20.5L22 34L19.5 20.5L6 18L19.5 15.5L22 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M22 7V34" stroke="currentColor" stroke-width="1"/>
-            <path d="M7 18H37" stroke="currentColor" stroke-width="1"/>
-            <path d="M11.5 7.5L32.5 28.5" stroke="currentColor" stroke-width="1"/>
-            <path d="M32.5 7.5L11.5 28.5" stroke="currentColor" stroke-width="1"/>
-          </svg>
-        </div>
-        
-        <h1 class="text-5xl md:text-6xl font-serif text-[#1A1A1A] mb-4 tracking-tight">Sree Jith Travel</h1>
-        <p class="text-[#C47552] text-sm md:text-base font-semibold tracking-[0.25em] uppercase mb-8">Visual Demo</p>
-        
-        <p class="text-[#666666] text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-light">
-          A visual demo of the Sree Jith Travel website — a thoughtfully crafted experience that brings slow travel, meaningful journeys, and soulful stories to life.
+  <!-- Full height preview container to enable scrolling mechanics -->
+  <div class="min-h-[150vh] bg-[#F9F8F6] text-[#1A1A1A] font-sans selection:bg-[#C47552] selection:text-white">
+    
+    <!-- Hero / Content Area Section -->
+    <section class="max-w-[90rem] mx-auto pt-44 px-6 md:px-12 lg:px-24">
+      <div class="max-w-3xl">
+        <span class="text-[#C47552] text-xs font-bold tracking-[0.2em] uppercase block mb-4">Design Variant 02</span>
+        <h1 class="font-serif text-5xl md:text-7xl tracking-tight leading-[1.1] mb-8">
+          Curated pathways <br class="hidden md:inline"/>
+          built for the <span class="italic font-normal text-[#C47552]">soul</span>.
+        </h1>
+        <p class="text-[#666666] text-lg md:text-xl font-light leading-relaxed mb-12 max-w-2xl">
+          Scroll down to observe the linear border progress track completely from left to right along the bottom of the navigation frame.
         </p>
-      </header>
+      </div>
+    </section>
 
-      <div class="w-full max-w-6xl mx-auto border-t border-[#EAE6DF] mb-16 reveal-item header-elem"></div>
+    <!-- Visual Anchor to give depth for scrolling -->
+    <section class="mt-24 border-t border-[#EAE6DF]/60 max-w-[90rem] mx-auto px-6 md:px-12 lg:px-24 py-32 bg-white/40">
+      <div class="h-96 flex items-center justify-center border border-dashed border-[#C47552]/20 rounded-xl">
+        <p class="text-[#666666]/60 font-light text-sm italic">Keep scrolling to check interaction limits...</p>
+      </div>
+    </section>
 
-      <main class="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-24">
-        
-        <NuxtLink 
-          v-for="card in demoCards" 
-          :key="card.id" 
-          :to="card.link"
-          class="reveal-item card-elem group relative bg-white rounded-xl p-8 border border-[#EAE6DF]/60 hover:border-[#C47552]/30 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] hover:shadow-[0_15px_30px_-10px_rgba(196,117,82,0.1)] transition-all duration-500 ease-out cursor-pointer flex flex-col h-full transform hover:-translate-y-1"
-        >
-          <span class="text-[#C47552] text-sm font-semibold tracking-wider mb-5 block">{{ card.id }}</span>
-          <h3 class="font-serif text-2xl md:text-3xl text-[#1A1A1A] mb-3 group-hover:text-[#C47552] transition-colors duration-300">{{ card.title }}</h3>
-          <p class="text-[#666666] text-sm leading-relaxed mb-10 font-light flex-grow">{{ card.description }}</p>
-          
-          <div class="self-end mt-auto rounded-full border border-[#C47552]/40 w-10 h-10 flex items-center justify-center text-[#C47552] group-hover:bg-[#C47552] group-hover:text-white transition-all duration-300">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
-        </NuxtLink>
-
-      </main>
-
-      <footer class="w-full max-w-6xl mx-auto mt-auto border-t border-[#EAE6DF] pt-8 pb-4 flex flex-col md:flex-row justify-between items-center gap-4 reveal-item footer-elem text-xs text-[#666666] font-light">
-        <div class="flex flex-col items-center md:items-start gap-1">
-          <span class="font-medium text-[#1A1A1A] text-sm">Sree Jith Travel</span>
-          <span>© 2026 All rights reserved.</span>
-        </div>
-        
-        <div class="flex items-center gap-2">
-          <span>Crafted with purpose. Designed for journeys.</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#C47552]">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-          </svg>
-        </div>
-      </footer>
-
-    </div>
   </div>
 </template>
-
-<style>
-.reveal-item {
-  opacity: 0;
-  visibility: hidden;
-}
-</style>
